@@ -2,7 +2,7 @@ import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
 import MainLayout from '@/components/layout/main-layout';
-import AboutHero from '@/components/sections/about-hero';
+import { HeroAbout } from '@/components/sections/hero-about';
 import CompanyOverview from '@/components/sections/company-overview';
 import CompanyHistory from '@/components/sections/company-history';
 import ManagementTeam from '@/components/sections/management-team';
@@ -24,7 +24,10 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
 export default function AboutPage() {
   return (
     <MainLayout>
-      <AboutHero />
+      <HeroAbout 
+        title="Mühendislik Çözümlerinde Öncü"
+        description="NEVAYS olarak, temiz oda sistemleri ve mühendislik çözümlerinde 25+ yıllık deneyimimizle sektöre öncülük ediyoruz. Yenilikçi yaklaşımımız ve uzman ekibimizle, müşterilerimize en kaliteli hizmeti sunuyoruz."
+      />
       <CompanyOverview />
       <CompanyHistory />
       <ManagementTeam />

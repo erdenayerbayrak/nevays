@@ -62,20 +62,19 @@ export default function ApplicationsOverview() {
     <section className="py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Giriş Metni */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
-            Teknik Mükemmellik, Proje Güveni
+        {/* Giriş */}
+        <div className="text-center mb-12">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            Uygulama Alanları
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            25 yılı aşkın deneyimimizle, kritik üretim ve araştırma ortamlarında 
-            mühendislik odaklı çözümler geliştiriyoruz. Her proje, sektörel gereksinimlere 
-            özgü tasarlanır ve en yüksek kalite standartlarında uygulanır.
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            Temiz oda kurulumu, laboratuvar sistemleri ve HVAC uygulamalarında 
+            profesyonel mühendislik çözümleri sunuyoruz.
           </p>
         </div>
 
-        {/* Premium Application Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        {/* Uygulama Kartları */}
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
           {applications.map((app, index) => {
             const Icon = app.icon;
             
@@ -83,102 +82,51 @@ export default function ApplicationsOverview() {
               <Link 
                 key={app.id}
                 href={`/${locale}${app.href}`}
-                className="group relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100"
+                className="block bg-white rounded-lg border border-gray-200 p-6 hover:shadow-md transition-shadow"
               >
-                {/* Image Background */}
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src={`https://images.unsplash.com/photo-${
-                      index === 0 ? '1576671081837-49000212a370' : // Cleanroom
-                      index === 1 ? '1582719508461-905c673771fd' : // Laboratory
-                      index === 2 ? '1581092795360-fd1ca04f0952' : // HVAC
-                      index === 3 ? '1631815588090-d4bfec5b1ccb' : // LAF Cabin
-                      '1581091226825-a6a2a5aee158'                   // Modular
-                    }?w=800&h=600&fit=crop&crop=center`}
-                    alt={app.title}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                  
-                  {/* Icon */}
-                  <div className="absolute top-4 left-4">
-                    <div className="flex items-center justify-center w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl border border-white/30">
-                      <Icon className="h-6 w-6 text-white" />
-                    </div>
+                <div className="flex items-start space-x-4">
+                  <div className="flex items-center justify-center w-12 h-12 bg-blue-100 rounded-lg">
+                    <Icon className="h-6 w-6 text-blue-600" />
                   </div>
-                  
-                  {/* Keywords Badge */}
-                  <div className="absolute top-4 right-4">
-                    <div className="px-3 py-1 bg-blue-600/80 backdrop-blur-sm rounded-full border border-white/20">
-                      <span className="text-xs font-medium text-white">{app.keywords.split(',')[0]}</span>
-                    </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                      {app.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm mb-3">
+                      {app.description}
+                    </p>
+                    <span className="text-blue-600 text-sm font-medium">
+                      Detaylı Bilgi →
+                    </span>
                   </div>
                 </div>
-                
-                {/* Content */}
-                <div className="p-8">
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-700 transition-colors duration-300">
-                    {app.title}
-                  </h3>
-                  
-                  <p className="text-gray-600 leading-relaxed mb-6 text-sm">
-                    {app.description}
-                  </p>
-                  
-                  {/* CTA */}
-                  <div className="flex items-center text-blue-600 font-semibold group-hover:translate-x-1 transition-transform duration-300">
-                    <span>Detaylı Bilgi</span>
-                    <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
-                </div>
-                
-                {/* Hover Glow Effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-teal-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </Link>
             );
           })}
         </div>
 
-        {/* Premium CTA Section */}
-        <div className="relative bg-gradient-to-r from-blue-600 via-blue-700 to-teal-600 rounded-3xl p-12 text-white overflow-hidden">
-          {/* Background Pattern */}
-          <div className="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full -translate-y-24 translate-x-24 animate-pulse"></div>
-          <div className="absolute bottom-0 left-0 w-40 h-40 bg-teal-400/20 rounded-full translate-y-20 -translate-x-20 animate-pulse animation-delay-1000"></div>
-          
-          <div className="relative z-10 text-center">
-            <div className="inline-flex items-center px-6 py-2 mb-6 bg-white/20 backdrop-blur-sm rounded-full border border-white/30">
-              <div className="w-2 h-2 bg-white rounded-full mr-3 animate-pulse"></div>
-              <span className="text-sm font-semibold text-white/90">Uzman Mühendislik</span>
-            </div>
-            
-            <h3 className="text-3xl md:text-4xl font-bold mb-6">
-              Projeniz İçin Teknik Destek
-            </h3>
-            
-            <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto leading-relaxed">
-              Hangi uygulama alanında olursa olsun, projenizdeki teknik gereksinimleri 
-              değerlendirmek ve size <strong className="text-white">özel çözümler</strong> sunmak için buradayız.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <a 
-                href="tel:+905123456789"
-                className="px-8 py-4 bg-white text-blue-700 font-semibold rounded-xl hover:bg-blue-50 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl min-w-[200px]"
-              >
-                Teknik Görüşme
-              </a>
-              <a 
-                href="https://wa.me/905123456789?text=Merhaba, uygulama alanları hakkında teknik destek almak istiyorum."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-8 py-4 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl min-w-[200px]"
-              >
-                WhatsApp Destek
-              </a>
-            </div>
+        {/* İletişim */}
+        <div className="text-center bg-gray-50 rounded-lg p-8">
+          <h3 className="text-xl font-bold text-gray-900 mb-4">
+            Projeniz İçin Teknik Destek
+          </h3>
+          <p className="text-gray-600 mb-6">
+            Uygulama alanlarımız hakkında detaylı bilgi almak için bizimle iletişime geçin.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a 
+              href="tel:+905301234567"
+              className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            >
+              Telefon: +90 530 123 45 67
+            </a>
+            <a 
+              href="https://wa.me/905301234567" 
+              target="_blank"
+              className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+            >
+              WhatsApp
+            </a>
           </div>
         </div>
 

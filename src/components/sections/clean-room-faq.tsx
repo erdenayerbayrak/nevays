@@ -108,26 +108,27 @@ export default function CleanRoomFAQ() {
           })}
         </div>
         
-        {/* CTA Section */}
-        <div className="mt-16 bg-gradient-to-r from-brand-primary to-brand-secondary rounded-2xl p-8 text-center text-white">
-          <h2 className="text-2xl font-heading mb-4">
+        {/* İletişim */}
+        <div className="mt-12 text-center bg-gray-50 rounded-lg p-8">
+          <h3 className="text-xl font-bold text-gray-900 mb-4">
             Temiz Oda Projeniz İçin Uzman Desteği
-          </h2>
-          <p className="text-lg mb-6 opacity-90">
-            20+ yıllık deneyimimizle projenize özel çözümler geliştiriyoruz
+          </h3>
+          <p className="text-gray-600 mb-6">
+            Temiz oda sistemleri hakkında detaylı bilgi almak için bizimle iletişime geçin.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/contact"
-              className="inline-flex items-center justify-center px-6 py-3 bg-white text-brand-primary rounded-full font-medium hover:bg-gray-100 transition-colors"
+            <a 
+              href="tel:+905301234567"
+              className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
             >
-              Ücretsiz Danışmanlık
+              Telefon: +90 530 123 45 67
             </a>
-            <a
-              href="tel:+902164720612"
-              className="inline-flex items-center justify-center px-6 py-3 border-2 border-white text-white rounded-full font-medium hover:bg-white/10 transition-colors"
+            <a 
+              href="https://wa.me/905301234567" 
+              target="_blank"
+              className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
             >
-              Hemen Arayın
+              WhatsApp
             </a>
           </div>
         </div>

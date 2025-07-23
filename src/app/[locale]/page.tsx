@@ -8,7 +8,6 @@ import CleanroomInfoCards from '@/components/sections/cleanroom-info-cards';
 import CleanroomExpertise from '@/components/sections/cleanroom-expertise';
 import EngineeringApproach from '@/components/sections/engineering-approach';
 import SectorSolutions from '@/components/sections/sector-solutions';
-import StatsSection from '@/components/sections/stats-section';
 
 interface Props {
   params: { locale: string };
@@ -86,7 +85,6 @@ export default function HomePage() {
       <CleanroomExpertise />
       <EngineeringApproach />
       <SectorSolutions />
-      <StatsSection />
     </MainLayout>
   );
 }

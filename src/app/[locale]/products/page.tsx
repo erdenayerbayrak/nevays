@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
 import MainLayout from '@/components/layout/main-layout';
-import SolutionHero from '@/components/sections/solution-hero';
+import { HeroProducts } from '@/components/sections/hero-products';
 import ProductsOverview from '@/components/sections/products-overview';
 
 interface Props {
@@ -19,12 +19,9 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
 export default function ProductsPage() {
   return (
     <MainLayout>
-      <SolutionHero
-        title="Ürünler"
-        subtitle="Profesyonel Temiz Oda Ekipmanları"
-        description="Temiz oda sistemleri için gerekli tüm ürün gruplarında kaliteli ve standartlara uygun çözümler sunuyoruz."
-        imageSrc="/images/products/products-overview.jpg"
-        catalogUrl="/catalogs/products-catalog.pdf"
+      <HeroProducts
+        title="Profesyonel Temiz Oda Ekipmanları"
+        description="Temiz oda sistemleri için gerekli tüm ürün gruplarında kaliteli, standartlara uygun ve güvenilir çözümler sunuyoruz."
       />
       <ProductsOverview />
     </MainLayout>

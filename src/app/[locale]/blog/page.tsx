@@ -2,7 +2,7 @@ import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
 import MainLayout from '@/components/layout/main-layout';
-import BlogHero from '@/components/sections/blog-hero';
+import { HeroBlog } from '@/components/sections/hero-blog';
 import BlogGrid from '@/components/sections/blog-grid';
 
 interface Props {
@@ -21,7 +21,10 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
 export default function BlogPage() {
   return (
     <MainLayout>
-      <BlogHero />
+      <HeroBlog
+        title="Teknoloji ve İnovasyon"
+        description="Temiz oda teknolojileri, sektör haberleri ve uzman görüşleri ile güncel kalın."
+      />
       <BlogGrid />
     </MainLayout>
   );

@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
 import MainLayout from '@/components/layout/main-layout';
-import SolutionHero from '@/components/sections/solution-hero';
+import { HeroApplications } from '@/components/sections/hero-applications';
 import ApplicationsOverview from '@/components/sections/applications-overview';
 
 interface Props {
@@ -27,12 +27,9 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
 export default function ApplicationsPage() {
   return (
     <MainLayout>
-      <SolutionHero
-        title="Uygulama Alanları"
-        subtitle="Kapsamlı Mühendislik Çözümleri"
+      <HeroApplications
+        title="Kapsamlı Mühendislik Çözümleri"
         description="İlaç, sağlık, elektronik ve gıda sektörlerinde temiz oda kurulumu, laboratuvar sistemleri ve HVAC entegrasyonu alanlarında uzman mühendislik hizmetleri sunuyoruz."
-        imageSrc="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1920&h=1080&fit=crop&crop=center"
-        catalogUrl="/catalogs/applications-overview.pdf"
       />
       <ApplicationsOverview />
     </MainLayout>

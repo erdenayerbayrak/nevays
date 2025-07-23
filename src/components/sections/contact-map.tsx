@@ -1,52 +1,31 @@
-'use client';
-
-import { useState, useEffect } from 'react';
-import dynamic from 'next/dynamic';
-import LoadingSpinner from '@/components/ui/loading-spinner';
-
-// Dynamically import map component
-const MapComponent = dynamic(() => import('@/components/ui/contact-map-interactive'), {
-  ssr: false,
-  loading: () => (
-    <div className="flex items-center justify-center h-full">
-      <LoadingSpinner size="lg" />
-    </div>
-  ),
-});
-
 export default function ContactMap() {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  if (!isClient) {
-    return (
-      <div className="bg-gray-100 flex items-center justify-center">
-        <LoadingSpinner size="lg" />
-      </div>
-    );
-  }
-
   return (
-    <div className="relative">
-      <MapComponent />
+    <div className="relative bg-gray-100">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.123456789!2d32.0!3d36.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzbCsDMwJzAwLjAiTiAzMsKwMDAnMDAuMCJF!5e0!3m2!1str!2str!4v1234567890"
+        width="100%"
+        height="600"
+        style={{ border: 0 }}
+        allowFullScreen
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+        className="w-full h-full min-h-[600px] rounded-xl shadow-lg"
+        title="NEVAYS Ofis Konumu"
+      />
       
-      {/* Overlay with company info */}
-      <div className="absolute top-6 left-6 bg-white/95 backdrop-blur-sm rounded-lg p-4 shadow-lg max-w-xs">
-        <h3 className="font-display font-heading text-lg text-gray-900 mb-2">
-          NEVAYS Merkez Ofis
+      <div className="absolute top-6 left-6 bg-white/95 backdrop-blur-sm rounded-xl p-6 shadow-lg max-w-sm border border-gray-200">
+        <h3 className="text-lg font-bold text-gray-900 mb-3">
+          NEVAYS Ofis
         </h3>
-        <p className="text-gray-600 text-sm leading-relaxed">
-          Atatürk Mahallesi, Teknoloji Caddesi No: 123<br />
-          Beşiktaş / İstanbul 34349<br />
+        <p className="text-gray-600 text-sm leading-relaxed mb-3">
+          Mahmutlar Mah., Barbaros Cad. No:27<br />
+          Alanya / Antalya<br />
           Türkiye
         </p>
-        <div className="mt-3 pt-3 border-t border-gray-200">
+        <div className="pt-3 border-t border-gray-200">
           <p className="text-xs text-gray-500">
-            Toplu taşıma ile kolay erişim.<br />
-            Otopark mevcuttur.
+            Temiz oda mühendisliği projeleriniz için<br />
+            uzman ekibimizle buluşun.
           </p>
         </div>
       </div>

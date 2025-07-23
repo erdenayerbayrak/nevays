@@ -1,176 +1,155 @@
+'use client';
+import React from 'react';
+import type { ComponentProps, ReactNode } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
-import { Mail, Phone, MapPin, Linkedin, Twitter, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Twitter, Instagram, Building2 } from 'lucide-react';
 
-const footerLinks = {
-  solutions: [
-    { name: 'airHandling', href: '/solutions/air-handling' },
-    { name: 'cleanRoom', href: '/solutions/clean-room' },
-    { name: 'engineering', href: '/solutions/engineering' },
-  ],
-  company: [
-    { name: 'about', href: '/about' },
-    { name: 'projects', href: '/projects' },
-    { name: 'references', href: '/references' },
-    { name: 'career', href: '/career' },
-  ],
-  resources: [
-    { name: 'certificates', href: '/certificates' },
-    { name: 'blog', href: '/blog' },
-    { name: 'contact', href: '/contact' },
-  ],
-};
+interface FooterLink {
+    title: string;
+    href: string;
+    icon?: React.ComponentType<{ className?: string }>;
+}
+
+interface FooterSection {
+    label: string;
+    links: FooterLink[];
+}
+
+const footerLinks: FooterSection[] = [
+    {
+        label: 'Ürünler',
+        links: [
+            { title: 'Tüm Ürünler', href: '/products' },
+            { title: 'Temiz Oda Panelleri', href: '/products/clean-room-panels' },
+            { title: 'Temiz Oda Kapıları', href: '/products/clean-room-doors' },
+            { title: 'Pass Box', href: '/products/pass-box' },
+        ],
+    },
+    {
+        label: 'Şirket',
+        links: [
+            { title: 'Hakkımızda', href: '/about' },
+            { title: 'Üretim', href: '/production' },
+            { title: 'Referanslar', href: '/projects' },
+            { title: 'İletişim', href: '/contact' },
+        ],
+    },
+    {
+        label: 'Kaynaklar',
+        links: [
+            { title: 'Blog', href: '/blog' },
+            { title: 'Kataloglar', href: '/catalogs' },
+            { title: 'Temiz Oda Bilgileri', href: '/clean-room' },
+            { title: 'Uygulamalar', href: '/applications' },
+        ],
+    },
+    {
+        label: 'Sosyal Medya',
+        links: [
+            { title: 'LinkedIn', href: 'https://linkedin.com/company/nevays', icon: Linkedin },
+            { title: 'Twitter', href: 'https://twitter.com/nevays', icon: Twitter },
+            { title: 'Instagram', href: 'https://instagram.com/nevays', icon: Instagram },
+        ],
+    },
+];
 
 export default function Footer() {
-  const t = useTranslations();
-  const tNav = useTranslations('navigation');
-  const tFooter = useTranslations('footer');
-  const locale = useLocale();
+    const locale = useLocale();
 
-  return (
-    <footer className="bg-brand-dark text-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Company Info */}
-            <div className="lg:col-span-1">
-              <Link href={`/${locale}`} className="flex items-center mb-4">
-                <span className="text-2xl font-display font-heading text-brand-primary">
-                  NEVAYS
-                </span>
-              </Link>
-              <p className="text-gray-300 mb-6">
-                {tFooter('description')}
-              </p>
-              
-              {/* Contact Info */}
-              <div className="space-y-3">
-                <div className="flex items-center text-sm text-gray-300">
-                  <MapPin className="h-4 w-4 mr-2 text-brand-secondary" />
-                  <span>İstanbul, Türkiye</span>
+    return (
+        <footer className="bg-gray-800 text-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+
+                <div className="grid w-full gap-8 xl:grid-cols-3 xl:gap-8">
+                    <AnimatedContainer className="space-y-4">
+                        <Building2 className="size-8 text-blue-400" />
+                        <div className="space-y-3">
+                            <h3 className="text-xl font-bold text-white">NEVAYS</h3>
+                            <p className="text-gray-300 text-sm">
+                                Temiz oda sistemleri ve mühendislik çözümlerinde güvenilir ortağınız.
+                            </p>
+                            <div className="space-y-2">
+                                <div className="flex items-center text-sm text-gray-300">
+                                    <MapPin className="h-4 w-4 mr-2 text-blue-400" />
+                                    <span>Mahmutlar Mah., Barbaros Cad. No:27, Alanya/Antalya</span>
+                                </div>
+                                <div className="flex items-center text-sm text-gray-300">
+                                    <Phone className="h-4 w-4 mr-2 text-blue-400" />
+                                    <a href="tel:+905301234567" className="hover:text-blue-400 transition-colors">
+                                        +90 530 123 45 67
+                                    </a>
+                                </div>
+                                <div className="flex items-center text-sm text-gray-300">
+                                    <Mail className="h-4 w-4 mr-2 text-blue-400" />
+                                    <a href="mailto:info@nevays.com.tr" className="hover:text-blue-400 transition-colors">
+                                        info@nevays.com.tr
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </AnimatedContainer>
+
+                    <div className="grid grid-cols-2 gap-8 md:grid-cols-4 xl:col-span-2">
+                        {footerLinks.map((section, index) => (
+                            <AnimatedContainer key={section.label} delay={0.1 + index * 0.1}>
+                                <div>
+                                    <h3 className="text-sm font-semibold text-white mb-4">{section.label}</h3>
+                                    <ul className="text-gray-300 space-y-2 text-sm">
+                                        {section.links.map((link) => (
+                                            <li key={link.title}>
+                                                <Link
+                                                    href={link.href.startsWith('http') ? link.href : `/${locale}${link.href}`}
+                                                    className="hover:text-blue-400 inline-flex items-center transition-all duration-300"
+                                                    target={link.href.startsWith('http') ? '_blank' : undefined}
+                                                    rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                                                >
+                                                    {link.icon && <link.icon className="me-1 size-4" />}
+                                                    {link.title}
+                                                </Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </AnimatedContainer>
+                        ))}
+                    </div>
                 </div>
-                <div className="flex items-center text-sm text-gray-300">
-                  <Phone className="h-4 w-4 mr-2 text-brand-secondary" />
-                  <a href="tel:+902121234567" className="hover:text-brand-secondary transition-colors">
-                    +90 212 123 45 67
-                  </a>
+                
+                {/* Bottom Bar */}
+                <div className="border-t border-gray-700 pt-8 mt-8">
+                    <p className="text-gray-400 text-sm text-center">
+                        © {new Date().getFullYear()} NEVAYS. Tüm hakları saklıdır.
+                    </p>
                 </div>
-                <div className="flex items-center text-sm text-gray-300">
-                  <Mail className="h-4 w-4 mr-2 text-brand-secondary" />
-                  <a href="mailto:info@nevays.com" className="hover:text-brand-secondary transition-colors">
-                    info@nevays.com
-                  </a>
-                </div>
-              </div>
             </div>
+        </footer>
+    );
+}
 
-            {/* Solutions */}
-            <div>
-              <h3 className="text-lg font-semibold mb-4">{tFooter('solutions')}</h3>
-              <ul className="space-y-2">
-                {footerLinks.solutions.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      href={`/${locale}${link.href}`}
-                      className="text-gray-300 hover:text-brand-secondary transition-colors duration-200"
-                    >
-                      {tNav(link.name)}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+type ViewAnimationProps = {
+    delay?: number;
+    className?: ComponentProps<typeof motion.div>['className'];
+    children: ReactNode;
+};
 
-            {/* Company */}
-            <div>
-              <h3 className="text-lg font-semibold mb-4">{tFooter('company')}</h3>
-              <ul className="space-y-2">
-                {footerLinks.company.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      href={`/${locale}${link.href}`}
-                      className="text-gray-300 hover:text-brand-secondary transition-colors duration-200"
-                    >
-                      {tNav(link.name)}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+function AnimatedContainer({ className, delay = 0.1, children }: ViewAnimationProps) {
+    const shouldReduceMotion = useReducedMotion();
 
-            {/* Resources */}
-            <div>
-              <h3 className="text-lg font-semibold mb-4">{tFooter('quickLinks')}</h3>
-              <ul className="space-y-2 mb-6">
-                {footerLinks.resources.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      href={`/${locale}${link.href}`}
-                      className="text-gray-300 hover:text-brand-secondary transition-colors duration-200"
-                    >
-                      {tNav(link.name)}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+    if (shouldReduceMotion) {
+        return <div className={className}>{children}</div>;
+    }
 
-              {/* Social Links */}
-              <div>
-                <h4 className="text-sm font-semibold mb-3 text-gray-400">Sosyal Medya</h4>
-                <div className="flex space-x-3">
-                  <a
-                    href="https://linkedin.com/company/nevays"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-brand-secondary transition-colors duration-200"
-                  >
-                    <Linkedin className="h-5 w-5" />
-                  </a>
-                  <a
-                    href="https://twitter.com/nevays"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-brand-secondary transition-colors duration-200"
-                  >
-                    <Twitter className="h-5 w-5" />
-                  </a>
-                  <a
-                    href="https://instagram.com/nevays"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-brand-secondary transition-colors duration-200"
-                  >
-                    <Instagram className="h-5 w-5" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="border-t border-gray-700 py-6">
-          <div className="flex flex-col sm:flex-row justify-between items-center">
-            <p className="text-sm text-gray-400">
-              {tFooter('copyright')}
-            </p>
-            <div className="flex space-x-6 mt-4 sm:mt-0">
-              <Link
-                href={`/${locale}/privacy`}
-                className="text-sm text-gray-400 hover:text-brand-secondary transition-colors duration-200"
-              >
-                {tFooter('privacy')}
-              </Link>
-              <Link
-                href={`/${locale}/terms`}
-                className="text-sm text-gray-400 hover:text-brand-secondary transition-colors duration-200"
-              >
-                {tFooter('terms')}
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
+    return (
+        <motion.div
+            initial={{ filter: 'blur(4px)', translateY: -8, opacity: 0 }}
+            whileInView={{ filter: 'blur(0px)', translateY: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay, duration: 0.8 }}
+            className={className}
+        >
+            {children}
+        </motion.div>
+    );
 }

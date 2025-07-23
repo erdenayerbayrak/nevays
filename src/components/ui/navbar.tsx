@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { LucideIcon, Home, Info, Factory, Wrench, Package, Building, FileText, BookOpen, FolderOpen, Phone } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useTranslations, useLocale } from 'next-intl';
@@ -20,8 +21,10 @@ interface NavBarProps {
 }
 
 export function NavBar({ items, className }: NavBarProps) {
+  const pathname = usePathname()
   const [activeTab, setActiveTab] = useState(items[0].name)
   const [isMobile, setIsMobile] = useState(false)
+  const [isHomePage, setIsHomePage] = useState(false)
   const t = useTranslations('navigation');
   const locale = useLocale();
 
@@ -35,14 +38,27 @@ export function NavBar({ items, className }: NavBarProps) {
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 
+  useEffect(() => {
+    const currentPath = pathname.replace(`/${locale}`, '') || '/'
+    setIsHomePage(currentPath === '/')
+    
+    const currentItem = items.find(item => item.url === currentPath)
+    if (currentItem) {
+      setActiveTab(currentItem.name)
+    }
+  }, [pathname, locale, items])
+
   return (
     <div
       className={cn(
-        "fixed bottom-0 sm:top-0 left-1/2 -translate-x-1/2 z-50 mb-6 sm:pt-6",
+        "fixed left-1/2 -translate-x-1/2 z-50",
+        isHomePage 
+          ? "bottom-0 sm:top-0 mb-6 sm:pt-6" 
+          : "top-0 pt-6",
         className,
       )}
     >
-      <div className="flex items-center gap-3 bg-white border border-gray-200 backdrop-blur-lg py-1 px-1 rounded-full shadow-lg">
+      <div className="flex items-center gap-2 bg-white border border-gray-200 backdrop-blur-lg py-1 px-1 rounded-full shadow-lg transform scale-110">
         {items.map((item) => {
           const Icon = item.icon
           const isActive = activeTab === item.name
@@ -52,14 +68,14 @@ export function NavBar({ items, className }: NavBarProps) {
               key={item.name}
               href={`/${locale}${item.url}`}
               className={cn(
-                "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors",
+                "relative cursor-pointer text-sm font-semibold px-4 py-2 rounded-full transition-colors whitespace-nowrap",
                 "text-foreground/80 hover:text-primary",
                 isActive && "bg-muted text-primary",
               )}
             >
               <span className="hidden md:inline">{t(item.translationKey)}</span>
               <span className="md:hidden">
-                <Icon size={18} strokeWidth={2.5} />
+                <Icon size={16} strokeWidth={2.5} />
               </span>
               {isActive && (
                 <motion.div
@@ -95,7 +111,7 @@ export const navigationItems: NavItem[] = [
   { name: 'applications', url: '/applications', icon: Wrench, translationKey: 'applications' },
   { name: 'products', url: '/products', icon: Package, translationKey: 'products' },
   { name: 'cleanroom', url: '/clean-room', icon: Building, translationKey: 'cleanRoom' },
-  { name: 'references', url: '/references', icon: FileText, translationKey: 'references' },
+  { name: 'references', url: '/projects', icon: FileText, translationKey: 'references' },
   { name: 'blog', url: '/blog', icon: BookOpen, translationKey: 'blog' },
   { name: 'catalogs', url: '/catalogs', icon: FolderOpen, translationKey: 'catalogs' },
   { name: 'contact', url: '/contact', icon: Phone, translationKey: 'contact' },
