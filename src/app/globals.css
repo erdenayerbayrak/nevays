@@ -1,0 +1,162 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=IBM+Plex+Sans:wght@600&display=optional');
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 193 100% 40%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 168 100% 35%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 193 100% 40%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 193 100% 40%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 168 100% 35%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 193 100% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* NEVAYS Custom Styles */
+@layer components {
+  .btn-primary {
+    @apply bg-brand-primary hover:bg-primary-600 text-white font-medium px-6 py-3 rounded-full shadow-xl hover:shadow-2xl transition-all duration-250 ease-out;
+  }
+  
+  .btn-ghost {
+    @apply border border-white/20 text-white hover:bg-white/10 font-medium px-6 py-3 rounded-full backdrop-blur-sm transition-all duration-250 ease-out;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-250 ease-out hover:scale-103 cursor-pointer;
+  }
+  
+  .card-hover::after {
+    @apply absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 transition-opacity duration-250 ease-out rounded-lg;
+    content: '';
+  }
+  
+  .card-hover:hover::after {
+    @apply opacity-100;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent;
+  }
+  
+  .sticky-contact-bar {
+    @apply fixed bottom-0 left-0 right-0 h-14 bg-white/90 backdrop-blur-md border-t border-border flex items-center justify-around z-50;
+  }
+  
+  .timeline-node {
+    @apply w-2 h-2 bg-brand-primary rounded-sm;
+  }
+  
+  .section-padding {
+    @apply py-16 lg:py-24;
+  }
+  
+  .container-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/* Smooth scrolling and reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Loading states */
+.loading-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Mapbox overrides */
+.mapboxgl-popup {
+  z-index: 1000;
+}
+
+.mapboxgl-popup-content {
+  @apply rounded-lg shadow-xl border-0;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-neutral-light;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-brand-primary rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary-600;
+}

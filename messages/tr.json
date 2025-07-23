@@ -1,0 +1,94 @@
+{
+  "navigation": {
+    "home": "Ana Sayfa",
+    "about": "Hakkımızda",
+    "production": "Üretim",
+    "applications": "Uygulama",
+    "cleanRoomInstallation": "Temiz Oda Kurulum",
+    "laboratoryInstallation": "Laboratuvar Kurulum",
+    "hvacApplications": "HVAC Uygulamaları",
+    "lafCabin": "LAF Kabin",
+    "modularCleanRoom": "Modüler Temiz Oda",
+    "products": "Ürünler",
+    "cleanRoomPanels": "Temiz Oda Panelleri",
+    "cleanRoomDoors": "Temiz Oda Kapıları",
+    "passBox": "Pass Box",
+    "cleanRoomClothing": "Temiz Oda Kıyafetleri",
+    "cleanRoom": "Temiz Oda",
+    "references": "Referanslar",
+    "blog": "Blog",
+    "catalogs": "Kataloglar",
+    "contact": "İletişim"
+  },
+  "common": {
+    "learnMore": "Daha Fazla Bilgi",
+    "getQuote": "Teklif Al",
+    "contact": "İletişim",
+    "download": "İndir",
+    "viewAll": "Tümünü Gör",
+    "readMore": "Devamını Oku",
+    "close": "Kapat",
+    "loading": "Yükleniyor...",
+    "error": "Hata",
+    "success": "Başarılı"
+  },
+  "hero": {
+    "title": "Kontaminasyonsuz Ortamlar Mühendisliği",
+    "subtitle": "Dünya standartlarında temiz oda ve hava teknolojileri çözümleriyle, ilaç, hastane ve endüstriyel tesislerinizde mükemmel hava kalitesi sağlıyoruz.",
+    "cta": "İletişime Geçin",
+    "videoButton": "Tanıtım Videosu"
+  },
+  "divisions": {
+    "title": "Çözümlerimiz",
+    "airHandling": {
+      "title": "Hava Teknolojileri",
+      "description": "Yüksek performanslı AHU sistemleri ve havalandırma çözümleri"
+    },
+    "cleanRoom": {
+      "title": "Temiz Oda",
+      "description": "GMP uyumlu temiz oda sistemleri ve kontaminasyon kontrolü"
+    },
+    "engineering": {
+      "title": "Mühendislik",
+      "description": "Kapsamlı proje yönetimi ve sistem entegrasyonu"
+    }
+  },
+  "stats": {
+    "years": "Yıllık Tecrübe",
+    "countries": "Ülke",
+    "employees": "Çalışan",
+    "projects": "Tamamlanan Proje"
+  },
+  "contact": {
+    "title": "İletişim",
+    "phone": "Telefon",
+    "whatsapp": "WhatsApp",
+    "email": "E-posta",
+    "address": "Adres",
+    "form": {
+      "name": "Ad Soyad",
+      "email": "E-posta",
+      "phone": "Telefon",
+      "company": "Şirket",
+      "message": "Mesaj",
+      "submit": "Gönder",
+      "success": "Mesajınız başarıyla gönderildi!",
+      "error": "Mesaj gönderilirken bir hata oluştu."
+    }
+  },
+  "footer": {
+    "description": "Dünya standartlarında temiz oda ve hava teknolojileri çözümleri.",
+    "quickLinks": "Hızlı Linkler",
+    "solutions": "Çözümler",
+    "company": "Şirket",
+    "legal": "Yasal",
+    "privacy": "Gizlilik Politikası",
+    "terms": "Kullanım Şartları",
+    "copyright": "© 2024 NEVAYS. Tüm hakları saklıdır."
+  },
+  "stickyBar": {
+    "call": "Ara",
+    "whatsapp": "WhatsApp",
+    "quote": "Teklif Al"
+  }
+}

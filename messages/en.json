@@ -1,0 +1,93 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "production": "Production",
+    "applications": "Applications",
+    "cleanRoomInstallation": "Clean Room Installation",
+    "laboratoryInstallation": "Laboratory Installation",
+    "hvacApplications": "HVAC Applications",
+    "lafCabin": "LAF Cabin",
+    "modularCleanRoom": "Modular Clean Room",
+    "products": "Products",
+    "cleanRoomPanels": "Clean Room Panels",
+    "cleanRoomDoors": "Clean Room Doors",
+    "passBox": "Pass Box",
+    "cleanRoomClothing": "Clean Room Clothing",
+    "cleanRoom": "Clean Room",
+    "references": "References",
+    "blog": "Blog",
+    "catalogs": "Catalogs",
+    "contact": "Contact"
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "getQuote": "Get Quote",
+    "contact": "Contact",
+    "download": "Download",
+    "viewAll": "View All",
+    "readMore": "Read More",
+    "close": "Close",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success"
+  },
+  "hero": {
+    "title": "Engineering Contamination-Free Environments",
+    "subtitle": "We provide perfect air quality in pharmaceutical, hospital and industrial facilities with world-class clean room and air technology solutions.",
+    "cta": "Get in Touch"
+  },
+  "divisions": {
+    "title": "Our Solutions",
+    "airHandling": {
+      "title": "Air Handling",
+      "description": "High-performance AHU systems and ventilation solutions"
+    },
+    "cleanRoom": {
+      "title": "Clean Room",
+      "description": "GMP compliant clean room systems and contamination control"
+    },
+    "engineering": {
+      "title": "Engineering",
+      "description": "Comprehensive project management and system integration"
+    }
+  },
+  "stats": {
+    "years": "Years of Experience",
+    "countries": "Countries",
+    "employees": "Employees",
+    "projects": "Completed Projects"
+  },
+  "contact": {
+    "title": "Contact",
+    "phone": "Phone",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "address": "Address",
+    "form": {
+      "name": "Full Name",
+      "email": "Email",
+      "phone": "Phone",
+      "company": "Company",
+      "message": "Message",
+      "submit": "Send",
+      "success": "Your message has been sent successfully!",
+      "error": "An error occurred while sending the message."
+    }
+  },
+  "footer": {
+    "description": "World-class clean room and air technology solutions.",
+    "quickLinks": "Quick Links",
+    "solutions": "Solutions",
+    "company": "Company",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "copyright": "© 2024 NEVAYS. All rights reserved."
+  },
+  "stickyBar": {
+    "call": "Call",
+    "whatsapp": "WhatsApp",
+    "quote": "Get Quote"
+  }
+}
