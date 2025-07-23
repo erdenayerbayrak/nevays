@@ -26,7 +26,7 @@ export default function ReferencesMarquee() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
         <div className="text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Temiz Oda Kurulumu Referanslarımız
+             Referanslarımız
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             İlaç, sağlık ve teknoloji sektörünün lider firmalarıyla gerçekleştirdiğimiz 
@@ -84,24 +84,49 @@ export default function ReferencesMarquee() {
         </div>
       </div>
       
-      {/* Stats Section */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600 mb-2">500+</div>
-            <div className="text-gray-600 text-sm">Tamamlanan Proje</div>
+      {/* Premium Stats Section */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Stat 1 */}
+          <div className="group relative bg-gradient-to-br from-blue-50 via-white to-blue-50 rounded-3xl p-8 border border-blue-100 hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
+            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-blue-500/10 to-transparent rounded-full -translate-y-10 translate-x-10"></div>
+            <div className="relative z-10 text-center">
+              <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform duration-300">
+                50+
+              </div>
+              <div className="text-gray-700 font-semibold text-sm leading-tight">
+                EU GMP / ISO 14644<br/>
+                <span className="text-blue-600">STANDARTLARINA UYGUN KURULUM</span>
+              </div>
+            </div>
           </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-teal-600 mb-2">45</div>
-            <div className="text-gray-600 text-sm">Ülke</div>
+
+          {/* Stat 2 */}
+          <div className="group relative bg-gradient-to-br from-teal-50 via-white to-teal-50 rounded-3xl p-8 border border-teal-100 hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
+            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-teal-500/10 to-transparent rounded-full -translate-y-10 translate-x-10"></div>
+            <div className="relative z-10 text-center">
+              <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-teal-600 to-teal-700 bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform duration-300">
+                100+
+              </div>
+              <div className="text-gray-700 font-semibold text-sm leading-tight">
+                <span className="text-teal-600">Temiz Oda</span><br/>
+                Ürünü
+              </div>
+            </div>
           </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-purple-600 mb-2">150+</div>
-            <div className="text-gray-600 text-sm">Uzman Ekip</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-green-600 mb-2">25+</div>
-            <div className="text-gray-600 text-sm">Yıl Deneyim</div>
+
+          {/* Stat 3 */}
+          <div className="group relative bg-gradient-to-br from-purple-50 via-white to-purple-50 rounded-3xl p-8 border border-purple-100 hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
+            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-purple-500/10 to-transparent rounded-full -translate-y-10 translate-x-10"></div>
+            <div className="relative z-10 text-center">
+              <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-600 to-purple-700 bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform duration-300">
+                81
+              </div>
+              <div className="text-gray-700 font-semibold text-sm leading-tight">
+                <span className="text-purple-600">İli Kapsayan</span><br/>
+                Hizmet Ağı
+              </div>
+            </div>
           </div>
         </div>
       </div>

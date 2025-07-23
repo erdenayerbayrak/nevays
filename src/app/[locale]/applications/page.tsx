@@ -31,7 +31,7 @@ export default function ApplicationsPage() {
         title="Uygulama Alanları"
         subtitle="Kapsamlı Mühendislik Çözümleri"
         description="İlaç, sağlık, elektronik ve gıda sektörlerinde temiz oda kurulumu, laboratuvar sistemleri ve HVAC entegrasyonu alanlarında uzman mühendislik hizmetleri sunuyoruz."
-        imageSrc="/images/applications/main-applications.jpg"
+        imageSrc="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1920&h=1080&fit=crop&crop=center"
         catalogUrl="/catalogs/applications-overview.pdf"
       />
       <ApplicationsOverview />

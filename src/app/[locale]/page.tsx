@@ -7,7 +7,7 @@ import ReferencesMarquee from '@/components/sections/references-marquee';
 import CleanroomInfoCards from '@/components/sections/cleanroom-info-cards';
 import CleanroomExpertise from '@/components/sections/cleanroom-expertise';
 import EngineeringApproach from '@/components/sections/engineering-approach';
-import DivisionsSection from '@/components/sections/divisions-section';
+import SectorSolutions from '@/components/sections/sector-solutions';
 import StatsSection from '@/components/sections/stats-section';
 
 interface Props {
@@ -85,7 +85,7 @@ export default function HomePage() {
       <CleanroomInfoCards />
       <CleanroomExpertise />
       <EngineeringApproach />
-      <DivisionsSection />
+      <SectorSolutions />
       <StatsSection />
     </MainLayout>
   );

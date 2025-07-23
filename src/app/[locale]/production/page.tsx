@@ -31,7 +31,7 @@ export default function ProductionPage() {
         title="Temiz Oda Panel Üretimi"
         subtitle="Teknik Mükemmellik ve Kalite Standartları"
         description="Partner firmamızla birlikte ürettiğimiz temiz oda panelleri, antibakteriyel malzemeler ve hijyenik detaylarla endüstrinin en yüksek standartlarını karşılar."
-        imageSrc="/images/production/cleanroom-panels.jpg"
+        imageSrc="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=1080&fit=crop&crop=center"
         catalogUrl="/catalogs/cleanroom-panels.pdf"
       />
       <ProductionContent />

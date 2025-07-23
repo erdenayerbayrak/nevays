@@ -49,18 +49,24 @@ export default function ProductionContent() {
             <div className="prose prose-lg text-gray-600 space-y-4">
               <p>
                 NEVAYS olarak, partner firmamızla birlikte <strong>temiz oda panelleri</strong> üretiminde 
-                teknik mükemmellik ve kalite standartlarını bir araya getiriyoruz. Üretim kapasitemiz 
-                toplam operasyonlarımızın yaklaşık %2'sini oluştururken, her panel en yüksek 
-                mühendislik standartlarında üretilir.
+                teknik mükemmellik ve kalite standartlarını bir araya getiriyoruz. Modern üretim tesisimizde 
+                <strong> temiz oda duvar paneli</strong>, <strong>temiz oda tavan paneli</strong> ve 
+                <strong> hijyen panel</strong> sistemleri üretilmektedir.
               </p>
               <p>
-                <strong>Hijyen panel</strong> teknolojilerimiz, ilaç, gıda ve elektronik sektörlerinin 
-                katı gereksinimlerini karşılayacak şekilde geliştirilmiştir. Antibakteriyel 
-                malzemeler ve özel kaplama teknolojileri ile maksimum sterilite sağlanır.
+                <strong>Oval süpürgelik</strong> ve <strong>hijyen süpürgelik</strong> detaylarımız, 
+                GMP standartlarına uygun olarak tasarlanmıştır. Bu özel detaylar bakterilerin birikmesini 
+                önleyerek maksimum hijyen sağlar. İlaç, gıda ve elektronik sektörlerinin katı gereksinimlerini 
+                karşılayacak şekilde geliştirilmiştir.
               </p>
               <p>
-                <strong>Temiz oda duvar paneli</strong> sistemlerimiz, kolay montaj imkanı sunarak 
-                proje sürelerini optimize eder ve bakım maliyetlerini minimize eder.
+                <strong>Temiz oda paneli</strong> üretimimizde kullandığımız HPL (High Pressure Laminate) 
+                malzemeler, antibakteriyel özellikli olup uzun ömürlü kullanım sağlar. Panel sistemlerimiz 
+                kolay montaj ve demontaj imkanı sunarak proje sürelerini optimize eder.
+              </p>
+              <p>
+                Referans teknoloji firmalarımız olan cleanestroom.com.tr, hijyenpanel.com ve aksteril.com 
+                standardlarında üretim yaparak, sektörde güvenilir bir çözüm ortağı olarak hizmet veriyoruz.
               </p>
             </div>
           </div>
