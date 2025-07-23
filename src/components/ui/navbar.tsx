@@ -1,0 +1,102 @@
+"use client"
+
+import React, { useEffect, useState } from "react"
+import { motion } from "framer-motion"
+import Link from "next/link"
+import { LucideIcon, Home, Info, Factory, Wrench, Package, Building, FileText, BookOpen, FolderOpen, Phone } from "lucide-react"
+import { cn } from "@/lib/utils"
+import { useTranslations, useLocale } from 'next-intl';
+
+interface NavItem {
+  name: string
+  url: string
+  icon: LucideIcon
+  translationKey: string
+}
+
+interface NavBarProps {
+  items: NavItem[]
+  className?: string
+}
+
+export function NavBar({ items, className }: NavBarProps) {
+  const [activeTab, setActiveTab] = useState(items[0].name)
+  const [isMobile, setIsMobile] = useState(false)
+  const t = useTranslations('navigation');
+  const locale = useLocale();
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+
+    handleResize()
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
+
+  return (
+    <div
+      className={cn(
+        "fixed bottom-0 sm:top-0 left-1/2 -translate-x-1/2 z-50 mb-6 sm:pt-6",
+        className,
+      )}
+    >
+      <div className="flex items-center gap-3 bg-white border border-gray-200 backdrop-blur-lg py-1 px-1 rounded-full shadow-lg">
+        {items.map((item) => {
+          const Icon = item.icon
+          const isActive = activeTab === item.name
+
+          return (
+            <Link
+              key={item.name}
+              href={`/${locale}${item.url}`}
+              className={cn(
+                "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors",
+                "text-foreground/80 hover:text-primary",
+                isActive && "bg-muted text-primary",
+              )}
+            >
+              <span className="hidden md:inline">{t(item.translationKey)}</span>
+              <span className="md:hidden">
+                <Icon size={18} strokeWidth={2.5} />
+              </span>
+              {isActive && (
+                <motion.div
+                  layoutId="lamp"
+                  className="absolute inset-0 w-full bg-primary/5 rounded-full -z-10"
+                  initial={false}
+                  transition={{
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 30,
+                  }}
+                >
+                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-1 bg-primary rounded-t-full">
+                    <div className="absolute w-12 h-6 bg-primary/20 rounded-full blur-md -top-2 -left-2" />
+                    <div className="absolute w-8 h-6 bg-primary/20 rounded-full blur-md -top-1" />
+                    <div className="absolute w-4 h-4 bg-primary/20 rounded-full blur-sm top-0 left-2" />
+                  </div>
+                </motion.div>
+              )}
+            </Link>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+
+// Navigation items with Turkish menu structure
+export const navigationItems: NavItem[] = [
+  { name: 'home', url: '/', icon: Home, translationKey: 'home' },
+  { name: 'about', url: '/about', icon: Info, translationKey: 'about' },
+  { name: 'production', url: '/production', icon: Factory, translationKey: 'production' },
+  { name: 'applications', url: '/applications', icon: Wrench, translationKey: 'applications' },
+  { name: 'products', url: '/products', icon: Package, translationKey: 'products' },
+  { name: 'cleanroom', url: '/clean-room', icon: Building, translationKey: 'cleanRoom' },
+  { name: 'references', url: '/references', icon: FileText, translationKey: 'references' },
+  { name: 'blog', url: '/blog', icon: BookOpen, translationKey: 'blog' },
+  { name: 'catalogs', url: '/catalogs', icon: FolderOpen, translationKey: 'catalogs' },
+  { name: 'contact', url: '/contact', icon: Phone, translationKey: 'contact' },
+]

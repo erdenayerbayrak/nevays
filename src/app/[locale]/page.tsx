@@ -4,12 +4,11 @@ import { Metadata } from 'next';
 import MainLayout from '@/components/layout/main-layout';
 import HeroSection from '@/components/sections/hero-section';
 import ReferencesMarquee from '@/components/sections/references-marquee';
+import CleanroomInfoCards from '@/components/sections/cleanroom-info-cards';
 import CleanroomExpertise from '@/components/sections/cleanroom-expertise';
 import EngineeringApproach from '@/components/sections/engineering-approach';
 import DivisionsSection from '@/components/sections/divisions-section';
 import StatsSection from '@/components/sections/stats-section';
-import ClientsSection from '@/components/sections/clients-section';
-import WorldMapSection from '@/components/sections/world-map-section';
 
 interface Props {
   params: { locale: string };
@@ -17,15 +16,63 @@ interface Props {
 
 export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'hero' });
+  
+  const title = locale === 'tr' 
+    ? 'NEVAYS - Temiz Oda Sistemleri ve Cleanroom Kurulumu | GMP Uyumlu Çözümler'
+    : 'NEVAYS - Cleanroom Systems & Installation | GMP Compliant Solutions';
+    
+  const description = locale === 'tr'
+    ? '25+ yıl deneyimle temiz oda kurulumu, laboratuvar sistemleri ve HVAC uygulamaları. İlaç, sağlık, elektronik sektörlerinde GMP uyumlu temiz oda panelleri ve modüler cleanroom çözümleri.'
+    : '25+ years experience in cleanroom installation, laboratory systems and HVAC applications. GMP compliant cleanroom panels and modular cleanroom solutions for pharmaceutical, healthcare, electronics sectors.';
 
   return {
-    title: t('title'),
-    description: t('subtitle'),
+    title,
+    description,
+    keywords: locale === 'tr' 
+      ? 'temiz oda, temiz oda kurulumu, temiz oda sistemleri, temiz oda panelleri, cleanroom, GMP, ISO 14644, laboratuvar kurulum, modüler temiz oda, steril oda'
+      : 'cleanroom, cleanroom installation, cleanroom systems, cleanroom panels, GMP, ISO 14644, laboratory installation, modular cleanroom, sterile room',
+    authors: [{ name: 'NEVAYS Cleanroom Systems' }],
+    creator: 'NEVAYS',
+    publisher: 'NEVAYS',
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
     openGraph: {
-      title: t('title'),
-      description: t('subtitle'),
-      locale: locale,
+      title,
+      description,
+      url: `https://nevays.com/${locale}`,
+      siteName: 'NEVAYS Cleanroom Systems',
+      locale: locale === 'tr' ? 'tr_TR' : 'en_US',
       type: 'website',
+      images: [
+        {
+          url: '/og-image.jpg',
+          width: 1200,
+          height: 630,
+          alt: locale === 'tr' ? 'NEVAYS Temiz Oda Sistemleri' : 'NEVAYS Cleanroom Systems',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: ['/og-image.jpg'],
+    },
+    alternates: {
+      canonical: `https://nevays.com/${locale}`,
+      languages: {
+        'tr': 'https://nevays.com/tr',
+        'en': 'https://nevays.com/en',
+      },
     },
   };
 }
@@ -35,12 +82,11 @@ export default function HomePage() {
     <MainLayout>
       <HeroSection />
       <ReferencesMarquee />
+      <CleanroomInfoCards />
       <CleanroomExpertise />
       <EngineeringApproach />
       <DivisionsSection />
       <StatsSection />
-      <ClientsSection />
-      <WorldMapSection />
     </MainLayout>
   );
 }

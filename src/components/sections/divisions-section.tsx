@@ -6,17 +6,17 @@ const divisions = [
   {
     key: 'airHandling',
     href: '/solutions/air-handling',
-    imageSrc: '/images/divisions/air-handling.jpg',
+    imageSrc: 'https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=800&h=600&fit=crop&crop=center',
   },
   {
     key: 'cleanRoom',
     href: '/solutions/clean-room',
-    imageSrc: '/images/divisions/clean-room.jpg',
+    imageSrc: 'https://images.unsplash.com/photo-1576671081837-49000212a370?w=800&h=600&fit=crop&crop=center',
   },
   {
     key: 'engineering',
     href: '/solutions/engineering',
-    imageSrc: '/images/divisions/engineering.jpg',
+    imageSrc: 'https://images.unsplash.com/photo-1581091870627-21ca045f4e8b?w=800&h=600&fit=crop&crop=center',
   },
 ];
 

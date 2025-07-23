@@ -33,10 +33,10 @@
     "success": "Başarılı"
   },
   "hero": {
-    "title": "Kontaminasyonsuz Ortamlar Mühendisliği",
-    "subtitle": "Dünya standartlarında temiz oda ve hava teknolojileri çözümleriyle, ilaç, hastane ve endüstriyel tesislerinizde mükemmel hava kalitesi sağlıyoruz.",
-    "cta": "İletişime Geçin",
-    "videoButton": "Tanıtım Videosu"
+    "title": "Temiz Oda Sistemleri Mühendisliği",
+    "subtitle": "25 yılı aşkın deneyimimizle ilaç, sağlık, elektronik ve gıda sektörlerinde GMP uyumlu temiz oda sistemleri tasarlıyor ve hayata geçiriyoruz. Profesyonel mühendislik çözümlerimizle steril üretim ortamları inşa ediyoruz.",
+    "cta": "Proje Teklifi Alın",
+    "videoButton": "Referanslarımızı İnceleyin"
   },
   "divisions": {
     "title": "Çözümlerimiz",
@@ -90,5 +90,21 @@
     "call": "Ara",
     "whatsapp": "WhatsApp",
     "quote": "Teklif Al"
+  },
+  "production": {
+    "title": "Üretim",
+    "description": "Partner firmamızla birlikte ürettiğimiz temiz oda panelleri, antibakteriyel malzemeler ve hijyenik detaylarla endüstrinin en yüksek standartlarını karşılar."
+  },
+  "applications": {
+    "title": "Uygulama Alanları",
+    "description": "İlaç, sağlık, elektronik ve gıda sektörlerinde temiz oda kurulumu, laboratuvar sistemleri ve HVAC entegrasyonu alanlarında uzman mühendislik hizmetleri sunuyoruz."
+  },
+  "products": {
+    "title": "Ürünler",
+    "description": "Temiz oda panelleri, kapıları, pass box sistemleri ve temiz oda kıyafetleri. Profesyonel temiz oda ekipmanları ve aksesuarları."
+  },
+  "catalogs": {
+    "title": "Kataloglar",
+    "description": "Temiz oda sistemleri, ürünler ve uygulamalar için detaylı kataloglar. PDF formatında ücretsiz indirme imkanı."
   }
 }

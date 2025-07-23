@@ -120,8 +120,8 @@ export default function EngineeringApproach() {
           
           <div className="relative">
             <Image
-              src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=500&fit=crop&crop=center"
-              alt="Temiz oda mühendislik ekibi çalışırken"
+              src="https://images.unsplash.com/photo-1581092918484-8313ccd14d25?w=600&h=500&fit=crop&crop=center"
+              alt="NEVAYS temiz oda mühendislik ekibi proje geliştirirken"
               width={600}
               height={500}
               className="rounded-2xl shadow-lg w-full h-auto"
