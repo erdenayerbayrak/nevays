@@ -2,6 +2,11 @@
   "navigation": {
     "home": "Ana Sayfa",
     "about": "Hakkımızda",
+    "solutions": "Çözümler",
+    "sectors": "Sektörler",
+    "references": "Referanslar",
+    "knowledgeCenter": "Bilgi Merkezi",
+    "contact": "İletişim",
     "production": "Üretim",
     "applications": "Uygulama",
     "cleanRoomInstallation": "Temiz Oda Kurulum",
@@ -15,10 +20,8 @@
     "passBox": "Pass Box",
     "cleanRoomClothing": "Temiz Oda Kıyafetleri",
     "cleanRoom": "Temiz Oda",
-    "references": "Referanslar",
     "blog": "Blog",
-    "catalogs": "Kataloglar",
-    "contact": "İletişim"
+    "catalogs": "Kataloglar"
   },
   "common": {
     "learnMore": "Daha Fazla Bilgi",

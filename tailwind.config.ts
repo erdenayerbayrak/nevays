@@ -23,31 +23,31 @@ const config: Config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#0099CC",
-          50: "#E5F7FF",
-          100: "#CCF0FF",
-          200: "#99E0FF",
-          300: "#66D1FF",
-          400: "#33C2FF",
-          500: "#0099CC",
-          600: "#007AA3",
-          700: "#005C7A",
-          800: "#003D52",
-          900: "#001F29",
+          DEFAULT: "#1E3A8A",
+          50: "#EFF6FF",
+          100: "#DBEAFE",
+          200: "#BFDBFE",
+          300: "#93C5FD",
+          400: "#60A5FA",
+          500: "#3B82F6",
+          600: "#2563EB",
+          700: "#1D4ED8",
+          800: "#1E40AF",
+          900: "#1E3A8A",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          DEFAULT: "#00B28A",
-          50: "#E5FBF7",
-          100: "#CCF7EF",
-          200: "#99EFDF",
-          300: "#66E7CF",
-          400: "#33DFBF",
-          500: "#00B28A",
-          600: "#008F6E",
-          700: "#006B52",
-          800: "#004737",
-          900: "#00241B",
+          DEFAULT: "#3B82F6",
+          50: "#EFF6FF",
+          100: "#DBEAFE",
+          200: "#BFDBFE",
+          300: "#93C5FD",
+          400: "#60A5FA",
+          500: "#3B82F6",
+          600: "#2563EB",
+          700: "#1D4ED8",
+          800: "#1E40AF",
+          900: "#1E3A8A",
           foreground: "hsl(var(--secondary-foreground))",
         },
         destructive: {
@@ -58,7 +58,7 @@ const config: Config = {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
         },
-        accent: {
+        accentOld: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
         },
@@ -70,21 +70,45 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // NEVAYS Brand Colors
+        // NEVAYS Brand Colors - Updated Design System
         brand: {
-          primary: "#0099CC",
-          secondary: "#00B28A",
-          dark: "#101418",
-          light: "#F6F8FA",
+          primary: "#1E3A8A",      // Primary Blue (Koyu lacivert)
+          secondary: "#3B82F6",    // Secondary Blue (Modern mavi)
+          accent: "#06B6D4",       // Nevays Turquoise (Vurgu rengi)
+          dark: "#475569",         // Dark Gray (Metin rengi)
+          light: "#F8FAFC",        // Light Gray (Background)
+          white: "#FFFFFF",        // Pure White
         },
         neutral: {
-          dark: "#101418",
-          light: "#F6F8FA",
+          50: "#F8FAFC",
+          100: "#F1F5F9", 
+          200: "#E2E8F0",
+          300: "#CBD5E1",
+          400: "#94A3B8",
+          500: "#64748B",
+          600: "#475569",
+          700: "#334155",
+          800: "#1E293B",
+          900: "#0F172A",
+        },
+        accent: {
+          DEFAULT: "#06B6D4",
+          50: "#ECFEFF",
+          100: "#CFFAFE",
+          200: "#A5F3FC",
+          300: "#67E8F9",
+          400: "#22D3EE",
+          500: "#06B6D4",
+          600: "#0891B2",
+          700: "#0E7490",
+          800: "#155E75",
+          900: "#164E63",
         }
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        display: ['IBM Plex Sans', 'sans-serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Inter', 'system-ui', 'sans-serif'],
+        body: ['Inter', 'system-ui', 'sans-serif'],
       },
       fontWeight: {
         body: '400',
@@ -94,11 +118,16 @@ const config: Config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-in": "fade-in 0.25s ease-out",
+        "fade-in": "fade-in 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+        "fade-in-up": "fade-in-up 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+        "slide-in-left": "slide-in-left 0.8s ease-out",
+        "slide-in-right": "slide-in-right 0.8s ease-out", 
         "slide-up": "slide-up 0.25s ease-out",
-        "scale-hover": "scale-hover 0.25s ease-out",
+        "scale-hover": "scale-hover 0.3s ease",
         "counter": "counter 2s ease-out",
-        "marquee": "marquee 30s linear infinite",
+        "marquee": "marquee 60s linear infinite",
+        "logo-reveal": "logo-reveal 2s ease-out",
+        "button-hover": "button-hover 0.3s ease",
       },
       keyframes: {
         "accordion-down": {
@@ -113,17 +142,37 @@ const config: Config = {
           from: { opacity: "0", transform: "translateY(10px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
+        "fade-in-up": {
+          from: { opacity: "0", transform: "translateY(30px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+        "slide-in-left": {
+          from: { opacity: "0", transform: "translateX(-50px)" },
+          to: { opacity: "1", transform: "translateX(0)" },
+        },
+        "slide-in-right": {
+          from: { opacity: "0", transform: "translateX(50px)" },
+          to: { opacity: "1", transform: "translateX(0)" },
+        },
         "slide-up": {
           from: { opacity: "0", transform: "translateY(20px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
         "scale-hover": {
           from: { transform: "scale(1)" },
-          to: { transform: "scale(1.03)" },
+          to: { transform: "scale(1.05)" },
         },
         "counter": {
           from: { opacity: "0" },
           to: { opacity: "1" },
+        },
+        "logo-reveal": {
+          from: { opacity: "0", transform: "scale(0.8) rotate(-5deg)" },
+          to: { opacity: "1", transform: "scale(1) rotate(0deg)" },
+        },
+        "button-hover": {
+          from: { transform: "translateY(0)" },
+          to: { transform: "translateY(-2px)" },
         },
         "marquee": {
           from: { transform: "translateX(0)" },
@@ -145,6 +194,9 @@ const config: Config = {
       },
       backdropBlur: {
         xs: '2px',
+      },
+      perspective: {
+        '1000': '1000px',
       },
     },
   },

@@ -7,6 +7,8 @@ import CompanyOverview from '@/components/sections/company-overview';
 import CompanyHistory from '@/components/sections/company-history';
 import ManagementTeam from '@/components/sections/management-team';
 import CTABanner from '@/components/sections/cta-banner';
+import InteractiveTimeline from '@/components/ui/interactive-timeline';
+import { EnhancedManagementTeam } from '@/components/ui/flip-card';
 
 interface Props {
   params: { locale: string };
@@ -29,8 +31,8 @@ export default function AboutPage() {
         description="NEVAYS olarak, temiz oda sistemleri ve mühendislik çözümlerinde 25+ yıllık deneyimimizle sektöre öncülük ediyoruz. Yenilikçi yaklaşımımız ve uzman ekibimizle, müşterilerimize en kaliteli hizmeti sunuyoruz."
       />
       <CompanyOverview />
-      <CompanyHistory />
-      <ManagementTeam />
+      <InteractiveTimeline />
+      <EnhancedManagementTeam />
       <CTABanner
         title="NEVAYS Ailesine Katılın"
         description="Dünya çapında projeler gerçekleştiren ekibimizde yerinizi alın."

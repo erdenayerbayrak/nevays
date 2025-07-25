@@ -2,6 +2,11 @@
   "navigation": {
     "home": "Home",
     "about": "About",
+    "solutions": "Solutions",
+    "sectors": "Sectors",
+    "references": "References",
+    "knowledgeCenter": "Knowledge Center",
+    "contact": "Contact",
     "production": "Production",
     "applications": "Applications",
     "cleanRoomInstallation": "Clean Room Installation",
@@ -15,10 +20,8 @@
     "passBox": "Pass Box",
     "cleanRoomClothing": "Clean Room Clothing",
     "cleanRoom": "Clean Room",
-    "references": "References",
     "blog": "Blog",
-    "catalogs": "Catalogs",
-    "contact": "Contact"
+    "catalogs": "Catalogs"
   },
   "common": {
     "learnMore": "Learn More",

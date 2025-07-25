@@ -11,8 +11,8 @@ export default function Header() {
     <>
       {/* Logo - Fixed top left */}
       <div className="fixed top-4 left-4 z-50">
-        <Link href={`/${locale}`} className="flex items-center">
-          <span className="text-2xl font-display font-heading text-brand-primary bg-white/90 backdrop-blur-sm px-3 py-1 rounded-lg shadow-sm">
+        <Link href={`/${locale}`} className="flex items-center group">
+          <span className="text-2xl font-display font-heading text-primary-900 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-lg shadow-lg border border-neutral-200 transition-all duration-300 group-hover:shadow-xl group-hover:scale-105">
             NEVAYS
           </span>
         </Link>
@@ -20,20 +20,20 @@ export default function Header() {
 
       {/* Language Switcher - Fixed top right */}
       <div className="fixed top-4 right-4 z-50">
-        <div className="flex items-center space-x-2 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-lg shadow-sm">
+        <div className="flex items-center space-x-2 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-lg shadow-lg border border-neutral-200">
           <Link
             href="/tr"
-            className={`text-sm font-medium transition-colors duration-200 ${
-              locale === 'tr' ? 'text-brand-primary' : 'text-gray-500 hover:text-brand-primary'
+            className={`text-sm font-medium transition-all duration-300 hover:scale-105 ${
+              locale === 'tr' ? 'text-primary-800 font-semibold' : 'text-neutral-600 hover:text-primary-700'
             }`}
           >
             TR
           </Link>
-          <span className="text-gray-300">/</span>
+          <span className="text-neutral-400">•</span>
           <Link
             href="/en"
-            className={`text-sm font-medium transition-colors duration-200 ${
-              locale === 'en' ? 'text-brand-primary' : 'text-gray-500 hover:text-brand-primary'
+            className={`text-sm font-medium transition-all duration-300 hover:scale-105 ${
+              locale === 'en' ? 'text-primary-800 font-semibold' : 'text-neutral-600 hover:text-primary-700'
             }`}
           >
             EN

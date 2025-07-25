@@ -4,6 +4,7 @@ import { Metadata } from 'next';
 import MainLayout from '@/components/layout/main-layout';
 import { HeroReferences } from '@/components/sections/hero-references';
 import FilterableProjects from '@/components/sections/filterable-projects';
+import ModernFilterSystem from '@/components/ui/modern-filter-system';
 
 interface Props {
   params: { locale: string };
@@ -21,11 +22,7 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
 export default function ProjectsPage() {
   return (
     <MainLayout>
-      <HeroReferences
-        title="Başarılı Projelerimiz"
-        description="Gerçekleştirdiğimiz başarılı projeler ve müşteri memnuniyeti odaklı çözümlerimizle sektörde güvenilir iş ortağınızız."
-      />
-      <FilterableProjects />
+      <ModernFilterSystem />
     </MainLayout>
   );
 }

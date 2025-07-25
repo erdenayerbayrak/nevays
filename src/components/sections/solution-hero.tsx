@@ -1,15 +1,15 @@
 'use client';
 
 import Image from 'next/image';
-import { Download, Phone, MessageCircle } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import { ArrowRight, Download } from 'lucide-react';
 
 interface SolutionHeroProps {
   title: string;
   subtitle: string;
-  description?: string;
+  description: string;
   imageSrc: string;
-  catalogUrl?: string;
+  catalogUrl: string;
 }
 
 export default function SolutionHero({
@@ -17,88 +17,74 @@ export default function SolutionHero({
   subtitle,
   description,
   imageSrc,
-  catalogUrl,
+  catalogUrl
 }: SolutionHeroProps) {
   return (
-    <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
+    <section className="relative py-20 bg-gradient-to-br from-primary-900 to-primary-800 text-white overflow-hidden">
       {/* Background Image */}
-      <div className="absolute inset-0 w-full h-full">
-        <Image
-          src={imageSrc}
-          alt={title}
-          fill
-          className="object-cover"
-          priority
-        />
-        {/* Modern Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-blue-900/70 to-slate-900/80" />
-        
-        {/* Subtle Pattern Overlay */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-blue-400/20 to-transparent rounded-full -translate-y-48 translate-x-48"></div>
-          <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-teal-400/20 to-transparent rounded-full translate-y-40 -translate-x-40"></div>
-        </div>
+      <div className="absolute inset-0 opacity-20">
+        <div className="w-full h-full bg-gradient-to-br from-primary-900/40 to-primary-800/40 absolute z-10"></div>
+        {/* Use a fallback background color if image fails */}
+        <div className="w-full h-full bg-primary-800"></div>
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-        
-        {/* Premium Badge */}
-        <div className="inline-flex items-center px-6 py-2 mb-6 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
-          <div className="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
-          <span className="text-sm font-medium text-white/90">{subtitle}</span>
-        </div>
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          
+          {/* Content */}
+          <div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+              {title}
+            </h1>
+            <p className="text-xl md:text-2xl text-accent-300 mb-6 font-semibold">
+              {subtitle}
+            </p>
+            <p className="text-lg text-white/90 mb-8 leading-relaxed">
+              {description}
+            </p>
 
-        {/* Main Title */}
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-          <span className="block bg-gradient-to-r from-white via-blue-100 to-teal-200 bg-clip-text text-transparent">
-            {title}
-          </span>
-        </h1>
-        
-        {/* Description */}
-        {description && (
-          <p className="text-lg md:text-xl mb-10 text-white/80 max-w-3xl mx-auto leading-relaxed">
-            {description}
-          </p>
-        )}
-
-        {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <a 
-            href="tel:+905123456789"
-            className="group px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-xl text-white font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl min-w-[200px]"
-          >
-            <div className="flex items-center justify-center">
-              <Phone className="mr-2 h-5 w-5" />
-              Bizi Arayın
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link
+                href="/contact"
+                className="inline-flex items-center px-8 py-4 bg-accent-500 hover:bg-accent-600 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 shadow-lg"
+              >
+                <span className="mr-2">Teklif Al</span>
+                <ArrowRight className="h-5 w-5" />
+              </Link>
+              
+              <a
+                href={catalogUrl}
+                download
+                className="inline-flex items-center px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105"
+              >
+                <Download className="h-5 w-5 mr-2" />
+                <span>Katalog İndir</span>
+              </a>
             </div>
-          </a>
+          </div>
 
-          <a 
-            href="https://wa.me/905123456789?text=Merhaba, proje hakkında bilgi almak istiyorum." 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="group px-8 py-4 bg-green-600 hover:bg-green-700 rounded-xl text-white font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl min-w-[200px]"
-          >
-            <div className="flex items-center justify-center">
-              <MessageCircle className="mr-2 h-5 w-5" />
-              WhatsApp
-            </div>
-          </a>
-
-          {catalogUrl && (
-            <a 
-              href={catalogUrl} 
-              download
-              className="group px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 rounded-xl text-white font-semibold transition-all duration-300 hover:scale-105 min-w-[200px]"
-            >
-              <div className="flex items-center justify-center">
-                <Download className="mr-2 h-5 w-5" />
-                Katalog İndir
+          {/* Visual/Stats */}
+          <div className="lg:text-right">
+            <div className="grid grid-cols-2 gap-6">
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
+                <div className="text-3xl font-bold text-accent-300 mb-2">ISO 14644</div>
+                <div className="text-white/80">Uyumlu</div>
               </div>
-            </a>
-          )}
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
+                <div className="text-3xl font-bold text-accent-300 mb-2">GMP</div>
+                <div className="text-white/80">Sertifikalı</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
+                <div className="text-3xl font-bold text-accent-300 mb-2">24/7</div>
+                <div className="text-white/80">Destek</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
+                <div className="text-3xl font-bold text-accent-300 mb-2">15+</div>
+                <div className="text-white/80">Yıl Deneyim</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

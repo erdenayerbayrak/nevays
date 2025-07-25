@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { LucideIcon, Home, Info, Factory, Wrench, Package, Building, FileText, BookOpen, FolderOpen, Phone } from "lucide-react"
+import { LucideIcon, Home, Info, Wrench, Target, FileText, BookOpen, Phone } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useTranslations, useLocale } from 'next-intl';
 
@@ -58,7 +58,7 @@ export function NavBar({ items, className }: NavBarProps) {
         className,
       )}
     >
-      <div className="flex items-center gap-2 bg-white border border-gray-200 backdrop-blur-lg py-1 px-1 rounded-full shadow-lg transform scale-110">
+      <div className="flex items-center gap-2 bg-white/95 border border-neutral-200 backdrop-blur-lg py-2 px-2 rounded-full shadow-lg transform scale-110">
         {items.map((item) => {
           const Icon = item.icon
           const isActive = activeTab === item.name
@@ -68,9 +68,9 @@ export function NavBar({ items, className }: NavBarProps) {
               key={item.name}
               href={`/${locale}${item.url}`}
               className={cn(
-                "relative cursor-pointer text-sm font-semibold px-4 py-2 rounded-full transition-colors whitespace-nowrap",
-                "text-foreground/80 hover:text-primary",
-                isActive && "bg-muted text-primary",
+                "relative cursor-pointer text-sm font-semibold px-4 py-2 rounded-full transition-all duration-300 whitespace-nowrap group",
+                "text-neutral-600 hover:text-primary-800 hover:scale-105",
+                isActive && "bg-primary-50 text-primary-900 shadow-sm",
               )}
             >
               <span className="hidden md:inline">{t(item.translationKey)}</span>
@@ -80,7 +80,7 @@ export function NavBar({ items, className }: NavBarProps) {
               {isActive && (
                 <motion.div
                   layoutId="lamp"
-                  className="absolute inset-0 w-full bg-primary/5 rounded-full -z-10"
+                  className="absolute inset-0 w-full bg-gradient-to-r from-primary-100 to-accent-100 rounded-full -z-10"
                   initial={false}
                   transition={{
                     type: "spring",
@@ -88,10 +88,10 @@ export function NavBar({ items, className }: NavBarProps) {
                     damping: 30,
                   }}
                 >
-                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-1 bg-primary rounded-t-full">
-                    <div className="absolute w-12 h-6 bg-primary/20 rounded-full blur-md -top-2 -left-2" />
-                    <div className="absolute w-8 h-6 bg-primary/20 rounded-full blur-md -top-1" />
-                    <div className="absolute w-4 h-4 bg-primary/20 rounded-full blur-sm top-0 left-2" />
+                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-1 bg-gradient-to-r from-primary-600 to-accent-500 rounded-t-full">
+                    <div className="absolute w-12 h-6 bg-accent-200 rounded-full blur-md -top-2 -left-2" />
+                    <div className="absolute w-8 h-6 bg-primary-200 rounded-full blur-md -top-1" />
+                    <div className="absolute w-4 h-4 bg-accent-300 rounded-full blur-sm top-0 left-2" />
                   </div>
                 </motion.div>
               )}
@@ -103,16 +103,13 @@ export function NavBar({ items, className }: NavBarProps) {
   )
 }
 
-// Navigation items with Turkish menu structure
+// Updated Navigation items with new structure based on strategic recommendations
 export const navigationItems: NavItem[] = [
   { name: 'home', url: '/', icon: Home, translationKey: 'home' },
   { name: 'about', url: '/about', icon: Info, translationKey: 'about' },
-  { name: 'production', url: '/production', icon: Factory, translationKey: 'production' },
-  { name: 'applications', url: '/applications', icon: Wrench, translationKey: 'applications' },
-  { name: 'products', url: '/products', icon: Package, translationKey: 'products' },
-  { name: 'cleanroom', url: '/clean-room', icon: Building, translationKey: 'cleanRoom' },
+  { name: 'solutions', url: '/solutions', icon: Wrench, translationKey: 'solutions' },
+  { name: 'sectors', url: '/sectors', icon: Target, translationKey: 'sectors' },
   { name: 'references', url: '/projects', icon: FileText, translationKey: 'references' },
-  { name: 'blog', url: '/blog', icon: BookOpen, translationKey: 'blog' },
-  { name: 'catalogs', url: '/catalogs', icon: FolderOpen, translationKey: 'catalogs' },
+  { name: 'knowledge', url: '/knowledge-center', icon: BookOpen, translationKey: 'knowledgeCenter' },
   { name: 'contact', url: '/contact', icon: Phone, translationKey: 'contact' },
 ]

@@ -3,11 +3,17 @@ import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
 import MainLayout from '@/components/layout/main-layout';
 import HeroSection from '@/components/sections/hero-section';
+import TrustBand from '@/components/sections/trust-band';
+import SolutionsOverview from '@/components/sections/solutions-overview';
+import WhyNevays from '@/components/sections/why-nevays';
+import ProjectShowcase from '@/components/sections/project-showcase';
 import ReferencesMarquee from '@/components/sections/references-marquee';
 import CleanroomInfoCards from '@/components/sections/cleanroom-info-cards';
 import CleanroomExpertise from '@/components/sections/cleanroom-expertise';
 import EngineeringApproach from '@/components/sections/engineering-approach';
 import SectorSolutions from '@/components/sections/sector-solutions';
+import { StatsSection } from '@/components/ui/counter-animation';
+import PartnersMarquee from '@/components/sections/partners-marquee';
 
 interface Props {
   params: { locale: string };
@@ -79,11 +85,15 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
 export default function HomePage() {
   return (
     <MainLayout>
+      {/* New Professional Homepage Structure Based on Wireframe */}
       <HeroSection />
-      <ReferencesMarquee />
-      <CleanroomInfoCards />
+      <PartnersMarquee />
+      <SolutionsOverview />
+      <WhyNevays />
+      <ProjectShowcase />
+      
+      {/* Keep some existing sections for content richness */}
       <CleanroomExpertise />
-      <EngineeringApproach />
       <SectorSolutions />
     </MainLayout>
   );
