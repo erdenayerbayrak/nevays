@@ -33,7 +33,7 @@ const solutionsData: TabContent[] = [
       'Modüler Panel Sistemleri',
       'Hava Filtrasyonu',
       'Basınç Kontrolü',
-      'Validasyon Hizmetleri'
+      'Temiz Oda Sistemleri'
     ],
     processSteps: [
       {
@@ -149,39 +149,79 @@ const solutionsData: TabContent[] = [
     ]
   },
   {
-    id: 'validasyon',
-    title: 'Validasyon Hizmetleri',
-    icon: <Shield className="w-6 h-6" />,
-    description: 'IQ/OQ/PQ validasyon süreçleri ve compliance hizmetleri',
-    details: 'Pharmaceutical ve medikal cihaz endüstrisinde kritik öneme sahip validasyon süreçlerini gerçekleştiriyoruz. Regulatory compliance için kapsamlı dokümantasyon.',
+    id: 'laminer-kabinler',
+    title: 'Laminer Hava Akışlı Kabinler',
+    icon: <Wind className="w-6 h-6" />,
+    description: 'Yüksek kaliteli laminer akış kabinleri ve biyogüvenlik kabinleri',
+    details: 'Laboratuvar ve üretim alanları için EN 12469 ve ISO 14644 standartlarına uygun laminer hava akışlı kabinler sunuyoruz. Dikey ve yatay akışlı modeller ile her türlü ihtiyaca cevap veriyoruz.',
     features: [
-      'IQ (Installation Qualification)',
-      'OQ (Operational Qualification)',
-      'PQ (Performance Qualification)',
-      'Risk Assessment',
-      'Dokümantasyon',
-      'Regulatory Support'
+      'Dikey Laminer Akış Kabinleri',
+      'Yatay Laminer Akış Kabinleri',
+      'Biyogüvenlik Kabinleri (BSC)',
+      'HEPA/ULPA Filtrasyon',
+      'ISO 5 Temizlik Sınıfı',
+      'Düşük Gürültü Seviyesi'
     ],
     processSteps: [
       {
         step: 1,
-        title: 'Risk Analizi',
-        description: 'Sistem risk değerlendirmesi ve validasyon planı hazırlama'
+        title: 'İhtiyaç Analizi',
+        description: 'Kullanım amacına uygun kabin tipinin belirlenmesi'
       },
       {
         step: 2,
-        title: 'IQ/OQ Testleri',
-        description: 'Kurulum ve operasyonel kalifikasyon testlerinin gerçekleştirilmesi'
+        title: 'Teknik Tasarım',
+        description: 'Boyut, hava akış hızı ve filtrasyon özelliklerinin belirlenmesi'
       },
       {
         step: 3,
-        title: 'PQ Süreçleri',
-        description: 'Performans kalifikasyonu ve sürekli izleme protokolleri'
+        title: 'Üretim ve Kurulum',
+        description: 'Özel üretim kabinlerin kurulumu ve devreye alınması'
       },
       {
         step: 4,
-        title: 'Dokümantasyon',
-        description: 'Kapsamlı validasyon raporları ve compliance dokümantasyonu'
+        title: 'Validasyon',
+        description: 'Hava akış testleri, partikül sayımı ve sertifikasyon'
+      }
+    ],
+    images: [
+      'https://images.unsplash.com/photo-1580982324076-d95230549339?w=800&h=600&fit=crop'
+    ]
+  },
+  {
+    id: 'temiz-oda-sistemleri',
+    title: 'Temiz Oda Sistemleri',
+    icon: <Shield className="w-6 h-6" />,
+    description: 'Modüler temiz oda sistemleri ve kontrollü alan çözümleri',
+    details: 'Farmasötik, elektronik, medikal ve gıda endüstrileri için ISO 14644 standartlarına uygun modüler temiz oda sistemleri kuruyoruz. Anahtar teslim projeler ile hızlı ve güvenilir çözümler sunuyoruz.',
+    features: [
+      'ISO Class 5-8 Temiz Odalar',
+      'Modüler Panel Sistemleri',
+      'Pas Boks ve Transfer Hatches',
+      'Hava Duşları (Air Shower)',
+      'Basınç Kademelendirme',
+      'Otomatik Kontrol Sistemleri'
+    ],
+    processSteps: [
+      {
+        step: 1,
+        title: 'Konsept Tasarım',
+        description: '3D modelleme ve akış simülasyonları ile optimum tasarım'
+      },
+      {
+        step: 2,
+        title: 'Sistem Entegrasyonu',
+        description: 'HVAC, elektrik ve kontrol sistemlerinin entegrasyonu'
+      },
+      {
+        step: 3,
+        title: 'Modüler Kurulum',
+        description: 'Prefabrik panel sistemleri ile hızlı montaj'
+      },
+      {
+        step: 4,
+        title: 'Kalifikasyon',
+        description: 'IQ/OQ/PQ protokolleri ve GMP sertifikasyonu'
       }
     ],
     images: [

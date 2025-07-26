@@ -2,7 +2,7 @@
 
 import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
-import { ArrowRight, Building2, FlaskConical, Wind, CheckCircle } from 'lucide-react';
+import { ArrowRight, Building2, FlaskConical, Wind, CheckCircle, Shield } from 'lucide-react';
 
 export default function SolutionsOverview() {
   const t = useTranslations('common');
@@ -37,13 +37,22 @@ export default function SolutionsOverview() {
       hoverColor: 'group-hover:from-secondary-600 group-hover:to-secondary-700'
     },
     {
-      id: 'validation-services',
-      title: 'Validasyon Hizmetleri',
-      description: 'Kurulum sonrası performans testleri, kalibrasyon ve validasyon hizmetleri. Sürekli teknik destek.',
-      icon: CheckCircle,
-      href: `/${locale}/contact`,
+      id: 'laminar-flow-cabinets',
+      title: 'Laminer Hava Akışlı Kabinler',
+      description: 'Yüksek kaliteli laminer akış kabinleri, biyogüvenlik kabinleri ve steril çalışma alanları.',
+      icon: Wind,
+      href: `/${locale}/solutions/laminar-cabinets`,
       color: 'from-emerald-500 to-emerald-600',
       hoverColor: 'group-hover:from-emerald-600 group-hover:to-emerald-700'
+    },
+    {
+      id: 'clean-room-systems',
+      title: 'Temiz Oda Sistemleri',
+      description: 'Modüler temiz oda sistemleri, kontrollü alanlar ve ISO sınıfı temiz oda çözümleri.',
+      icon: Shield,
+      href: `/${locale}/solutions/clean-room-systems`,
+      color: 'from-indigo-500 to-indigo-600',
+      hoverColor: 'group-hover:from-indigo-600 group-hover:to-indigo-700'
     }
   ];
 

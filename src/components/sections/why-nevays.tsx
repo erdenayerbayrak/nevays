@@ -54,6 +54,7 @@ export default function WhyNevays() {
                 src="/images/hero/temiz-oda-clean-room-3.jpg"
                 alt="Nevays Temiz Oda Projesi"
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="object-cover"
               />
               {/* Overlay */}

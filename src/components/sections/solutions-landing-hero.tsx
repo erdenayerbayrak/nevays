@@ -2,7 +2,7 @@
 
 import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
-import { ArrowRight, Building2, FlaskConical, Wind, CheckCircle } from 'lucide-react';
+import { ArrowRight, Building2, FlaskConical, Wind, CheckCircle, Shield } from 'lucide-react';
 
 export default function SolutionsLandingHero() {
   const t = useTranslations('common');
@@ -28,10 +28,16 @@ export default function SolutionsLandingHero() {
       href: '/solutions/air-handling'
     },
     {
-      icon: CheckCircle,
-      title: 'Validasyon Hizmetleri',
-      description: 'Kurulum sonrası test, kalibrasyon ve validasyon',
-      href: '/contact'
+      icon: Wind,
+      title: 'Laminer Hava Akışlı Kabinler',
+      description: 'Yüksek kaliteli laminer akış ve biyogüvenlik kabinleri',
+      href: '/solutions/laminar-cabinets'
+    },
+    {
+      icon: Shield,
+      title: 'Temiz Oda Sistemleri',
+      description: 'Modüler temiz oda sistemleri ve kontrollü alan çözümleri',
+      href: '/solutions/clean-room-systems'
     }
   ];
 

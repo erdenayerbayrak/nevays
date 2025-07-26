@@ -5,10 +5,8 @@ import MainLayout from '@/components/layout/main-layout';
 import { HeroAbout } from '@/components/sections/hero-about';
 import CompanyOverview from '@/components/sections/company-overview';
 import CompanyHistory from '@/components/sections/company-history';
-import ManagementTeam from '@/components/sections/management-team';
 import CTABanner from '@/components/sections/cta-banner';
 import InteractiveTimeline from '@/components/ui/interactive-timeline';
-import { EnhancedManagementTeam } from '@/components/ui/flip-card';
 
 interface Props {
   params: { locale: string };
@@ -32,7 +30,6 @@ export default function AboutPage() {
       />
       <CompanyOverview />
       <InteractiveTimeline />
-      <EnhancedManagementTeam />
       <CTABanner
         title="NEVAYS Ailesine Katılın"
         description="Dünya çapında projeler gerçekleştiren ekibimizde yerinizi alın."

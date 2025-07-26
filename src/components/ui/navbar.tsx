@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { LucideIcon, Home, Info, Wrench, Target, FileText, BookOpen, Phone } from "lucide-react"
+import { LucideIcon, Home, Info, Factory, Settings, Package, Shield, Users, BookOpen, FolderOpen, Phone } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useTranslations, useLocale } from 'next-intl';
 
@@ -103,13 +103,16 @@ export function NavBar({ items, className }: NavBarProps) {
   )
 }
 
-// Updated Navigation items with new structure based on strategic recommendations
+// Navigation items based on requested structure
 export const navigationItems: NavItem[] = [
   { name: 'home', url: '/', icon: Home, translationKey: 'home' },
-  { name: 'about', url: '/about', icon: Info, translationKey: 'about' },
-  { name: 'solutions', url: '/solutions', icon: Wrench, translationKey: 'solutions' },
-  { name: 'sectors', url: '/sectors', icon: Target, translationKey: 'sectors' },
-  { name: 'references', url: '/projects', icon: FileText, translationKey: 'references' },
-  { name: 'knowledge', url: '/knowledge-center', icon: BookOpen, translationKey: 'knowledgeCenter' },
+  { name: 'about', url: '/hakkimizda', icon: Info, translationKey: 'about' },
+  { name: 'production', url: '/uretim', icon: Factory, translationKey: 'production' },
+  { name: 'applications', url: '/uygulama', icon: Settings, translationKey: 'applications' },
+  { name: 'products', url: '/urunler', icon: Package, translationKey: 'products' },
+  { name: 'cleanroom', url: '/temiz-oda', icon: Shield, translationKey: 'cleanroom' },
+  { name: 'references', url: '/referanslar', icon: Users, translationKey: 'references' },
+  { name: 'blog', url: '/blog', icon: BookOpen, translationKey: 'blog' },
+  { name: 'catalogs', url: '/kataloglar', icon: FolderOpen, translationKey: 'catalogs' },
   { name: 'contact', url: '/contact', icon: Phone, translationKey: 'contact' },
 ]

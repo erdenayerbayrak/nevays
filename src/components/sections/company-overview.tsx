@@ -33,22 +33,22 @@ const values = [
   {
     title: 'Kalite',
     description: 'Uluslararası standartlarda mükemmellik',
-    image: '/images/about/value-quality.jpg'
+    image: 'https://images.unsplash.com/photo-1581093458791-9d42e3c1fd59?w=400&h=300&fit=crop'
   },
   {
     title: 'İnovasyon',
     description: 'Sürekli AR-GE ve teknoloji geliştirme',
-    image: '/images/about/value-innovation.jpg'
+    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&h=300&fit=crop'
   },
   {
     title: 'Güvenilirlik',
     description: '25 yıllık sektör deneyimi ve referansları',
-    image: '/images/about/value-reliability.jpg'
+    image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=400&h=300&fit=crop'
   },
   {
     title: 'Sürdürülebilirlik',
     description: 'Çevre dostu ve enerji verimli çözümler',
-    image: '/images/about/value-sustainability.jpg'
+    image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=400&h=300&fit=crop'
   }
 ];
 

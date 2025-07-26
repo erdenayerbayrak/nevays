@@ -6,62 +6,62 @@ import { useState, useEffect } from 'react';
 const partnersData = [
   {
     name: 'Pfizer',
-    logo: 'https://logos-world.net/wp-content/uploads/2020/11/Pfizer-Logo.png',
+    logo: '/logos/logo.png',
     category: 'pharmaceutical'
   },
   {
     name: 'Johnson & Johnson',
-    logo: 'https://logos-world.net/wp-content/uploads/2020/08/Johnson-and-Johnson-Logo.png',
+    logo: '/logos/images (1).png',
     category: 'pharmaceutical'
   },
   {
     name: 'Roche',
-    logo: 'https://logos-world.net/wp-content/uploads/2020/11/Roche-Logo.png',
+    logo: '/logos/images (2).png',
     category: 'pharmaceutical'
   },
   {
     name: 'Novartis',
-    logo: 'https://logos-world.net/wp-content/uploads/2020/11/Novartis-Logo.png',
+    logo: '/logos/360_197_1.avif',
     category: 'pharmaceutical'
   },
   {
     name: 'Samsung',
-    logo: 'https://logos-world.net/wp-content/uploads/2020/04/Samsung-Logo.png',
+    logo: '/logos/images.png',
     category: 'electronics'
   },
   {
     name: 'Intel',
-    logo: 'https://logos-world.net/wp-content/uploads/2020/03/Intel-Logo.png',
+    logo: '/logos/logo.png',
     category: 'electronics'
   },
   {
     name: 'TSMC',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/1/1d/TSMC.svg',
+    logo: '/logos/images.jpeg',
     category: 'electronics'
   },
   {
     name: 'Abbott',
-    logo: 'https://logos-world.net/wp-content/uploads/2021/02/Abbott-Logo.png',
+    logo: '/logos/arion-lg.png',
     category: 'medical'
   },
   {
     name: 'Medtronic',
-    logo: 'https://logos-world.net/wp-content/uploads/2021/02/Medtronic-Logo.png',
+    logo: '/logos/Aysam-Logo-1-scaled.webp',
     category: 'medical'
   },
   {
     name: 'Siemens',
-    logo: 'https://logos-world.net/wp-content/uploads/2020/06/Siemens-Logo.png',
+    logo: '/logos/images.jpeg',
     category: 'industrial'
   },
   {
     name: 'Bosch',
-    logo: 'https://logos-world.net/wp-content/uploads/2020/08/Bosch-Logo.png',
+    logo: '/logos/indir.png',
     category: 'industrial'
   },
   {
     name: 'GE Healthcare',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/f/ff/GE_Healthcare_logo.svg',
+    logo: '/logos/sistema_logo.png',
     category: 'medical'
   }
 ];
@@ -127,22 +127,30 @@ export default function PartnersMarquee() {
 
       {/* Statistics */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-neutral-100">
-            <div className="text-3xl font-black text-primary-600 mb-2">150+</div>
-            <div className="text-sm text-neutral-600">Başarılı Proje</div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* EU GMP / ISO 14644 */}
+          <div className="bg-gradient-to-b from-purple-50 to-white rounded-2xl p-8 text-center transform hover:scale-105 transition-all duration-300 hover:shadow-xl border border-purple-100/50">
+            <div className="text-5xl font-black text-purple-600 mb-3">50+</div>
+            <div className="text-gray-700 font-medium leading-tight">
+              EU GMP / ISO 14644<br/>
+              <span className="text-xs uppercase tracking-wide">STANDARTLARINA UYGUN KURULUM</span>
+            </div>
           </div>
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-neutral-100">
-            <div className="text-3xl font-black text-primary-600 mb-2">50+</div>
-            <div className="text-sm text-neutral-600">Global Partner</div>
+          {/* Temiz Oda */}
+          <div className="bg-gradient-to-b from-teal-50 to-white rounded-2xl p-8 text-center transform hover:scale-105 transition-all duration-300 hover:shadow-xl border border-teal-100/50">
+            <div className="text-5xl font-black text-teal-600 mb-3">100+</div>
+            <div className="text-gray-700 font-medium">
+              Temiz Oda<br/>
+              Ürünü
+            </div>
           </div>
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-neutral-100">
-            <div className="text-3xl font-black text-primary-600 mb-2">25+</div>
-            <div className="text-sm text-neutral-600">Ülke</div>
-          </div>
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-neutral-100">
-            <div className="text-3xl font-black text-primary-600 mb-2">98%</div>
-            <div className="text-sm text-neutral-600">Müşteri Memnuniyeti</div>
+          {/* İli Kapsayan */}
+          <div className="bg-gradient-to-b from-orange-50 to-white rounded-2xl p-8 text-center transform hover:scale-105 transition-all duration-300 hover:shadow-xl border border-orange-100/50">
+            <div className="text-5xl font-black text-orange-600 mb-3">81</div>
+            <div className="text-gray-700 font-medium">
+              İli Kapsayan<br/>
+              Hizmet Ağı
+            </div>
           </div>
         </div>
       </div>

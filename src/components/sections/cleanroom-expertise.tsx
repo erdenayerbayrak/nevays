@@ -37,16 +37,16 @@ export default function CleanroomExpertise() {
   const locale = useLocale();
 
   return (
-    <section className="py-24 bg-gradient-to-b from-gray-50 to-white">
+    <section className="py-24 bg-gradient-to-br from-white via-gray-50/50 to-blue-50/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-display font-heading text-gray-900 mb-6">
-            <span className="text-gradient">Temiz Oda</span> Mühendislik Uzmanlığı
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            Temiz Oda <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">Mühendislik Uzmanlığı</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            20+ yıllık deneyimimizle, dünya standartlarında <strong>temiz oda sistemleri</strong> ve 
-            <strong> kontaminasyonsuz ortam</strong> çözümleri geliştiriyoruz.
+            20+ yıllık deneyimimizle, dünya standartlarında <strong className="text-gray-900">temiz oda sistemleri</strong> ve 
+            <strong className="text-gray-900"> kontaminasyonsuz ortam</strong> çözümleri geliştiriyoruz.
           </p>
         </div>
 
@@ -67,11 +67,15 @@ export default function CleanroomExpertise() {
               
               <div className="grid sm:grid-cols-2 gap-4 mb-8">
                 {expertiseAreas.map((area, index) => (
-                  <div key={index} className="flex items-start space-x-3">
-                    <area.icon className="h-6 w-6 text-brand-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <h4 className="font-medium text-gray-900 mb-1">{area.title}</h4>
-                      <p className="text-sm text-gray-600">{area.description}</p>
+                  <div key={index} className="group bg-white p-5 rounded-xl border border-gray-100 hover:border-blue-200 hover:shadow-md transition-all duration-300">
+                    <div className="flex items-start space-x-3">
+                      <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-teal-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <area.icon className="h-5 w-5 text-white" />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-gray-900 mb-1 group-hover:text-blue-700 transition-colors">{area.title}</h4>
+                        <p className="text-sm text-gray-600">{area.description}</p>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -119,69 +123,69 @@ export default function CleanroomExpertise() {
                 className="w-full h-auto object-cover"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-blue-900/30 via-transparent to-transparent" />
             </div>
 
             {/* Floating Cards */}
-            <div className="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-xl p-4 border border-gray-100">
+            <div className="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-2xl p-5 border border-gray-100 transform hover:scale-105 transition-transform duration-300">
               <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center">
-                  <ShieldCheck className="h-6 w-6 text-brand-primary" />
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
+                  <ShieldCheck className="h-6 w-6 text-white" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-gray-900">ISO 14644-1</p>
+                  <p className="text-sm font-semibold text-gray-900">ISO 14644-1</p>
                   <p className="text-xs text-gray-600">Sertifikalı Sistemler</p>
                 </div>
               </div>
             </div>
 
-            <div className="absolute -top-6 -right-6 bg-white rounded-xl shadow-xl p-4 border border-gray-100">
+            <div className="absolute -top-6 -right-6 bg-white rounded-xl shadow-2xl p-5 border border-gray-100 transform hover:scale-105 transition-transform duration-300">
               <div className="text-center">
-                <p className="text-2xl font-bold text-brand-primary">20+</p>
-                <p className="text-xs text-gray-600">Yıllık Deneyim</p>
+                <p className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">20+</p>
+                <p className="text-xs text-gray-600 font-medium">Yıllık Deneyim</p>
               </div>
             </div>
           </div>
         </div>
 
         {/* Technical Standards Section */}
-        <div className="bg-white rounded-2xl border border-gray-200 p-8 lg:p-12">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-heading text-gray-900 mb-4">
+        <div className="bg-gradient-to-br from-white to-gray-50 rounded-3xl border border-gray-100 shadow-xl p-8 lg:p-12">
+          <div className="text-center mb-10">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
               Teknik Standartlar ve Sınıflandırma
             </h3>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
               Temiz oda projelerimizde uluslararası standartlara tam uyum sağlayarak, 
               en yüksek kalite ve güvenilirlik sunarız.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-brand-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-xl font-bold text-brand-primary">GMP</span>
+            <div className="group bg-white p-6 rounded-2xl border border-gray-100 hover:border-blue-200 hover:shadow-lg transition-all duration-300 text-center">
+              <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                <span className="text-2xl font-bold text-white">GMP</span>
               </div>
-              <h4 className="font-medium text-gray-900 mb-2">Good Manufacturing Practice</h4>
+              <h4 className="font-semibold text-gray-900 mb-2 text-lg">Good Manufacturing Practice</h4>
               <p className="text-sm text-gray-600">
                 İlaç ve tıbbi cihaz üretimi için zorunlu kalite standartları
               </p>
             </div>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-brand-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-lg font-bold text-brand-secondary">ISO</span>
+            <div className="group bg-white p-6 rounded-2xl border border-gray-100 hover:border-teal-200 hover:shadow-lg transition-all duration-300 text-center">
+              <div className="w-20 h-20 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                <span className="text-xl font-bold text-white">ISO</span>
               </div>
-              <h4 className="font-medium text-gray-900 mb-2">ISO 14644 Serisi</h4>
+              <h4 className="font-semibold text-gray-900 mb-2 text-lg">ISO 14644 Serisi</h4>
               <p className="text-sm text-gray-600">
                 Temiz oda sınıflandırması ve performans kriterleri
               </p>
             </div>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-lg font-bold text-gray-700">FDA</span>
+            <div className="group bg-white p-6 rounded-2xl border border-gray-100 hover:border-purple-200 hover:shadow-lg transition-all duration-300 text-center">
+              <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                <span className="text-xl font-bold text-white">FDA</span>
               </div>
-              <h4 className="font-medium text-gray-900 mb-2">FDA Guidelines</h4>
+              <h4 className="font-semibold text-gray-900 mb-2 text-lg">FDA Guidelines</h4>
               <p className="text-sm text-gray-600">
                 Amerika gıda ve ilaç dairesi onaylı tasarım kriterleri
               </p>
