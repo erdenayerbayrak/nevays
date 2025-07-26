@@ -12,12 +12,12 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
   const t = await getTranslations({ locale, namespace: 'blog' });
   
   const title = locale === 'tr' 
-    ? 'Blog - Temiz Oda Teknolojileri ve Sektör Haberleri | NEVAYS'
-    : 'Blog - Cleanroom Technologies and Industry News | NEVAYS';
+    ? 'NEVAYS Blog - Düşünce Liderliği ve Sektör İçgörüleri'
+    : 'NEVAYS Blog - Thought Leadership and Industry Insights';
     
   const description = locale === 'tr'
-    ? 'Temiz oda teknolojileri, GMP standartları, sektör trendleri ve uzman görüşleri. NEVAYS blog yazıları.'
-    : 'Cleanroom technologies, GMP standards, industry trends and expert opinions. NEVAYS blog articles.';
+    ? 'Temiz oda teknolojilerinde düşünce liderliği. Uzman makaleleri, sektör trendleri, vaka analizleri ve teknik rehberler.'
+    : 'Thought leadership in cleanroom technologies. Expert articles, industry trends, case studies and technical guides.';
 
   return {
     title,
@@ -113,11 +113,19 @@ export default function BlogPage() {
       <section className="py-20 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 text-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Temiz Oda Blog
+            <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6">
+              <BookOpen className="w-4 h-4 mr-2" />
+              <span className="text-sm font-semibold">Düşünce Liderliği</span>
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+              NEVAYS<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-primary-200">
+                Blog
+              </span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-              Sektörün en güncel gelişmeleri, uzman görüşleri ve teknik rehberler
+            <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed">
+              Sektörün en güncel gelişmeleri, derinlemesine analizler ve 20+ yıllık deneyimimizden 
+              uzman perspektifleri. Temiz oda dünyasında referans kaynak.
             </p>
           </div>
         </div>
@@ -128,8 +136,11 @@ export default function BlogPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              🔥 Öne Çıkan Yazı
+              🎆 Öne Çıkan Uzman Makalesi
             </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Sektördeki son gelişmeleri derinlemesine inceleyen özel içerikler
+            </p>
           </div>
 
           <article className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-2xl overflow-hidden shadow-lg border border-gray-200">
@@ -201,9 +212,14 @@ export default function BlogPage() {
           <div className="lg:col-span-3">
             {/* Recent Articles */}
             <section className="mb-16">
-              <h2 className="text-2xl font-bold text-gray-900 mb-8">
-                Son Yazılar
-              </h2>
+              <div className="flex items-center justify-between mb-8">
+                <h2 className="text-2xl font-bold text-gray-900">
+                  📝 Son Uzman Makaleleri
+                </h2>
+                <p className="text-sm text-gray-500">
+                  Güncel kalan bilgi, sürekli güncellenen perspektif
+                </p>
+              </div>
 
               <div className="grid md:grid-cols-2 gap-8">
                 {blogArticles.map((article, index) => (
@@ -311,21 +327,26 @@ export default function BlogPage() {
                 </div>
               </div>
 
-              {/* Newsletter Signup */}
+              {/* Thought Leadership CTA */}
               <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-xl p-6 border border-primary-200">
                 <div className="text-center">
                   <TrendingUp className="h-12 w-12 text-primary-600 mx-auto mb-4" />
                   <h3 className="text-lg font-bold text-primary-900 mb-2">
-                    Sektör Güncellemeleri
+                    🎥 Uzman Görüşleri
                   </h3>
-                  <p className="text-primary-700 text-sm mb-4">
-                    Temiz oda teknolojilerindeki son gelişmeleri kaçırmayın
+                  <p className="text-primary-700 text-sm mb-4 leading-relaxed">
+                    20+ yıllık deneyimimizden sektörün gelişimi için özgün perspektifler
                   </p>
+                  <div className="bg-primary-600/10 rounded-lg p-3 mb-4">
+                    <p className="text-xs text-primary-800 font-medium">
+                      "Bilgiyi paylaşmak, sektörü ilerletir"
+                    </p>
+                  </div>
                   <Link
-                    href="/contact"
+                    href="/temiz-oda"
                     className="inline-flex items-center px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white text-sm font-semibold rounded-lg transition-colors"
                   >
-                    İletişime Geçin
+                    📖 Bilgi Merkezi
                   </Link>
                 </div>
               </div>
@@ -337,12 +358,29 @@ export default function BlogPage() {
       {/* CTA Section */}
       <section className="py-16 bg-gray-900 text-white mt-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">
-            Kendi Projeniz Hakkında Yazı Yazdırın
+          <h2 className="text-4xl font-bold mb-6">
+            🚀 Başarı Hikayenizi Paylaşın
           </h2>
-          <p className="text-xl text-gray-300 mb-8">
-            Başarılı proje hikayenizi blog yazısı olarak paylaşmak ister misiniz?
+          <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+            Projenizin başarı hikayesini blog makalesi olarak paylaşarak hem sektöre 
+            katkıda bulunun hem de şirketinizin uzmanlığını gösterin.
           </p>
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 mb-8">
+            <div className="grid md:grid-cols-3 gap-6 text-center">
+              <div>
+                <h3 className="font-semibold mb-2">🏆 Başarı Hikayeleri</h3>
+                <p className="text-sm text-gray-300">Proje sonuçlarınızı vaka analizi olarak</p>
+              </div>
+              <div>
+                <h3 className="font-semibold mb-2">🔬 Teknik Makaleler</h3>
+                <p className="text-sm text-gray-300">Uzmanlık alanınızdaki görüşlerinizi</p>
+              </div>
+              <div>
+                <h3 className="font-semibold mb-2">📈 Sektör Trendleri</h3>
+                <p className="text-sm text-gray-300">Gelecek öngörülerinizi ve analizlerinizi</p>
+              </div>
+            </div>
+          </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"

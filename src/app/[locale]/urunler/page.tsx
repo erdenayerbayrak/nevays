@@ -1,204 +1,231 @@
-import { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
+'use client';
+
 import MainLayout from '@/components/layout/main-layout';
-import { Package, Shield, FileText, Download } from 'lucide-react';
+import { Package, Shield, FileText, Download, Lock, Users, X } from 'lucide-react';
 import Link from 'next/link';
+import { useState } from 'react';
+import Head from 'next/head';
 
-interface Props {
-  params: { locale: string };
-}
 
-export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: 'products' });
-  
-  const title = locale === 'tr' 
-    ? 'Ürünlerimiz - Temiz Oda Paneli ve Ekipmanları | NEVAYS'
-    : 'Our Products - Cleanroom Panels and Equipment | NEVAYS';
-    
-  const description = locale === 'tr'
-    ? 'Temiz oda panelleri, hijyen panelleri, temiz oda kapıları, pass box sistemleri ve temiz oda kıyafetleri. Kaliteli ürünler.'
-    : 'Cleanroom panels, hygiene panels, cleanroom doors, pass box systems and cleanroom clothing. Quality products.';
 
-  return {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      url: `https://nevays.com/${locale}/urunler`,
-      siteName: 'NEVAYS',
-      locale: locale === 'tr' ? 'tr_TR' : 'en_US',
-      type: 'website',
-    },
-  };
-}
-
-const productCategories = [
+const systemComponents = [
   {
     title: 'Temiz Oda Panelleri',
-    description: 'ISO standartlarında sandwich panel, hijyen panel ve modüler duvar paneli sistemleri.',
+    description: 'Projelerimizin temelini oluşturan temiz oda paneli sistemlerimiz, yüksek sızdırmazlık ve hijyen standartları sunar. Panel sistemleriyle tam entegre çalışan modüler çözümler.',
+    detailText: 'Detaylı teknik bilgi ve üretim sürecimiz için "Üretim" sayfamızı inceleyebilirsiniz.',
     icon: Shield,
-    products: [
-      'Sandwich Panel (50mm, 75mm, 100mm)',
-      'Hijyen Panel (Antibakteriyel)',
-      'Modüler Duvar Paneli',
-      'Köşe Profilleri ve Bağlantı Elemanları'
-    ],
-    specifications: [
-      '0.6mm DKP sac yüzey',
-      'PIR/PUR köpük dolgum',
-      'CE sertifikalı',
-      'GMP uyumlu'
-    ],
     catalogPdf: '/kataloglar/temiz-oda-panelleri.pdf',
-    href: '/products/clean-room-panels'
+    image: '/images/products/temiz-oda-panelleri.jpg'
   },
   {
-    title: 'Temiz Oda Kapıları',
-    description: 'Hermetik kapatma özellikli özel tasarım temiz oda kapıları ve otomatik sistemler.',
-    icon: Package,
-    products: [
-      'Manuel Swing Kapılar',
-      'Otomatik Sliding Kapılar',
-      'Hava Kilidi (Air Lock) Kapıları',
-      'Acil Çıkış Kapıları'
-    ],
-    specifications: [
-      'Hermetik conta sistemi',
-      'Elektromanyetik kilit',
-      'Cam panel opsiyonu',
-      'ISO 14644 uyumlu'
-    ],
-    catalogPdf: '/kataloglar/temiz-oda-kapilari.pdf',
-    href: '/products/clean-room-doors'
+    title: 'Temiz Oda Kapıları', 
+    description: 'Sistem bütünlüğü ve sızdırmazlık için kritik olan temiz oda kapısı ürünlerimiz, panel sistemleriyle tam entegre çalışır. Hermetik kapatma ve otomatik kontrol seçenekleri.',
+    detailText: 'Elektromanyetik kilit sistemleri ve özel cam panel seçenekleri ile projenize uygun çözümler.',
+    icon: Lock,
+    catalogPdf: '/kataloglar/temiz-oda-kapilari.pdf', 
+    image: '/images/products/temiz-oda-kapilari.jpg'
   },
   {
     title: 'Pass Box Sistemleri',
-    description: 'Kontaminasyon önleyici geçiş kutuları ve malzeme transfer sistemleri.',
+    description: 'Kontrollü alanlar arasında malzeme transferini güvenli hale getiren pass box ünitelerimiz, çapraz bulaşma riskini ortadan kaldırır. HEPA filtrasyon ve UV sterilizasyon seçenekleri.',
+    detailText: 'Statik, dinamik ve özel boyut seçenekleri ile her proje ihtiyacına uygun çözümler.',
     icon: Package,
-    products: [
-      'Statik Pass Box',
-      'Dinamik Pass Box (HEPA Filtreli)',
-      'UV Sterilizasyon Pass Box',
-      'Özel Boyut Pass Box'
-    ],
-    specifications: [
-      'HEPA/ULPA filtrasyon',
-      'UV-C sterilizasyon',
-      'Elektronik kilit sistemi',
-      'Paslanmaz çelik yapı'
-    ],
     catalogPdf: '/kataloglar/pass-box-sistemleri.pdf',
-    href: '/products/pass-box'
+    image: '/images/products/pass-box-sistemleri.jpg'
   },
   {
-    title: 'Temiz Oda Kıyafetleri',
-    description: 'ESD korumalı ve steril temiz oda kıyafetleri, ayakkabılar ve aksesuarlar.',
-    icon: Shield,
-    products: [
-      'Temiz Oda Tulumu',
-      'ESD Korumalı Kıyafetler',
-      'Steril Eldiven ve Maske',
-      'Temiz Oda Ayakkabıları'
-    ],
-    specifications: [
-      'Anti-statik özellik',
-      'Nefes alabilir kumaş',
-      'Yıkanabilir',
-      'CE sertifikalı'
-    ],
+    title: 'Tamamlayıcı Sarf Malzemeleri - Temiz Oda Kıyafetleri',
+    description: 'Personel kaynaklı partikül kontaminasyonunu önlemek için kritik olan temiz oda tulum ve ESD tulum çözümlerimiz. NEVAYS proje müşterilerine standartlara uygun tamamlayıcı malzemeler.',
+    detailText: 'Anti-statik özellikli, nefes alabilir kumaşlar ile uzun süreli kullanım konforu.',
+    icon: Users,
     catalogPdf: '/kataloglar/temiz-oda-kiyafetleri.pdf',
-    href: '/products/clean-room-clothing'
+    image: '/images/products/temiz-oda-kiyafetleri.jpg'
   }
 ];
 
-export default function ProductsPage() {
+interface ProductModalProps {
+  component: typeof systemComponents[0];
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+function ProductModal({ component, isOpen, onClose }: ProductModalProps) {
+  if (!isOpen) return null;
+  
+  const Icon = component.icon;
+
   return (
-    <MainLayout>
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+      <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        {/* Modal Header */}
+        <div className="flex items-center justify-between p-6 border-b border-gray-200">
+          <div className="flex items-center">
+            <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mr-4">
+              <Icon className="h-6 w-6 text-primary-600" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-900">{component.title}</h3>
+          </div>
+          <button
+            onClick={onClose}
+            className="w-8 h-8 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors"
+          >
+            <X className="w-4 h-4 text-gray-600" />
+          </button>
+        </div>
+
+        {/* Modal Content */}
+        <div className="p-6">
+          {/* Product Image */}
+          <div className="relative h-64 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl mb-6 overflow-hidden">
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="text-center">
+                <Icon className="h-16 w-16 text-gray-400 mx-auto mb-3" />
+                <p className="text-gray-500 font-medium text-sm">
+                  {component.title} - Ürün Görseli
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Description */}
+          <div className="mb-6">
+            <p className="text-gray-700 leading-relaxed mb-4">
+              {component.description}
+            </p>
+            <p className="text-gray-600 text-sm">
+              {component.detailText}
+            </p>
+          </div>
+
+          {/* Download Button */}
+          <div className="pt-4 border-t border-gray-200">
+            <a
+              href={component.catalogPdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full inline-flex items-center justify-center px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors"
+            >
+              <Download className="w-5 h-5 mr-2" />
+              Kataloğu İndir
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function ProductsPage() {
+  const [selectedComponent, setSelectedComponent] = useState<typeof systemComponents[0] | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = (component: typeof systemComponents[0]) => {
+    setSelectedComponent(component);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedComponent(null);
+  };
+
+  return (
+    <>
+      <Head>
+        <title>Sistem Bileşenleri - Temiz Oda Paneli, Kapısı, Pass Box | NEVAYS</title>
+        <meta 
+          name="description" 
+          content="Temiz oda paneli, temiz oda kapısı, pass box ve temiz oda tulum sistemlerinde yüksek standartlı bileşenler. Kusursuz sistem entegrasyonu." 
+        />
+        <meta property="og:title" content="Sistem Bileşenleri - Temiz Oda Paneli, Kapısı, Pass Box | NEVAYS" />
+        <meta property="og:description" content="Temiz oda paneli, temiz oda kapısı, pass box ve temiz oda tulum sistemlerinde yüksek standartlı bileşenler. Kusursuz sistem entegrasyonu." />
+        <meta property="og:url" content="https://nevays.com/tr/urunler" />
+        <meta property="og:type" content="website" />
+      </Head>
+      <MainLayout>
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 text-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Ürünlerimiz
+            <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6">
+              <Package className="w-4 h-4 mr-2" />
+              <span className="text-sm font-semibold">Yüksek Standartlı Bileşenler</span>
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+              Sistem<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-primary-200">
+                Bileşenleri
+              </span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-              Temiz oda teknolojilerinde ihtiyacınız olan tüm ürünler, yüksek kalite ve güvenilirlikle
+            <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed">
+              Başarılı bir temiz oda, en küçük bileşeninin bile en yüksek standartlarda olmasını gerektirir.
+              Kusursuz bir sistemin parçaları olarak mühendislik kalitemizi yansıtan çözümler.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Products Categories */}
-      <section className="py-20 bg-white">
+      {/* Introduction Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+            Kullandığımız ve Güvendiğimiz Yüksek Standartlı Bileşenler
+          </h2>
+          <p className="text-xl text-gray-600 leading-relaxed">
+            NEVAYS olarak, projelerimizde kullandığımız tüm sistem bileşenlerinde kendi mühendislik 
+            ve kalite anlayışımızı yansıtıyoruz. Bu ürünler satılık değil; güvendiğimiz ve 
+            projelerimizin temelini oluşturan kritik bileşenlerdir.
+          </p>
+        </div>
+      </section>
+
+      {/* System Components Grid */}
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12">
-            {productCategories.map((category, index) => {
-              const Icon = category.icon;
+          <div className="grid md:grid-cols-2 gap-8">
+            {systemComponents.map((component, index) => {
+              const Icon = component.icon;
               return (
                 <div
-                  key={category.title}
-                  className="group bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-500"
+                  key={component.title}
+                  onClick={() => openModal(component)}
+                  className="group bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-500 cursor-pointer hover:scale-[1.02]"
                 >
-                  {/* Header */}
-                  <div className="bg-gradient-to-r from-gray-50 to-gray-100 p-8">
-                    <div className="flex items-center mb-4">
-                      <div className="w-16 h-16 bg-primary-100 rounded-xl flex items-center justify-center mr-4">
-                        <Icon className="h-8 w-8 text-primary-600" />
+                  {/* Product Image Header */}
+                  <div className="relative h-64 bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center">
+                        <Icon className="h-16 w-16 text-gray-400 mx-auto mb-4" />
+                        <p className="text-gray-500 font-medium text-sm">
+                          {component.title} - Stüdyo Fotoğrafı
+                        </p>
                       </div>
-                      <div>
-                        <h2 className="text-2xl font-bold text-gray-900">{category.title}</h2>
-                        <p className="text-gray-600 mt-1">{category.description}</p>
+                    </div>
+                    
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 bg-primary-600/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                      <div className="text-center text-white">
+                        <Package className="h-12 w-12 mx-auto mb-2" />
+                        <p className="font-semibold">Katalog ve Detaylar</p>
                       </div>
                     </div>
                   </div>
 
                   {/* Content */}
                   <div className="p-8">
-                    {/* Products List */}
-                    <div className="mb-8">
-                      <h3 className="text-lg font-semibold text-gray-900 mb-4">Ürün Çeşitleri</h3>
-                      <div className="grid grid-cols-1 gap-3">
-                        {category.products.map((product, idx) => (
-                          <div key={idx} className="flex items-center">
-                            <div className="w-2 h-2 bg-primary-600 rounded-full mr-3 flex-shrink-0" />
-                            <span className="text-gray-700 text-sm">{product}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-primary-700 transition-colors">
+                      {component.title}
+                    </h3>
+                    
+                    <p className="text-gray-600 leading-relaxed text-sm line-clamp-3">
+                      {component.description}
+                    </p>
 
-                    {/* Specifications */}
-                    <div className="mb-8">
-                      <h3 className="text-lg font-semibold text-gray-900 mb-4">Teknik Özellikler</h3>
-                      <div className="grid grid-cols-2 gap-3">
-                        {category.specifications.map((spec, idx) => (
-                          <div key={idx} className="flex items-center">
-                            <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-2 flex-shrink-0" />
-                            <span className="text-gray-600 text-sm">{spec}</span>
-                          </div>
-                        ))}
+                    <div className="mt-6 pt-4 border-t border-gray-100">
+                      <div className="flex items-center text-primary-600 text-sm font-semibold">
+                        <span>Katalog ve Detaylar</span>
+                        <Download className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                       </div>
-                    </div>
-
-                    {/* Actions */}
-                    <div className="flex flex-col sm:flex-row gap-3">
-                      <Link
-                        href={category.href}
-                        className="flex-1 inline-flex items-center justify-center px-4 py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors"
-                      >
-                        <Package className="w-4 h-4 mr-2" />
-                        Detayları Gör
-                      </Link>
-                      <a
-                        href={category.catalogPdf}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex-1 inline-flex items-center justify-center px-4 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold rounded-lg transition-colors"
-                      >
-                        <Download className="w-4 h-4 mr-2" />
-                        Katalog İndir
-                      </a>
                     </div>
                   </div>
                 </div>
@@ -207,6 +234,15 @@ export default function ProductsPage() {
           </div>
         </div>
       </section>
+
+      {/* Modal */}
+      {selectedComponent && (
+        <ProductModal
+          component={selectedComponent}
+          isOpen={isModalOpen}
+          onClose={closeModal}
+        />
+      )}
 
       {/* Technical Support Section */}
       <section className="py-20 bg-gray-50">
@@ -331,6 +367,7 @@ export default function ProductsPage() {
           </div>
         </div>
       </section>
-    </MainLayout>
+      </MainLayout>
+    </>
   );
 }

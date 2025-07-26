@@ -1,402 +1,403 @@
-import { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
+'use client';
+
 import MainLayout from '@/components/layout/main-layout';
-import ReferencesMarquee from '@/components/sections/references-marquee';
-import { MapPin, Calendar, Award, Users, Building2, FlaskConical } from 'lucide-react';
+import { MapPin, Calendar, Award, Users, Building2, FlaskConical, Filter, CheckCircle, ArrowRight } from 'lucide-react';
+import { useState } from 'react';
+import Head from 'next/head';
+import Image from 'next/image';
 
-interface Props {
-  params: { locale: string };
-}
+// Referans firmaları - güncellenmiş logoları ile
+const references = [
+  { name: 'ASELSAN', logo: '/logos/aselsan-logo.png', sector: 'defense' },
+  { name: 'ATABAY İLAÇ', logo: '/logos/atabay-logo.png', sector: 'pharmaceutical' },
+  { name: 'WORLD MEDICINE', logo: '/logos/world-medicine-logo.png', sector: 'pharmaceutical' },
+  { name: 'TÜRK İLAÇ SERUM SANAYİ', logo: '/logos/turk-ilac-logo.png', sector: 'pharmaceutical' },
+  { name: 'VALEO', logo: '/logos/valeo-logo.png', sector: 'automotive' },
+  { name: 'SMART GÜNEŞ TEKNOLOJİLERİ', logo: '/logos/smart-solar-logo.png', sector: 'energy' },
+  { name: 'ARMADA FOODS', logo: '/logos/armada-foods-logo.png', sector: 'food' },
+  { name: 'SİSTEMA', logo: '/logos/sistema-logo.png', sector: 'electronics' },
+  { name: 'SAMSUNG', logo: '/logos/samsung-logo.png', sector: 'electronics' },
+  { name: 'AYSAM', logo: '/logos/aysam-logo.png', sector: 'medical' },
+  { name: 'SONİTUS', logo: '/logos/sonitus-logo.png', sector: 'medical' },
+  { name: 'SONOFARMA', logo: '/logos/sonofarma-logo.png', sector: 'pharmaceutical' },
+  { name: 'TAY AVIATION', logo: '/logos/tay-aviation-logo.png', sector: 'aerospace' },
+  { name: 'ARİON İLAÇ', logo: '/logos/arion-logo.png', sector: 'pharmaceutical' }
+];
 
-export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: 'references' });
-  
-  const title = locale === 'tr' 
-    ? 'Referanslarımız - Başarılı Temiz Oda Projeleri | NEVAYS'
-    : 'Our References - Successful Cleanroom Projects | NEVAYS';
-    
-  const description = locale === 'tr'
-    ? 'ASELSAN, VALEO, ATABAY İLAÇ ve daha fazlası. 150+ başarılı temiz oda kurulum projemizi keşfedin.'
-    : 'ASELSAN, VALEO, ATABAY PHARMA and more. Discover our 150+ successful cleanroom installation projects.';
+// Sektör filtreleri
+const sectorFilters = [
+  { id: 'all', name: 'Tümü', count: references.length },
+  { id: 'pharmaceutical', name: 'İlaç ve Sağlık', count: references.filter(r => r.sector === 'pharmaceutical').length },
+  { id: 'defense', name: 'Savunma ve Havacılık', count: references.filter(r => ['defense', 'aerospace'].includes(r.sector)).length },
+  { id: 'electronics', name: 'Elektronik', count: references.filter(r => r.sector === 'electronics').length },
+  { id: 'automotive', name: 'Otomotiv', count: references.filter(r => r.sector === 'automotive').length },
+  { id: 'others', name: 'Diğer', count: references.filter(r => ['food', 'energy', 'medical'].includes(r.sector)).length }
+];
 
-  return {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      url: `https://nevays.com/${locale}/referanslar`,
-      siteName: 'NEVAYS',
-      locale: locale === 'tr' ? 'tr_TR' : 'en_US',
-      type: 'website',
-    },
-  };
-}
-
-const featuredProjects = [
+// Öne çıkan başarı hikayeleri (Case Studies)
+const caseStudies = [
   {
-    id: 'atabay-pharmaceutical',
-    title: 'ATABAY İLAÇ - GMP Üretim Tesisi',
-    category: 'İlaç Sanayii',
-    location: 'İstanbul, Türkiye',
-    year: '2023',
-    area: '1,200 m²',
-    description: 'EU GMP standartlarında Class C ve Class D temiz oda kompleksi. Oral katı dozaj formu üretim alanları için kapsamlı HVAC ve temiz oda kurulumu.',
-    image: '/images/projects/atabay-cleanroom.jpg',
-    features: [
-      'EU GMP Class C/D temiz odalar',
-      'HVAC sistemi ve HEPA filtrasyon',
-      'Basınç kademelendirme sistemi',
-      'Validasyon ve dokümantasyon'
-    ],
-    tags: ['GMP', 'İlaç Üretimi', 'Class C/D', 'HVAC'],
+    id: 'aselsan-case',
+    company: 'ASELSAN',
+    logo: '/logos/aselsan-logo.png',
+    title: 'ASELSAN - Mikroelektronik Üretim Tesisi ISO 7 Temiz Oda Projesi',
+    challenge: 'Yüksek hassasiyete sahip elektronik komponentlerin üretimi için statik kontrolün ve partikül seviyelerinin kritik olduğu bir alan yaratmak.',
+    solution: 'ESD zemin kaplaması, HEPA filtreli tavan sistemleri ve hassas nem kontrollü HVAC ünitelerini içeren anahtar teslim bir sistem kuruldu.',
+    results: ['%99.99 partikül kontrolü', 'Sıfır ESD hasarı', '2023 yılında teslim', '850 m² alan'],
+    image: '/images/case-studies/aselsan-cleanroom.jpg',
+    sector: 'defense'
+  },
+  {
+    id: 'atabay-case',
+    company: 'ATABAY İLAÇ',
+    logo: '/logos/atabay-logo.png',
+    title: 'ATABAY İLAÇ - EU GMP Standartlarında Katı Dozaj Üretim Kompleksi',
+    challenge: 'EU GMP gereksinimleri doğrultusunda Class C ve Class D seviyelerinde entegre temiz oda sistemlerinin kurulması.',
+    solution: 'Çapraz kontaminasyon riskini ortadan kaldıran basınç kademeleri, HEPA filtrasyon ve sürekli izleme sistemleri ile kapsamlı GMP uyumlu tesis.',
+    results: ['EU GMP onayı alındı', 'Class C/D sertifikasyonu', '1,200 m² tesis', '%100 validasyon başarısı'],
+    image: '/images/case-studies/atabay-cleanroom.jpg',
     sector: 'pharmaceutical'
   },
   {
-    id: 'aselsan-electronics',
-    title: 'ASELSAN - Elektronik Üretim Merkezi',
-    category: 'Savunma Sanayi',
-    location: 'Ankara, Türkiye',
-    year: '2023',
-    area: '800 m²',
-    description: 'Hassas elektronik komponent üretimi için ESD korumalı temiz oda ve test laboratuvarı sistemleri. Class 10,000 temizlik seviyesi.',
-    image: '/images/projects/aselsan-cleanroom.jpg',
-    features: [
-      'ESD korumalı temiz oda',
-      'Class 10,000 (ISO 7) seviyesi',
-      'Özel havalandırma sistemi',
-      'Test laboratuvarı kurulumu'
-    ],
-    tags: ['ESD Koruma', 'Elektronik', 'Class 10K', 'Test Lab'],
-    sector: 'electronics'
-  },
-  {
-    id: 'valeo-automotive',
-    title: 'VALEO - Otomotiv AR-GE Merkezi',
-    category: 'Otomotiv',
-    location: 'Bursa, Türkiye',
-    year: '2022',
-    area: '600 m²',
-    description: 'Otomotiv parçaları AR-GE çalışmaları için özel tasarım laboratuvar ve temiz oda sistemleri. İklim test odaları dahil.',
-    image: '/images/projects/valeo-cleanroom.jpg',
-    features: [
-      'AR-GE laboratuvarları',
-      'İklim test odaları',
-      'Kalite kontrol alanları',
-      'Özel HVAC sistemleri'
-    ],
-    tags: ['AR-GE', 'Otomotiv', 'Test Odaları', 'Kalite Kontrol'],
+    id: 'valeo-case',
+    company: 'VALEO',
+    logo: '/logos/valeo-logo.png',
+    title: 'VALEO - Otomotiv Bileşenleri AR-GE ve Test Merkezi',
+    challenge: 'Otomotiv parçalarının hassas test ve geliştirme çalışmaları için kontrollü çevresel koşullar ve temiz üretim alanları oluşturmak.',
+    solution: 'Çok zonlu iklim kontrol sistemleri, vibrasyon izolasyonu ve özel test ekipmanları entegrasyonu ile AR-GE odaklı temiz oda kompleksi.',
+    results: ['Çok parametreli test kabiliyeti', 'ISO standartlarına uygunluk', '600 m² AR-GE alanı', 'Enerji verimli sistem'],
+    image: '/images/case-studies/valeo-cleanroom.jpg',
     sector: 'automotive'
   },
   {
-    id: 'world-medicine',
-    title: 'WORLD MEDİCİNE - Steril Üretim',
-    category: 'İlaç Sanayii',
-    location: 'İstanbul, Türkiye',
-    year: '2022',
-    area: '450 m²',
-    description: 'Steril ilaç üretimi için GMP Grade A/B temiz oda sistemleri. Laminer hava akışlı kabinler ve isolatör sistemleri.',
-    image: '/images/projects/world-medicine-cleanroom.jpg',
-    features: [
-      'GMP Grade A/B sistemler',
-      'Steril üretim alanları',
-      'Laminer akış kabinleri',
-      'İzolatör entegrasyonu'
-    ],
-    tags: ['GMP Grade A/B', 'Steril Üretim', 'LAF', 'İzolatör'],
+    id: 'world-medicine-case',
+    company: 'WORLD MEDICINE',
+    logo: '/logos/world-medicine-logo.png',
+    title: 'WORLD MEDICINE - Steril İlaç Üretimi GMP Grade A/B Sistemleri',
+    challenge: 'Steril ilaç üretimi için en yüksek temizlik standartları olan Grade A ve Grade B seviyelerinde temiz oda sistemleri kurmak.',
+    solution: 'Laminer akış kabinleri, isolatör teknolojisi ve sürekli partikül monitoring ile entegre steril üretim ortamı tasarımı.',
+    results: ['Grade A/B sertifikasyonu', 'Steril üretim kapasitesi', '450 m² steril alan', 'İzolatör entegrasyonu'],
+    image: '/images/case-studies/world-medicine-cleanroom.jpg',
     sector: 'pharmaceutical'
-  },
-  {
-    id: 'turk-ilac',
-    title: 'TÜRK İLAÇ - Tablet Üretim Hattı',
-    category: 'İlaç Sanayii',
-    location: 'İstanbul, Türkiye',
-    year: '2021',
-    area: '300 m²',
-    description: 'Tablet üretim hattı için GMP uyumlu temiz oda ve destekleyici alanların kurulumu. Toz kontrolü ve özel havalandırma.',
-    image: '/images/projects/turk-ilac-cleanroom.jpg',
-    features: [
-      'Tablet üretim alanları',
-      'Toz kontrol sistemleri',
-      'GMP uyumlu tasarım',
-      'Özel havalandırma'
-    ],
-    tags: ['Tablet Üretimi', 'Toz Kontrol', 'GMP', 'İlaç'],
-    sector: 'pharmaceutical'
-  },
-  {
-    id: 'smart-solar',
-    title: 'SMART SOLAR - PV Panel Test Lab',
-    category: 'Enerji',
-    location: 'Ankara, Türkiye',
-    year: '2021',
-    area: '200 m²',
-    description: 'Fotovoltaik panel test ve kalite kontrol laboratuvarı. Kontrollü ortam koşulları ve özel test ekipmanları.',
-    image: '/images/projects/smart-solar-lab.jpg',
-    features: [
-      'PV panel test alanları',
-      'Kontrollü ortam koşulları',
-      'Kalite kontrol lab',
-      'Özel test ekipmanları'
-    ],
-    tags: ['PV Test', 'Kalite Kontrol', 'Enerji', 'Laboratuvar'],
-    sector: 'energy'
   }
 ];
 
-const sectors = [
-  { name: 'İlaç Sanayii', icon: FlaskConical, count: 45, color: 'bg-blue-500' },
-  { name: 'Elektronik', icon: Building2, count: 32, color: 'bg-purple-500' },
-  { name: 'Medikal Cihaz', icon: Award, count: 28, color: 'bg-green-500' },
-  { name: 'Otomotiv', icon: Building2, count: 22, color: 'bg-red-500' },
-  { name: 'Gıda', icon: FlaskConical, count: 18, color: 'bg-orange-500' },
-  { name: 'Ar-Ge', icon: Award, count: 15, color: 'bg-teal-500' }
-];
-
 export default function ReferencesPage() {
+  const [activeFilter, setActiveFilter] = useState('all');
+
+  const filteredReferences = activeFilter === 'all' 
+    ? references 
+    : activeFilter === 'others'
+      ? references.filter(ref => ['food', 'energy', 'medical'].includes(ref.sector))
+      : activeFilter === 'defense'
+        ? references.filter(ref => ['defense', 'aerospace'].includes(ref.sector))
+        : references.filter(ref => ref.sector === activeFilter);
+
   return (
-    <MainLayout>
-      {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 text-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Referanslarımız
-            </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-              150+ başarılı proje ile temiz oda teknolojilerinde güvenilir ortağınız
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+    <>
+      <Head>
+        <title>Güven Üzerine İnşa Edilen Projeler - NEVAYS Referansları</title>
+        <meta 
+          name="description" 
+          content="ASELSAN, VALEO, ATABAY İLAÇ ve daha fazlası. 150+ başarılı temiz oda kurulum projemizi ve başarı hikayelerimizi keşfedin." 
+        />
+        <meta property="og:title" content="Güven Üzerine İnşa Edilen Projeler - NEVAYS Referansları" />
+        <meta property="og:description" content="ASELSAN, VALEO, ATABAY İLAÇ ve daha fazlası. 150+ başarılı temiz oda kurulum projemizi ve başarı hikayelerimizi keşfedin." />
+        <meta property="og:url" content="https://nevays.com/tr/referanslar" />
+        <meta property="og:type" content="website" />
+      </Head>
+      <MainLayout>
+        {/* Hero Section */}
+        <section className="py-20 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 text-white overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <div className="text-4xl font-bold text-primary-600 mb-2">150+</div>
-              <div className="text-gray-600">Tamamlanan Proje</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary-600 mb-2">50+</div>
-              <div className="text-gray-600">Referans Firma</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary-600 mb-2">20+</div>
-              <div className="text-gray-600">Yıl Deneyim</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary-600 mb-2">98%</div>
-              <div className="text-gray-600">Müşteri Memnuniyeti</div>
+              <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6">
+                <Award className="w-4 h-4 mr-2" />
+                <span className="text-sm font-semibold">150+ Başarılı Proje</span>
+              </div>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                Güven Üzerine<br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-primary-200">
+                  İnşa Edilen Projeler
+                </span>
+              </h1>
+              <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed">
+                20+ yıllık deneyimimizle, Türkiye'nin önde gelen firmalarının güvenini kazanmış projelerimizi keşfedin. 
+                Her projede yaratığımız değer ve başardığımız sonuçlar.
+              </p>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Reference Logos Marquee */}
-      <ReferencesMarquee />
+        {/* Success Stories - Case Studies */}
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                🏆 Öne Çıkan Başarı Hikayeleri
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Sadece kimlerle çalıştığımızı değil, onlar için neleri başardığımızı da gösteriyoruz. 
+                İşte mühendislik yetkinliğimizi kanıtlayan vaka analizleri.
+              </p>
+            </div>
 
-      {/* Sectors Overview */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Sektörel Deneyimimiz
-            </h2>
-            <p className="text-xl text-gray-600">
-              Farklı sektörlerde gerçekleştirdiğimiz başarılı projeler
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {sectors.map((sector, index) => {
-              const Icon = sector.icon;
-              return (
-                <div key={index} className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className={`w-12 h-12 ${sector.color} rounded-lg flex items-center justify-center`}>
-                      <Icon className="h-6 w-6 text-white" />
-                    </div>
-                    <span className="text-2xl font-bold text-gray-400">{sector.count}</span>
-                  </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{sector.name}</h3>
-                  <p className="text-gray-600 text-sm">
-                    {sector.count} başarılı proje tamamlandı
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Projects */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Öne Çıkan Projelerimiz
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Gerçekleştirdiğimiz başarılı projelerden örnekler ve detayları
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12">
-            {featuredProjects.map((project, index) => (
-              <article
-                key={project.id}
-                className="group bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-500"
-              >
-                {/* Project Image */}
-                <div className="relative h-64 bg-gradient-to-br from-gray-100 to-gray-200">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <p className="text-gray-500 font-medium">{project.title} - Proje Görseli</p>
-                  </div>
-                  
-                  {/* Category Badge */}
-                  <div className="absolute top-4 left-4 bg-primary-600 text-white px-3 py-1 rounded-full">
-                    <span className="text-sm font-semibold">{project.category}</span>
-                  </div>
-                </div>
-
-                {/* Project Content */}
-                <div className="p-8">
-                  {/* Project Info */}
-                  <div className="flex items-center text-sm text-gray-500 mb-4 space-x-4">
-                    <div className="flex items-center">
-                      <MapPin className="h-4 w-4 mr-1" />
-                      {project.location}
-                    </div>
-                    <div className="flex items-center">
-                      <Calendar className="h-4 w-4 mr-1" />
-                      {project.year}
-                    </div>
-                    <div className="flex items-center">
-                      <Building2 className="h-4 w-4 mr-1" />
-                      {project.area}
-                    </div>
-                  </div>
-
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-primary-700 transition-colors">
-                    {project.title}
-                  </h3>
-                  
-                  <p className="text-gray-600 leading-relaxed mb-6">
-                    {project.description}
-                  </p>
-
-                  {/* Features */}
-                  <div className="mb-6">
-                    <h4 className="font-semibold text-gray-900 mb-3">Proje Özelikleri:</h4>
-                    <div className="grid grid-cols-1 gap-2">
-                      {project.features.map((feature, idx) => (
-                        <div key={idx} className="flex items-center text-sm text-gray-700">
-                          <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-3 flex-shrink-0" />
-                          {feature}
+            <div className="space-y-20">
+              {caseStudies.map((caseStudy, index) => (
+                <article 
+                  key={caseStudy.id}
+                  className={`grid lg:grid-cols-2 gap-12 items-center ${
+                    index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
+                  }`}
+                >
+                  {/* Case Study Content */}
+                  <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
+                    <div className="flex items-center mb-6">
+                      <div className="w-16 h-16 bg-gray-100 rounded-xl flex items-center justify-center mr-4 p-2">
+                        {/* Logo placeholder */}
+                        <div className="text-center">
+                          <div className="text-xs text-gray-500 font-medium">{caseStudy.company}</div>
+                          <div className="text-xs text-gray-400">LOGO</div>
                         </div>
-                      ))}
+                      </div>
+                      <div>
+                        <h3 className="text-2xl font-bold text-gray-900 mb-1">
+                          {caseStudy.company}
+                        </h3>
+                        <p className="text-primary-600 font-semibold text-sm">Başarı Hikayesi</p>
+                      </div>
+                    </div>
+
+                    <h4 className="text-xl font-bold text-gray-900 mb-4">
+                      {caseStudy.title}
+                    </h4>
+
+                    <div className="space-y-6">
+                      <div>
+                        <h5 className="font-semibold text-gray-900 mb-2 flex items-center">
+                          🎯 Zorluk (Challenge)
+                        </h5>
+                        <p className="text-gray-700 leading-relaxed">
+                          {caseStudy.challenge}
+                        </p>
+                      </div>
+
+                      <div>
+                        <h5 className="font-semibold text-gray-900 mb-2 flex items-center">
+                          🔧 NEVAYS'ın Çözümü (Solution)
+                        </h5>
+                        <p className="text-gray-700 leading-relaxed">
+                          {caseStudy.solution}
+                        </p>
+                      </div>
+
+                      <div>
+                        <h5 className="font-semibold text-gray-900 mb-3 flex items-center">
+                          📊 Sonuçlar (Results)
+                        </h5>
+                        <div className="grid grid-cols-2 gap-3">
+                          {caseStudy.results.map((result, idx) => (
+                            <div key={idx} className="flex items-center">
+                              <CheckCircle className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" />
+                              <span className="text-sm font-medium text-gray-800">{result}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
 
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-full border hover:bg-primary-50 hover:text-primary-700 transition-colors"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                  {/* Project Image */}
+                  <div className={index % 2 === 1 ? 'lg:col-start-1 lg:row-start-1' : ''}>
+                    <div className="relative h-96 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl overflow-hidden shadow-lg">
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="text-center">
+                          <Building2 className="h-16 w-16 text-gray-400 mx-auto mb-4" />
+                          <p className="text-gray-500 font-medium">
+                            {caseStudy.company} - Proje Görseli
+                          </p>
+                          <p className="text-gray-400 text-sm mt-2">
+                            Yüksek Çözünürlüklü Fotoğraf
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* All References - Filterable Gallery */}
+        <section className="py-20 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                📋 Tüm Referanslarımız
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Sektörlere göre filtreleyerek tüm referans firmalarımızı görüntüleyebilirsiniz
+              </p>
+            </div>
+
+            {/* Filter Buttons */}
+            <div className="flex flex-wrap justify-center gap-3 mb-12">
+              {sectorFilters.map((filter) => (
+                <button
+                  key={filter.id}
+                  onClick={() => setActiveFilter(filter.id)}
+                  className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                    activeFilter === filter.id
+                      ? 'bg-primary-600 text-white shadow-lg scale-105'
+                      : 'bg-white text-gray-700 hover:bg-primary-50 hover:text-primary-700 border border-gray-200'
+                  }`}
+                >
+                  {filter.name}
+                  <span className="ml-2 text-sm opacity-75">({filter.count})</span>
+                </button>
+              ))}
+            </div>
+
+            {/* References Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+              {filteredReferences.map((reference, index) => (
+                <div
+                  key={`${reference.name}-${index}`}
+                  className={`bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 hover:scale-105 flex items-center justify-center h-32 ${
+                    activeFilter !== 'all' && 
+                    (activeFilter === 'others' 
+                      ? !['food', 'energy', 'medical'].includes(reference.sector)
+                      : activeFilter === 'defense' 
+                        ? !['defense', 'aerospace'].includes(reference.sector)
+                        : reference.sector !== activeFilter
+                    ) ? 'opacity-30 pointer-events-none' : 'opacity-100'
+                  }`}
+                  style={{
+                    animation: activeFilter !== 'all' ? 'fadeIn 0.5s ease-in-out' : 'none'
+                  }}
+                >
+                  {/* Logo Placeholder */}
+                  <div className="text-center">
+                    <div className="w-12 h-12 bg-gray-100 rounded-lg mx-auto mb-2 flex items-center justify-center">
+                      <span className="text-xs text-gray-500 font-bold">LOGO</span>
+                    </div>
+                    <p className="text-xs font-semibold text-gray-800 leading-tight">
+                      {reference.name}
+                    </p>
                   </div>
                 </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+              ))}
+            </div>
 
-      {/* Customer Testimonials */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Müşteri Yorumları
+            {filteredReferences.length === 0 && (
+              <div className="text-center py-12">
+                <p className="text-gray-500">Bu kategoride henüz referans bulunmamaktadır.</p>
+              </div>
+            )}
+          </div>
+        </section>
+
+        {/* Stats and Trust Section */}
+        <section className="py-20 bg-white">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                🔢 Rakamlarla NEVAYS Güvenilirliği
+              </h2>
+              <p className="text-xl text-gray-600">
+                20+ yıllık deneyimimizin somut göstergeleri
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-4 gap-8">
+              <div className="text-center bg-gradient-to-b from-blue-50 to-white rounded-2xl p-8 border border-blue-100">
+                <div className="text-5xl font-black text-blue-600 mb-3">150+</div>
+                <div className="text-gray-700 font-semibold">Tamamlanan Proje</div>
+                <div className="text-sm text-gray-500 mt-1">2003'ten günümüze</div>
+              </div>
+              <div className="text-center bg-gradient-to-b from-green-50 to-white rounded-2xl p-8 border border-green-100">
+                <div className="text-5xl font-black text-green-600 mb-3">50+</div>
+                <div className="text-gray-700 font-semibold">Referans Firma</div>
+                <div className="text-sm text-gray-500 mt-1">Farklı sektörlerden</div>
+              </div>
+              <div className="text-center bg-gradient-to-b from-purple-50 to-white rounded-2xl p-8 border border-purple-100">
+                <div className="text-5xl font-black text-purple-600 mb-3">%98</div>
+                <div className="text-gray-700 font-semibold">Müşteri Memnuniyeti</div>
+                <div className="text-sm text-gray-500 mt-1">Geri bildirim anketleri</div>
+              </div>
+              <div className="text-center bg-gradient-to-b from-orange-50 to-white rounded-2xl p-8 border border-orange-100">
+                <div className="text-5xl font-black text-orange-600 mb-3">%100</div>
+                <div className="text-gray-700 font-semibold">Zamanında Teslim</div>
+                <div className="text-sm text-gray-500 mt-1">Son 5 yıl ortalaması</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-20 bg-gradient-to-r from-primary-600 to-primary-700 text-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-4xl font-bold mb-6">
+              🚀 Siz de Referanslarımız Arasına Katılmaya Hazır mısınız?
             </h2>
-            <p className="text-xl text-gray-600">
-              Projelerimiz hakkında müşterilerimizin görüşleri
+            <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+              Başarılı projelerimize bir yenisini eklemek için projenizi değerlendirmeye alabilir, 
+              size de aynı kalite ve güvenilirlikle hizmet verebiliriz.
             </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-100">
-              <div className="flex items-center mb-6">
-                <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mr-4">
-                  <Users className="h-8 w-8 text-gray-500" />
+            
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 mb-8">
+              <h3 className="text-2xl font-bold mb-6">
+                ⚡ Ücretsiz Proje Değerlendirmesi
+              </h3>
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="text-center">
+                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <CheckCircle className="h-6 w-6" />
+                  </div>
+                  <h4 className="font-semibold mb-2">Teknik Fizibilite</h4>
+                  <p className="text-sm text-white/80">Projenizin teknik gereksinimlerini analiz ediyoruz</p>
                 </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900">ATABAY İLAÇ</h4>
-                  <p className="text-gray-600 text-sm">Proje Müdürü</p>
+                <div className="text-center">
+                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <Award className="h-6 w-6" />
+                  </div>
+                  <h4 className="font-semibold mb-2">Maliyet Analizi</h4>
+                  <p className="text-sm text-white/80">Şeffaf ve rekabetçi fiyat teklifi hazırlıyoruz</p>
+                </div>
+                <div className="text-center">
+                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <Building2 className="h-6 w-6" />
+                  </div>
+                  <h4 className="font-semibold mb-2">Zaman Planlaması</h4>
+                  <p className="text-sm text-white/80">Proje takvimi ve kilometre taşlarını belirliyoruz</p>
                 </div>
               </div>
-              <blockquote className="text-gray-700 italic leading-relaxed">
-                "NEVAYS ile çalışmaktan çok memnunuz. GMP gereksinimlerini mükemmel şekilde anlayıp, 
-                projemizi zamanında ve bütçe dahilinde tamamladılar. Profesyonel yaklaşımları için teşekkürler."
-              </blockquote>
             </div>
 
-            <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-100">
-              <div className="flex items-center mb-6">
-                <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mr-4">
-                  <Users className="h-8 w-8 text-gray-500" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900">ASELSAN</h4>
-                  <p className="text-gray-600 text-sm">Teknik Müdür</p>
-                </div>
-              </div>
-              <blockquote className="text-gray-700 italic leading-relaxed">
-                "Elektronik üretim tesisimiz için hassas temiz oda çözümü arıyorduk. NEVAYS'ın teknik 
-                uzmanlığı ve kaliteli işçiliği beklentilerimizi fazlasıyla karşıladı."
-              </blockquote>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a 
+                href="tel:02123456789"
+                className="bg-white text-primary-700 hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold transition-colors text-lg flex items-center justify-center"
+              >
+                📞 Proje Danışmanlığı
+              </a>
+              <a 
+                href="https://wa.me/905551234567"
+                className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg flex items-center justify-center"
+              >
+                📱 WhatsApp ile Bilgi Al
+              </a>
+              <a 
+                href="mailto:projeler@nevays.com"
+                className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary-700 px-8 py-4 rounded-lg font-semibold transition-colors text-lg flex items-center justify-center"
+              >
+                ✉️ Detaylı Proje Teklifi
+              </a>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-primary-900 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">
-            Siz de Referanslarımız Arasına Katılın
-          </h2>
-          <p className="text-xl text-primary-100 mb-8">
-            Projeniz için ücretsiz keşif ve teknik danışmanlık hizmeti
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="tel:02123456789"
-              className="bg-white text-primary-900 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-colors"
-            >
-              📞 Hemen Arayın
-            </a>
-            <a 
-              href="https://wa.me/905551234567"
-              className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
-            >
-              📱 WhatsApp Mesaj
-            </a>
-            <a 
-              href="mailto:info@nevays.com"
-              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary-900 px-8 py-3 rounded-lg font-semibold transition-colors"
-            >
-              ✉️ Proje Detayları
-            </a>
-          </div>
-        </div>
-      </section>
-    </MainLayout>
+        </section>
+      </MainLayout>
+    </>
   );
 }

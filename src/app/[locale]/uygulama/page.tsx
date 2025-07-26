@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import MainLayout from '@/components/layout/main-layout';
-import { Building2, FlaskConical, Wind, Settings } from 'lucide-react';
+import { Building2, FlaskConical, Wind, Settings, Cpu, ArrowRight, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
 
 interface Props {
@@ -12,12 +12,12 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
   const t = await getTranslations({ locale, namespace: 'applications' });
   
   const title = locale === 'tr' 
-    ? 'Uygulamalarımız - Temiz Oda ve Laboratuvar Kurulumu | NEVAYS'
-    : 'Our Applications - Cleanroom and Laboratory Installation | NEVAYS';
+    ? 'Mühendislik Çözümlerimiz - Anahtar Teslim Temiz Oda Projeleri | NEVAYS'
+    : 'Our Engineering Solutions - Turnkey Cleanroom Projects | NEVAYS';
     
   const description = locale === 'tr'
-    ? 'Temiz oda kurulumu, laboratuvar kurulumu, HVAC sistemleri ve laminer hava akışlı kabinler. Anahtar teslim proje çözümleri.'
-    : 'Cleanroom installation, laboratory installation, HVAC systems and laminar air flow cabinets. Turnkey project solutions.';
+    ? 'Anahtar teslim temiz oda kurulumu, laboratuvar sistemleri, HVAC uygulamaları, LAF kabinleri ve modüler temiz oda çözümleri. Tasarımdan validasyona.'
+    : 'Turnkey cleanroom installation, laboratory systems, HVAC applications, LAF cabinets and modular cleanroom solutions. From design to validation.';
 
   return {
     title,
@@ -35,64 +35,39 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
 
 const applications = [
   {
-    title: 'Temiz Oda Kurulumu',
-    description: 'GMP ve ISO 14644 standartlarında anahtar teslim temiz oda sistemleri. İlaç, elektronik ve medikal sektörlerde özel çözümler.',
+    title: 'Anahtar Teslim Temiz Oda Kurulumu',
+    description: 'ISO 14644 standartlarında partikül kontrolü ve çapraz bulaşma riskini ortadan kaldıran bütüncül mühendislik çözümleri. Farmasötik ve elektronik sektörlerde kritik üretim alanları için tasarımdan validasyona kadar tam entegrasyon.',
     icon: Building2,
-    features: [
-      'ISO Class 5-8 temizlik seviyeleri',
-      'GMP uyumlu tasarım',
-      'Modüler panel sistemleri',
-      'HEPA/ULPA filtrasyon',
-      'Basınç kademelendirme',
-      'Validasyon ve dokümantasyon'
-    ],
-    industries: ['İlaç Sanayii', 'Elektronik', 'Medikal Cihaz', 'Gıda'],
+    technicalKeywords: ['ISO 14644', 'partikül kontrolü', 'çapraz bulaşma riski', 'GMP uyumlu sistemler'],
     href: '/applications/clean-room-installation'
   },
   {
-    title: 'Laboratuvar Kurulumu',
-    description: 'Analiz ve araştırma laboratuvarları için kapsamlı mühendislik çözümleri. Özel tasarım ve entegre sistemler.',
+    title: 'Anahtar Teslim Laboratuvar Kurulumu', 
+    description: 'Araştırma ve analiz laboratuvarları için kapsamlı mühendislik disiplinlerinin entegrasyonu. Gas dağıtım sistemlerinden fume hood kurulumuna, elektrik altyapısından güvenlik sistemlerine kadar tüm bileşenlerin koordineli kurulumu.',
     icon: FlaskConical,
-    features: [
-      'Lab furniture sistemleri',
-      'Fume hood kurulumu',
-      'Gas dağıtım sistemleri',
-      'Elektrik altyapısı',
-      'Su arıtma sistemleri',
-      'Güvenlik sistemleri'
-    ],
-    industries: ['Ar-Ge Merkezleri', 'Üniversiteler', 'Kalite Kontrol', 'Analiz Lab.'],
+    technicalKeywords: ['laboratuvar altyapısı', 'fume hood sistemleri', 'gas dağıtım', 'güvenlik protokolleri'],
     href: '/applications/laboratory-installation'
   },
   {
-    title: 'HVAC Sistemleri',
-    description: 'Temiz oda ve laboratuvarlar için özel tasarlanmış havalandırma, klimatizasyon ve filtrasyon sistemleri.',
-    icon: Wind,
-    features: [
-      'Merkezi klima sistemleri',
-      'Hava filtrasyon üniteleri',
-      'Enerji geri kazanım',
-      'BMS entegrasyonu',
-      'IoT monitoring',
-      'Bakım ve servis'
-    ],
-    industries: ['Hastaneler', 'Üretim Tesisleri', 'Ofis Binaları', 'Veri Merkezleri'],
+    title: 'Hassas İklimlendirme HVAC Uygulamaları',
+    description: 'Enerji verimliliği ve hassas iklimlendirme gereksinimlerini karşılayan GMP uyumlu HVAC sistemleri. Merkezi klima santrallerinden özel filtrasyon ünitelerine, tüm sistem bileşenlerinin optimum performans için tasarlanması ve kurulumu.',
+    icon: Wind, 
+    technicalKeywords: ['enerji verimliliği', 'hassas iklimlendirme', 'GMP uyumlu sistemler', 'merkezi klima'],
     href: '/applications/hvac'
   },
   {
-    title: 'Laminer Hava Akışlı Kabinler',
-    description: 'Yüksek kaliteli laminer akış kabinleri ve biyogüvenlik kabinleri. Steril çalışma alanları için özel çözümler.',
+    title: 'LAF (Laminer Akış) Kabin Sistemleri',
+    description: 'Steril çalışma alanları için yüksek performanslı laminer hava akışlı kabinler ve biyogüvenlik kabinleri. Mikrobiyoloji laboratuvarları ve farmasötik üretim alanlarında kritik kontaminasyon kontrolü sağlayan özel mühendislik çözümleri.',
     icon: Settings,
-    features: [
-      'Dikey/Yatay laminer akış',
-      'Biyogüvenlik kabinleri (BSC)',
-      'HEPA/ULPA filtrasyon',
-      'ISO 5 temizlik sınıfı',
-      'Düşük gürültü seviyesi',
-      'EN 12469 standardı'
-    ],
-    industries: ['Mikrobiyoloji', 'Hücre Kültürü', 'Farmasötik', 'Araştırma'],
+    technicalKeywords: ['laminer hava akışı', 'biyogüvenlik kabinleri', 'steril çalışma alanları', 'kontaminasyon kontrolü'],
     href: '/applications/laf-cabin'
+  },
+  {
+    title: 'Modüler Temiz Oda Sistemleri',
+    description: 'Esnek ve hızlı kurulum imkanı sunan modüler temiz oda çözümleri. Değişken üretim ihtiyaçlarına uyum sağlayan, demonte edilebilir panel sistemleri ile minimum kesinti süresinde maksimum verimlilik. AR-GE merkezleri ve pilot üretim tesisleri için ideal.',
+    icon: Cpu,
+    technicalKeywords: ['modüler sistem', 'esnek kurulum', 'demonte edilebilir', 'pilot üretim'],
+    href: '/applications/modular-cleanroom'
   }
 ];
 
@@ -103,20 +78,43 @@ export default function ApplicationsPage() {
       <section className="py-20 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 text-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Uygulamalarımız
+            <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6">
+              <CheckCircle className="w-4 h-4 mr-2" />
+              <span className="text-sm font-semibold">Anahtar Teslim Proje Kabiliyeti</span>
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+              Mühendislik<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-primary-200">
+                Çözümlerimiz
+              </span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-              Temiz oda teknolojilerinde kapsamlı çözümler sunarak, projenizin her aşamasında yanınızdayız
+            <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed">
+              Tek tek hizmetler değil; tasarımdan validasyona kadar tüm süreci yöneten, 
+              bütüncül mühendislik disiplinlerinin entegrasyonu
             </p>
           </div>
         </div>
       </section>
 
+      {/* Introduction Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+            Anahtar Teslim Proje Yaklaşımımız
+          </h2>
+          <p className="text-xl text-gray-600 leading-relaxed">
+            NEVAYS, sadece ekipman tedarikçisi değil; <strong>mühendislik disiplinlerinin entegrasyonu</strong> ile 
+            projenizin her aşamasını koordine eden, <strong>anahtar teslim proje</strong> kabiliyetine sahip 
+            bütüncül bir teknoloji ortağıdır. <strong>Tasarım, kurulum ve validasyon</strong> süreçlerinin 
+            tamamında tek noktadan sorumluluk alırız.
+          </p>
+        </div>
+      </section>
+
       {/* Applications Grid */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
             {applications.map((app, index) => {
               const Icon = app.icon;
               return (
@@ -124,56 +122,57 @@ export default function ApplicationsPage() {
                   key={app.title}
                   className="group bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:scale-[1.02]"
                 >
-                  {/* Header */}
-                  <div className="bg-gradient-to-r from-primary-600 to-primary-700 p-8 text-white">
-                    <div className="flex items-center mb-4">
-                      <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mr-4">
-                        <Icon className="h-8 w-8 text-white" />
+                  {/* Visual Header with Gradient Background */}
+                  <div className="relative h-64 bg-gradient-to-br from-primary-50 to-primary-100 overflow-hidden">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center">
+                        <Icon className="h-20 w-20 text-primary-600 mx-auto mb-4" />
+                        <p className="text-primary-700 font-medium text-sm">
+                          {app.title} - Sistem Görseli
+                        </p>
                       </div>
-                      <h2 className="text-2xl font-bold">{app.title}</h2>
                     </div>
-                    <p className="text-white/90 leading-relaxed">{app.description}</p>
+                    
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 bg-primary-600/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                      <div className="text-center text-white">
+                        <ArrowRight className="h-12 w-12 mx-auto mb-2" />
+                        <p className="font-semibold">Detayları İncele</p>
+                      </div>
+                    </div>
                   </div>
 
                   {/* Content */}
                   <div className="p-8">
-                    {/* Features */}
-                    <div className="mb-8">
-                      <h3 className="text-lg font-semibold text-gray-900 mb-4">Özellikler</h3>
-                      <div className="grid grid-cols-1 gap-3">
-                        {app.features.map((feature, idx) => (
-                          <div key={idx} className="flex items-center">
-                            <div className="w-2 h-2 bg-primary-600 rounded-full mr-3 flex-shrink-0" />
-                            <span className="text-gray-700 text-sm">{feature}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-primary-700 transition-colors">
+                      {app.title}
+                    </h3>
+                    
+                    <p className="text-gray-600 leading-relaxed mb-6">
+                      {app.description}
+                    </p>
 
-                    {/* Industries */}
-                    <div className="mb-8">
-                      <h3 className="text-lg font-semibold text-gray-900 mb-4">Uygulama Alanları</h3>
+                    {/* Technical Keywords */}
+                    <div className="mb-6">
                       <div className="flex flex-wrap gap-2">
-                        {app.industries.map((industry, idx) => (
+                        {app.technicalKeywords.map((keyword, idx) => (
                           <span
                             key={idx}
-                            className="px-3 py-1 bg-primary-50 text-primary-700 text-sm rounded-full border border-primary-200"
+                            className="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-full border"
                           >
-                            {industry}
+                            {keyword}
                           </span>
                         ))}
                       </div>
                     </div>
 
-                    {/* CTA */}
+                    {/* CTA Button */}
                     <Link
                       href={app.href}
-                      className="inline-flex items-center px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 group"
+                      className="inline-flex items-center w-full justify-center px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-all duration-300 group-hover:scale-105"
                     >
-                      <span className="mr-2">Detayları İncele</span>
-                      <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
+                      <span className="mr-2">Daha Fazla Bilgi Al</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </div>
                 </div>
@@ -224,31 +223,33 @@ export default function ApplicationsPage() {
       {/* CTA Section */}
       <section className="py-16 bg-primary-900 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">
-            Projeniz İçin Ücretsiz Danışmanlık
-          </h2>
-          <p className="text-xl text-primary-100 mb-8">
-            Uzman ekibimiz, ihtiyaçlarınıza en uygun çözümü tasarlamak için hazır
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="tel:02123456789"
-              className="bg-white text-primary-900 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-colors"
-            >
-              📞 Hemen Arayın
-            </a>
-            <a 
-              href="https://wa.me/905551234567"
-              className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
-            >
-              📱 WhatsApp
-            </a>
-            <Link 
-              href="/contact"
-              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary-900 px-8 py-3 rounded-lg font-semibold transition-colors"
-            >
-              ✉️ İletişim Formu
-            </Link>
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+            <h2 className="text-3xl font-bold mb-4">
+              İlgili Projeleri İnceleyin ve Detaylı Bilgi Alın
+            </h2>
+            <p className="text-xl text-primary-100 mb-8">
+              Mühendislik çözümlerimiz hakkında <strong>anahtar teslim proje</strong> deneyimimizi keşfedin
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a 
+                href="tel:02123456789"
+                className="bg-white text-primary-900 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-colors"
+              >
+                📞 Mühendislik Danışmanlığı
+              </a>
+              <a 
+                href="https://wa.me/905551234567"
+                className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
+              >
+                📱 WhatsApp Proje Bilgisi
+              </a>
+              <Link 
+                href="/referanslar"
+                className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary-900 px-8 py-3 rounded-lg font-semibold transition-colors"
+              >
+                🏗️ Referans Projeler
+              </Link>
+            </div>
           </div>
         </div>
       </section>

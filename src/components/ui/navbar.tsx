@@ -110,7 +110,7 @@ export const navigationItems: NavItem[] = [
   { name: 'production', url: '/uretim', icon: Factory, translationKey: 'production' },
   { name: 'applications', url: '/uygulama', icon: Settings, translationKey: 'applications' },
   { name: 'products', url: '/urunler', icon: Package, translationKey: 'products' },
-  { name: 'cleanroom', url: '/temiz-oda', icon: Shield, translationKey: 'cleanroom' },
+  { name: 'cleanroom', url: '/temiz-oda', icon: Shield, translationKey: 'cleanRoom' },
   { name: 'references', url: '/referanslar', icon: Users, translationKey: 'references' },
   { name: 'blog', url: '/blog', icon: BookOpen, translationKey: 'blog' },
   { name: 'catalogs', url: '/kataloglar', icon: FolderOpen, translationKey: 'catalogs' },

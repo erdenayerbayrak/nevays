@@ -12,17 +12,17 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
   const t = await getTranslations({ locale, namespace: 'cleanroom' });
   
   const title = locale === 'tr' 
-    ? 'Temiz Oda Nedir? GMP ve ISO 14644 Rehberi | NEVAYS'
-    : 'What is a Cleanroom? GMP and ISO 14644 Guide | NEVAYS';
+    ? 'NEVAYS Temiz Oda Bilgi Merkezi - GMP, ISO 14644, Uzman İçerikleri'
+    : 'NEVAYS Cleanroom Knowledge Center - GMP, ISO 14644, Expert Content';
     
   const description = locale === 'tr'
-    ? 'Temiz oda nedir, GMP nedir, ISO 14644 standartları hakkında kapsamlı bilgi. Temiz oda sınıfları, kurulum rehberi ve uzman tavsiyeleri.'
-    : 'What is a cleanroom, what is GMP, comprehensive information about ISO 14644 standards. Cleanroom classes, installation guide and expert advice.';
+    ? 'Türkiye\'nin en kapsamlı temiz oda bilgi merkezi. GMP, ISO 14644, steril alan, modüler temiz oda ve temiz oda yönetmeliği konularında uzman içerikleri.'
+    : 'Turkey\'s most comprehensive cleanroom knowledge center. Expert content on GMP, ISO 14644, sterile areas, modular cleanrooms and cleanroom regulations.';
 
   return {
     title,
     description,
-    keywords: 'temiz oda nedir, GMP nedir, ISO 14644, temiz oda sınıfları, cleanroom, temiz oda kurulumu, farmasötik temiz oda',
+    keywords: 'temiz oda nedir, temiz oda sistemleri, temiz oda sınıfları, GMP nedir, GMP sertifikası, GMP belgesi, ISO 14644, ISO 14644-1, steril alan nedir, modüler temiz oda, temiz oda yönetmeliği, temiz oda denetim',
     openGraph: {
       title,
       description,
@@ -34,84 +34,81 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
   };
 }
 
-const knowledgeTopics = [
+// Konu kümeleri (Topic Clusters) stratejisi ile yeniden yapılandırıldı
+const knowledgeCategories = [
   {
-    title: 'Temiz Oda Nedir?',
-    description: 'Temiz oda tanımı, çalışma prensipleri ve temel özellikler hakkında kapsamlı bilgi.',
-    icon: Shield,
-    content: [
-      'Kontrollü ortam tanımı',
-      'Partikül kontrol sistemleri',
-      'Hava akış prensipleri',
-      'Basınç kademelendirme',
-      'Sıcaklık ve nem kontrolü'
-    ],
-    slug: 'temiz-oda-nedir'
+    title: 'Temel Kavramlar',
+    description: 'Temiz oda teknolojisinin temel prensipleri ve tanımları',
+    topics: [
+      {
+        title: 'Temiz Oda Nedir ve Temiz Oda Sistemleri',
+        description: 'Temiz oda tanımı, çalışma prensipleri ve sistem bileşenleri hakkında kapsamlı rehber. Kontrollü ortam teknolojisi ve uygulama alanları.',
+        icon: Shield,
+        readTime: '8 dakika',
+        keywords: ['temiz oda nedir', 'temiz oda sistemleri', 'kontrollü ortam'],
+        slug: 'temiz-oda-nedir-sistemleri'
+      },
+      {
+        title: 'Temiz Oda Sınıfları ve Uygulama Alanları',
+        description: 'ISO 14644 ve Federal Standard 209E\'ye göre temiz oda sınıflandırması. Class 1\'den ISO 9\'a kadar tüm sınıflar ve sektörel uygulamalar.',
+        icon: Info,
+        readTime: '6 dakika',
+        keywords: ['temiz oda sınıfları', 'ISO sınıflandırma', 'Class 100'],
+        slug: 'temiz-oda-siniflari'
+      },
+      {
+        title: 'Steril Alan Nedir - Farklar ve Uygulamalar',
+        description: 'Steril alan ile temiz oda arasındaki farklar, sterilizasyon teknikleri ve farmasötik sektördeki kritik uygulamalar.',
+        icon: CheckCircle,
+        readTime: '5 dakika',
+        keywords: ['steril alan nedir', 'sterilizasyon', 'aseptik ortam'],
+        slug: 'steril-alan-nedir'
+      }
+    ]
   },
   {
-    title: 'GMP (İyi Üretim Uygulamaları)',
-    description: 'Good Manufacturing Practice standartları ve farmasötik sektördeki uygulamaları.',
-    icon: CheckCircle,
-    content: [
-      'GMP temel prensipleri',
-      'Farmasötik GMP gereksinimleri',
-      'Dokümantasyon sistemi',
-      'Personel eğitimi',
-      'Validasyon süreçleri'
-    ],
-    slug: 'gmp-nedir'
+    title: 'Standartlar ve Yönetmelikler',
+    description: 'Ulusal ve uluslararası standartlar, sertifikasyon süreçleri',
+    topics: [
+      {
+        title: 'GMP Standartı ve Sertifikasyon Süreçleri',
+        description: 'GMP nedir, GMP sertifikası ve GMP belgesi nasıl alınır? İyi üretim uygulamaları standartları ve farmasötik sektördeki gereksinimleri.',
+        icon: CheckCircle,
+        readTime: '10 dakika',
+        keywords: ['GMP nedir', 'GMP sertifikası', 'GMP belgesi', 'İyi Üretim Uygulamaları'],
+        slug: 'gmp-standartlari-sertifikasyon'
+      },
+      {
+        title: 'ISO 14644 ve ISO 14644-1 Standartları',
+        description: 'Uluslararası temiz oda standartlarının detaylı analizi. ISO 14644-1 sınıflandırma sistemi, test yöntemleri ve uygulamalı örnekler.',
+        icon: BookOpen,
+        readTime: '12 dakika',
+        keywords: ['ISO 14644', 'ISO 14644-1', 'temiz oda standartları'],
+        slug: 'iso-14644-standartlari'
+      },
+      {
+        title: 'Temiz Oda Yönetmeliği ve Denetim Süreçleri',
+        description: 'Türkiye\'deki temiz oda yönetmelikleri, denetim gereksinimleri ve uygunluk değerlendirme süreçleri. Bakınlık kontrollerinden sertifikasyona.',
+        icon: HelpCircle,
+        readTime: '7 dakika',
+        keywords: ['temiz oda yönetmeliği', 'temiz oda denetim', 'uygunluk değerlendirme'],
+        slug: 'temiz-oda-yonetmeligi-denetim'
+      }
+    ]
   },
   {
-    title: 'ISO 14644 Standartları',
-    description: 'Uluslararası temiz oda sınıflandırma standartları ve uygulamaları.',
-    icon: BookOpen,
-    content: [
-      'ISO 14644-1 sınıflandırma',
-      'Test ve izleme yöntemleri',
-      'Tasarım kriterleri',
-      'Operasyonel gereksinimler',
-      'Performans kriterleri'
-    ],
-    slug: 'iso-14644-standartlari'
-  },
-  {
-    title: 'Temiz Oda Sınıfları',
-    description: 'ISO ve Federal Standard 209E göre temiz oda sınıflandırması ve uygulamaları.',
-    icon: Info,
-    content: [
-      'Class 1-100,000 sınıfları',
-      'Partikül sayım limitleri',
-      'Uygulama alanları',
-      'Seçim kriterleri',
-      'Maliyet analizi'
-    ],
-    slug: 'temiz-oda-siniflari'
-  },
-  {
-    title: 'HVAC Sistemleri',
-    description: 'Temiz oda HVAC sistemleri, hava filtrasyonu ve klimatizasyon çözümleri.',
-    icon: Shield,
-    content: [
-      'Hava işleme üniteleri',
-      'HEPA/ULPA filtrasyon',
-      'Enerji verimliliği',
-      'Bakım ve işletme',
-      'Sistem entegrasyonu'
-    ],
-    slug: 'hvac-sistemleri'
-  },
-  {
-    title: 'Validasyon ve Testler',
-    description: 'Temiz oda validasyon süreçleri, testler ve sertifikasyon işlemleri.',
-    icon: HelpCircle,
-    content: [
-      'IQ/OQ/PQ protokolleri',
-      'Partikül sayım testleri',
-      'Hava akış ölçümleri',
-      'Basınç testleri',
-      'Yıllık validasyonlar'
-    ],
-    slug: 'validasyon-testler'
+    title: 'Uygulama ve Teknoloji',
+    description: 'Modüler sistemler, tasarım ve kurulum teknolojileri',
+    topics: [
+      {
+        title: 'Modüler Temiz Oda Sistemleri',
+        description: 'Modüler temiz oda avantajları, kurulum süreçleri ve maliyet analizi. Esnek tasarım çözümleri ve hızlı kurulum teknikleri.',
+        icon: Shield,
+        readTime: '9 dakika',
+        keywords: ['modüler temiz oda', 'esnek tasarım', 'hızlı kurulum'],
+        slug: 'moduler-temiz-oda-sistemleri'
+      }
+    ]
   }
 ];
 
@@ -148,74 +145,110 @@ export default function CleanroomPage() {
       <section className="py-20 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 text-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Temiz Oda Bilgi Merkezi
+            <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6">
+              <BookOpen className="w-4 h-4 mr-2" />
+              <span className="text-sm font-semibold">NEVAYS Bilgi Merkezi</span>
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+              Temiz Oda<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-primary-200">
+                Bilgi Merkezi
+              </span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-              GMP, ISO 14644 ve temiz oda teknolojileri hakkında uzman içerikleri
+            <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed">
+              Türkiye\'nin en kapsamlı temiz oda bilgi kaynağı. Sektörde otorite olan NEVAYS uzmanlarından 
+              GMP, ISO 14644 ve temiz oda teknolojileri hakkında derinlemesine içerikler.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Knowledge Topics Grid */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Temiz Oda Teknolojileri Rehberi
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Temiz oda tasarımı ve kurulumu hakkında bilmeniz gereken her şey
-            </p>
-          </div>
+      {/* Introduction */}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+            Konu Kümeleri ile Düzenlenmiş Kapsamlı İçerikler
+          </h2>
+          <p className="text-xl text-gray-600 leading-relaxed">
+            Her konu, birbiriyle ilişkili makalelerle desteklenerek size en kapsamlı bilgiyi sunar. 
+            Temiz oda projeleriniz için ihtiyacınız olan tüm bilgiler tek bir merkezde.
+          </p>
+        </div>
+      </section>
 
-          <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
-            {knowledgeTopics.map((topic, index) => {
-              const Icon = topic.icon;
-              return (
-                <article
-                  key={topic.title}
-                  className="group bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:scale-[1.02]"
-                >
-                  {/* Header */}
-                  <div className="bg-gradient-to-r from-gray-50 to-gray-100 p-6">
-                    <div className="flex items-center mb-3">
-                      <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mr-4">
-                        <Icon className="h-6 w-6 text-primary-600" />
+      {/* Knowledge Categories */}
+      {knowledgeCategories.map((category, categoryIndex) => (
+        <section key={category.title} className={`py-20 ${categoryIndex % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                {category.title}
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                {category.description}
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
+              {category.topics.map((topic, topicIndex) => {
+                const Icon = topic.icon;
+                return (
+                  <article
+                    key={topic.title}
+                    className="group bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:scale-[1.02]"
+                  >
+                    {/* Header with Reading Time */}
+                    <div className="bg-gradient-to-r from-primary-50 to-primary-100 p-6">
+                      <div className="flex items-start justify-between mb-3">
+                        <div className="flex items-center">
+                          <div className="w-12 h-12 bg-primary-200 rounded-xl flex items-center justify-center mr-3">
+                            <Icon className="h-6 w-6 text-primary-700" />
+                          </div>
+                          <div className="flex-1">
+                            <div className="flex items-center mb-1">
+                              <span className="px-2 py-1 bg-primary-600 text-white text-xs font-medium rounded-full">
+                                {topic.readTime}
+                              </span>
+                            </div>
+                            <h3 className="text-lg font-bold text-gray-900 group-hover:text-primary-700 transition-colors leading-tight">
+                              {topic.title}
+                            </h3>
+                          </div>
+                        </div>
                       </div>
-                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary-700 transition-colors">
-                        {topic.title}
-                      </h3>
+                      <p className="text-gray-700 text-sm leading-relaxed">{topic.description}</p>
                     </div>
-                    <p className="text-gray-600 text-sm leading-relaxed">{topic.description}</p>
-                  </div>
 
-                  {/* Content */}
-                  <div className="p-6">
-                    <ul className="space-y-2 mb-6">
-                      {topic.content.map((item, idx) => (
-                        <li key={idx} className="flex items-center text-sm text-gray-700">
-                          <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-3 flex-shrink-0" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
+                    {/* Keywords and CTA */}
+                    <div className="p-6">
+                      <div className="mb-4">
+                        <div className="flex flex-wrap gap-2">
+                          {topic.keywords.map((keyword, idx) => (
+                            <span
+                              key={idx}
+                              className="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-md border"
+                            >
+                              {keyword}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
 
-                    <Link
-                      href={`/temiz-oda/${topic.slug}`}
-                      className="inline-flex items-center text-primary-600 hover:text-primary-700 font-semibold text-sm transition-colors group-hover:translate-x-1"
-                    >
-                      Detayını Oku
-                      <ArrowRight className="w-4 h-4 ml-1" />
-                    </Link>
-                  </div>
-                </article>
-              );
-            })}
+                      <Link
+                        href={`/bilgi-merkezi/${topic.slug}`}
+                        className="w-full inline-flex items-center justify-center px-4 py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-all duration-300 group-hover:scale-105"
+                      >
+                        <span className="mr-2">Makaleyi Oku</span>
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </Link>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ))}
 
       {/* Cleanroom Classes Table */}
       <section className="py-20 bg-gray-50">
@@ -274,80 +307,148 @@ export default function CleanroomPage() {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Sıkça Sorulan Sorular
-            </h2>
-            <p className="text-xl text-gray-600">
-              Temiz oda projeleri hakkında merak edilenler
-            </p>
-          </div>
-
-          <div className="space-y-6">
-            {faqItems.map((faq, index) => (
-              <div key={index} className="bg-gray-50 rounded-xl p-6 border border-gray-100">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center">
-                  <HelpCircle className="w-5 h-5 text-primary-600 mr-2 flex-shrink-0" />
-                  {faq.question}
-                </h3>
-                <p className="text-gray-700 leading-relaxed pl-7">
-                  {faq.answer}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Expert Consultation CTA */}
-      <section className="py-20 bg-gradient-to-r from-primary-600 to-primary-700 text-white">
+      {/* Search and Navigation Section */}
+      <section className="py-20 bg-gradient-to-r from-gray-50 to-gray-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-            <h2 className="text-3xl font-bold mb-4">
-              🎯 Projeniz İçin Uzman Danışmanlığı
-            </h2>
-            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Temiz oda tasarımı ve kurulumu konularında 20+ yıl deneyimli uzmanlarımızla 
-              ücretsiz görüşme yapabilirsiniz.
-            </p>
-            
-            <div className="grid md:grid-cols-3 gap-6 mb-8">
-              <div className="bg-white/10 rounded-xl p-4">
-                <h3 className="font-semibold mb-2">📋 Teknik Analiz</h3>
-                <p className="text-sm text-white/80">İhtiyaç analizi ve fizibilite çalışması</p>
+          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+            🔍 Aradığınızı Bulamadınız mı?
+          </h2>
+          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            Bilgi merkezimizde yer almayan özel sorularınız için uzmanlarımızla doğrudan iletişime geçebilirsiniz.
+          </p>
+          
+          <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-lg">
+            <h3 className="text-xl font-semibold text-gray-900 mb-4">
+              🎯 Uzman Desteği Alın
+            </h3>
+            <div className="grid md:grid-cols-3 gap-6 mb-6">
+              <div className="text-center">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <HelpCircle className="h-6 w-6 text-blue-600" />
+                </div>
+                <h4 className="font-semibold text-gray-900 mb-1">Teknik Danışmanlık</h4>
+                <p className="text-sm text-gray-600">Proje özeli sorularınız</p>
               </div>
-              <div className="bg-white/10 rounded-xl p-4">
-                <h3 className="font-semibold mb-2">💰 Maliyet Hesabı</h3>
-                <p className="text-sm text-white/80">Detaylı fiyat teklifi ve bütçe planlaması</p>
+              <div className="text-center">
+                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <CheckCircle className="h-6 w-6 text-green-600" />
+                </div>
+                <h4 className="font-semibold text-gray-900 mb-1">Standart Rehberliği</h4>
+                <p className="text-sm text-gray-600">GMP ve ISO uygulamaları</p>
               </div>
-              <div className="bg-white/10 rounded-xl p-4">
-                <h3 className="font-semibold mb-2">📐 Tasarım Önerisi</h3>
-                <p className="text-sm text-white/80">3D modelleme ve layout tasarımı</p>
+              <div className="text-center">
+                <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Shield className="h-6 w-6 text-purple-600" />
+                </div>
+                <h4 className="font-semibold text-gray-900 mb-1">Proje Değerlendirme</h4>
+                <p className="text-sm text-gray-600">Fizibilite ve maliyet analizi</p>
               </div>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
                 href="tel:02123456789"
-                className="bg-white text-primary-700 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-colors"
+                className="bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
               >
-                📞 Hemen Arayın
+                📞 Uzmanı Ara
               </a>
               <a 
-                href="https://wa.me/905551234567"
-                className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
+                href="mailto:bilgi@nevays.com"
+                className="bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
               >
-                📱 WhatsApp Danışmanlık
+                ✉️ Detaylı Soru Sor
               </a>
-              <Link 
-                href="/contact"
-                className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary-700 px-8 py-3 rounded-lg font-semibold transition-colors"
-              >
-                ✉️ Detaylı Bilgi Talep Et
-              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Authority Positioning CTA */}
+      <section className="py-20 bg-gradient-to-r from-primary-600 to-primary-700 text-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-6">
+              🏆 Sektörde Otorite: NEVAYS Bilgi Merkezi
+            </h2>
+            <p className="text-xl text-white/90 max-w-4xl mx-auto leading-relaxed">
+              20+ yıllık deneyimimizle, Türkiye'nin en kapsamlı temiz oda bilgi kaynağını yarattık. 
+              Sadece bilgi paylaşmıyoruz; her projenin arkasında duran uygulama deneyimimizi de sunuyoruz.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h3 className="text-2xl font-bold mb-6">
+                📈 Rakamlarla NEVAYS Uzmanlık
+              </h3>
+              <div className="grid grid-cols-2 gap-6">
+                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center border border-white/20">
+                  <div className="text-3xl font-black text-white mb-2">150+</div>
+                  <div className="text-sm text-white/80">Tamamlanan Proje</div>
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center border border-white/20">
+                  <div className="text-3xl font-black text-white mb-2">50+</div>
+                  <div className="text-sm text-white/80">Uzman Makale</div>
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center border border-white/20">
+                  <div className="text-3xl font-black text-white mb-2">20+</div>
+                  <div className="text-sm text-white/80">Yıllık Deneyim</div>
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center border border-white/20">
+                  <div className="text-3xl font-black text-white mb-2">100%</div>
+                  <div className="text-sm text-white/80">Başarı Oranı</div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-2xl font-bold mb-6">
+                🚀 Bilgiden Uygulamaya: Tek Adres
+              </h3>
+              <div className="space-y-4 mb-8">
+                <div className="flex items-start">
+                  <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-4 mt-1">
+                    <CheckCircle className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-1">Uzman İçerik Üretimi</h4>
+                    <p className="text-white/80 text-sm">Sektörde referans gösterilen teknik makaleler</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-4 mt-1">
+                    <CheckCircle className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-1">Anahtar Teslim Uygulama</h4>
+                    <p className="text-white/80 text-sm">Bilgiyi proje haline dönüştüren deneyim</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-4 mt-1">
+                    <CheckCircle className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-1">Sürekli Güncellenen İçerik</h4>
+                    <p className="text-white/80 text-sm">Sektördeki gelişmeleri anlık takip</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link 
+                  href="/referanslar"
+                  className="bg-white text-primary-700 hover:bg-gray-100 px-6 py-3 rounded-lg font-semibold transition-colors text-center"
+                >
+                  🏢 Referans Projelerimiz
+                </Link>
+                <Link 
+                  href="/uygulama"
+                  className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary-700 px-6 py-3 rounded-lg font-semibold transition-colors text-center"
+                >
+                  🔧 Mühendislik Çözümlerimiz
+                </Link>
+              </div>
             </div>
           </div>
         </div>

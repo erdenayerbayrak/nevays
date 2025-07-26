@@ -1,155 +1,108 @@
 'use client';
-import React from 'react';
-import type { ComponentProps, ReactNode } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+
 import Link from 'next/link';
-import { useTranslations, useLocale } from 'next-intl';
-import { Mail, Phone, MapPin, Linkedin, Twitter, Instagram, Building2 } from 'lucide-react';
+import { useLocale } from 'next-intl';
+import { Linkedin, Twitter, Facebook, Phone, Mail } from 'lucide-react';
 
-interface FooterLink {
-    title: string;
-    href: string;
-    icon?: React.ComponentType<{ className?: string }>;
-}
-
-interface FooterSection {
-    label: string;
-    links: FooterLink[];
-}
-
-const footerLinks: FooterSection[] = [
-    {
-        label: 'Ürünler',
-        links: [
-            { title: 'Tüm Ürünler', href: '/products' },
-            { title: 'Temiz Oda Panelleri', href: '/products/clean-room-panels' },
-            { title: 'Temiz Oda Kapıları', href: '/products/clean-room-doors' },
-            { title: 'Pass Box', href: '/products/pass-box' },
-        ],
-    },
-    {
-        label: 'Şirket',
-        links: [
-            { title: 'Hakkımızda', href: '/about' },
-            { title: 'Üretim', href: '/production' },
-            { title: 'Referanslar', href: '/projects' },
-            { title: 'İletişim', href: '/contact' },
-        ],
-    },
-    {
-        label: 'Kaynaklar',
-        links: [
-            { title: 'Blog', href: '/blog' },
-            { title: 'Kataloglar', href: '/catalogs' },
-            { title: 'Temiz Oda Bilgileri', href: '/clean-room' },
-            { title: 'Uygulamalar', href: '/applications' },
-        ],
-    },
-    {
-        label: 'Sosyal Medya',
-        links: [
-            { title: 'LinkedIn', href: 'https://linkedin.com/company/nevays', icon: Linkedin },
-            { title: 'Twitter', href: 'https://twitter.com/nevays', icon: Twitter },
-            { title: 'Instagram', href: 'https://instagram.com/nevays', icon: Instagram },
-        ],
-    },
+const socialMedia = [
+  {
+    name: 'LinkedIn',
+    icon: Linkedin,
+    url: 'https://linkedin.com/company/nevays',
+    color: 'text-blue-600 hover:text-blue-700'
+  },
+  {
+    name: 'Twitter',
+    icon: Twitter,
+    url: 'https://twitter.com/nevays',
+    color: 'text-sky-500 hover:text-sky-600'
+  },
+  {
+    name: 'Facebook',
+    icon: Facebook,
+    url: 'https://facebook.com/nevays',
+    color: 'text-blue-700 hover:text-blue-800'
+  }
 ];
 
 export default function Footer() {
-    const locale = useLocale();
+  const locale = useLocale();
 
-    return (
-        <footer className="bg-gray-800 text-white">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+  return (
+    <footer className="bg-white border-t border-gray-200 py-12">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col items-center text-center space-y-6">
+          
+          {/* Logo */}
+          <div>
+            <Link href={`/${locale}`} className="block">
+              <div className="text-2xl font-bold text-primary-900">
+                NEVAYS
+              </div>
+            </Link>
+          </div>
 
-                <div className="grid w-full gap-8 xl:grid-cols-3 xl:gap-8">
-                    <AnimatedContainer className="space-y-4">
-                        <Building2 className="size-8 text-blue-400" />
-                        <div className="space-y-3">
-                            <h3 className="text-xl font-bold text-white">NEVAYS</h3>
-                            <p className="text-gray-300 text-sm">
-                                Temiz oda sistemleri ve mühendislik çözümlerinde güvenilir ortağınız.
-                            </p>
-                            <div className="space-y-2">
-                                <div className="flex items-center text-sm text-gray-300">
-                                    <MapPin className="h-4 w-4 mr-2 text-blue-400" />
-                                    <span>Mahmutlar Mah., Barbaros Cad. No:27, Alanya/Antalya</span>
-                                </div>
-                                <div className="flex items-center text-sm text-gray-300">
-                                    <Phone className="h-4 w-4 mr-2 text-blue-400" />
-                                    <a href="tel:+905301234567" className="hover:text-blue-400 transition-colors">
-                                        +90 530 123 45 67
-                                    </a>
-                                </div>
-                                <div className="flex items-center text-sm text-gray-300">
-                                    <Mail className="h-4 w-4 mr-2 text-blue-400" />
-                                    <a href="mailto:info@nevays.com.tr" className="hover:text-blue-400 transition-colors">
-                                        info@nevays.com.tr
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </AnimatedContainer>
+          {/* Mission Statement */}
+          <div className="max-w-2xl">
+            <p className="text-gray-600 text-lg leading-relaxed">
+              {locale === 'tr' 
+                ? 'Yüksek teknoloji için kontrollü alanlar tasarlıyoruz.'
+                : 'We design controlled environments for high technology.'
+              }
+            </p>
+          </div>
 
-                    <div className="grid grid-cols-2 gap-8 md:grid-cols-4 xl:col-span-2">
-                        {footerLinks.map((section, index) => (
-                            <AnimatedContainer key={section.label} delay={0.1 + index * 0.1}>
-                                <div>
-                                    <h3 className="text-sm font-semibold text-white mb-4">{section.label}</h3>
-                                    <ul className="text-gray-300 space-y-2 text-sm">
-                                        {section.links.map((link) => (
-                                            <li key={link.title}>
-                                                <Link
-                                                    href={link.href.startsWith('http') ? link.href : `/${locale}${link.href}`}
-                                                    className="hover:text-blue-400 inline-flex items-center transition-all duration-300"
-                                                    target={link.href.startsWith('http') ? '_blank' : undefined}
-                                                    rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                                                >
-                                                    {link.icon && <link.icon className="me-1 size-4" />}
-                                                    {link.title}
-                                                </Link>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </AnimatedContainer>
-                        ))}
-                    </div>
-                </div>
-                
-                {/* Bottom Bar */}
-                <div className="border-t border-gray-700 pt-8 mt-8">
-                    <p className="text-gray-400 text-sm text-center">
-                        © {new Date().getFullYear()} NEVAYS. Tüm hakları saklıdır.
-                    </p>
-                </div>
+          {/* Contact Information */}
+          <div className="flex flex-col sm:flex-row items-center gap-6 text-gray-700">
+            <div className="flex items-center gap-2">
+              <Phone className="w-4 h-4 text-primary-600" />
+              <a 
+                href="tel:+902165551234" 
+                className="hover:text-primary-600 transition-colors font-medium"
+              >
+                +90 216 555 12 34
+              </a>
             </div>
-        </footer>
-    );
-}
+            <div className="flex items-center gap-2">
+              <Mail className="w-4 h-4 text-primary-600" />
+              <a 
+                href="mailto:info@nevays.com" 
+                className="hover:text-primary-600 transition-colors font-medium"
+              >
+                info@nevays.com
+              </a>
+            </div>
+          </div>
 
-type ViewAnimationProps = {
-    delay?: number;
-    className?: ComponentProps<typeof motion.div>['className'];
-    children: ReactNode;
-};
+          {/* Social Media Links */}
+          <div className="flex items-center gap-4">
+            {socialMedia.map((social) => {
+              const Icon = social.icon;
+              return (
+                <a
+                  key={social.name}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-lg flex items-center justify-center transition-all duration-200 ${social.color}`}
+                  title={social.name}
+                  aria-label={social.name}
+                >
+                  <Icon className="w-5 h-5" />
+                </a>
+              );
+            })}
+          </div>
 
-function AnimatedContainer({ className, delay = 0.1, children }: ViewAnimationProps) {
-    const shouldReduceMotion = useReducedMotion();
+          {/* Copyright */}
+          <div className="pt-6 border-t border-gray-200 w-full">
+            <p className="text-gray-500 text-sm">
+              © {new Date().getFullYear()} NEVAYS. {locale === 'tr' ? 'Tüm hakları saklıdır.' : 'All rights reserved.'}
+            </p>
+          </div>
 
-    if (shouldReduceMotion) {
-        return <div className={className}>{children}</div>;
-    }
-
-    return (
-        <motion.div
-            initial={{ filter: 'blur(4px)', translateY: -8, opacity: 0 }}
-            whileInView={{ filter: 'blur(0px)', translateY: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay, duration: 0.8 }}
-            className={className}
-        >
-            {children}
-        </motion.div>
-    );
+        </div>
+      </div>
+    </footer>
+  );
 }
