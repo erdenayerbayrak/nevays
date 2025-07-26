@@ -2,67 +2,87 @@
 
 import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { ArrowRight, Play, Phone, MessageCircle, ChevronDown } from 'lucide-react';
-import { useState, useEffect, useCallback } from 'react';
+import { ArrowRight, Phone, ChevronDown } from 'lucide-react';
 
 export default function HeroSection() {
   const t = useTranslations('hero');
   const locale = useLocale();
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-
-  const cleanRoomImages = [
-    'https://images.unsplash.com/photo-1576671081837-49000212a370?w=1920&h=1080&fit=crop&crop=center', // Pharmaceutical cleanroom manufacturing
-    'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1920&h=1080&fit=crop&crop=center', // Modern laboratory with equipment
-    'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1920&h=1080&fit=crop&crop=center', // Sterile laboratory environment  
-    'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1920&h=1080&fit=crop&crop=center', // High-tech manufacturing floor
-    'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=1920&h=1080&fit=crop&crop=center'  // Clean manufacturing facility
-    
-    // TODO: FINAL UPGRADE - Replace with "Mühendislikte Hassasiyet" concept visuals:
-    // Option 1: 3D CAD Animation - Temiz oda katmanları (zemin → duvarlar → tavan → HEPA → borulama)
-    // Option 2: Laminar Hava Akışı Makro Video - Elektronik komponent/petri kabı üzerinde slow motion
-    // Option 3: Etkileyici Tamamlanmış Proje Fotoğrafı - ASELSAN, Atabay gibi prestijli projeler
-    // Format: WebM, 5-10 saniye döngü, sessiz, PageSpeed optimized
-  ];
-
-  const handleIndicatorClick = useCallback((index: number) => {
-    setCurrentImageIndex(index);
-    setIsPaused(true);
-    setTimeout(() => setIsPaused(false), 10000);
-  }, []);
-
-  useEffect(() => {
-    if (isPaused) return;
-    
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % cleanRoomImages.length);
-    }, 5000); // Change image every 5 seconds
-
-    return () => clearInterval(interval);
-  }, [cleanRoomImages.length, isPaused]);
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Professional Project Background */}
+      {/* Engineered Background - "Mühendislikte Hassasiyet" Concept */}
       <div className="absolute inset-0 w-full h-full">
-        {/* Professional Clean Room Engineering Background Images */}
-        <div className="relative w-full h-full">
-          {cleanRoomImages.map((image, index) => (
+        {/* Professional Blue Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900" />
+        
+        {/* Engineering Grid Pattern - Subtle Technical Aesthetic */}
+        <div className="absolute inset-0 opacity-10">
+          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="engineering-grid" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                {/* Main grid lines */}
+                <path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="0.5"/>
+                {/* Precision markers */}
+                <circle cx="10" cy="10" r="1" fill="rgba(59, 130, 246, 0.4)"/>
+                <circle cx="50" cy="50" r="1.5" fill="rgba(59, 130, 246, 0.6)"/>
+                <circle cx="90" cy="90" r="1" fill="rgba(59, 130, 246, 0.4)"/>
+                {/* Technical lines */}
+                <path d="M 20 0 L 20 100 M 80 0 L 80 100" stroke="rgba(255,255,255,0.1)" strokeWidth="0.25"/>
+                <path d="M 0 20 L 100 20 M 0 80 L 100 80" stroke="rgba(255,255,255,0.1)" strokeWidth="0.25"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#engineering-grid)" />
+          </svg>
+        </div>
+
+        {/* Floating Geometric Elements - "Digital Twin" Inspiration */}
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Precision hexagons - representing cleanroom chambers */}
+          <div className="absolute top-20 left-10 w-24 h-24 border border-accent-400/20 rotate-12 animate-pulse">
+            <div className="w-full h-full border border-accent-400/30 rotate-45 rounded-lg"></div>
+          </div>
+          
+          {/* HEPA filter representation */}
+          <div className="absolute top-1/3 right-20 w-16 h-20 border-2 border-blue-400/20 rounded-sm animate-pulse delay-1000">
+            <div className="w-full h-1 bg-blue-400/20 mt-2"></div>
+            <div className="w-full h-1 bg-blue-400/20 mt-2"></div>
+            <div className="w-full h-1 bg-blue-400/20 mt-2"></div>
+            <div className="w-full h-1 bg-blue-400/20 mt-2"></div>
+          </div>
+
+          {/* Laminar flow representation */}
+          <div className="absolute bottom-1/4 left-1/3 w-32 h-2 opacity-30">
+            <div className="flex space-x-1">
+              {[...Array(8)].map((_, i) => (
+                <div 
+                  key={i} 
+                  className="w-3 h-2 bg-accent-400/40 animate-pulse"
+                  style={{ animationDelay: `${i * 200}ms` }}
+                ></div>
+              ))}
+            </div>
+          </div>
+
+          {/* Technical corner brackets */}
+          <div className="absolute top-10 right-10 w-8 h-8 border-l-2 border-t-2 border-white/20"></div>
+          <div className="absolute bottom-10 left-10 w-8 h-8 border-r-2 border-b-2 border-white/20"></div>
+        </div>
+
+        {/* Subtle particle flow effect - "Air Flow Visualization" concept */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {[...Array(20)].map((_, i) => (
             <div
-              key={index}
-              className={`absolute inset-0 w-full h-full bg-center bg-cover transition-all duration-1000 ${
-                index === currentImageIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
-              }`}
+              key={i}
+              className="absolute w-1 h-1 bg-accent-400/30 rounded-full animate-pulse"
               style={{
-                backgroundImage: `url('${image}')`
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 3}s`,
+                animationDuration: `${3 + Math.random() * 2}s`
               }}
             />
           ))}
         </div>
-
-        {/* Professional Blue Gradient Overlay - Updated Color Scheme */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-900/80 via-primary-800/70 to-primary-900/80" />
       </div>
 
       {/* Professional Hero Content */}
@@ -118,21 +138,6 @@ export default function HeroSection() {
         <ChevronDown className="h-6 w-6 text-white/70" />
       </div>
 
-      {/* Professional Image Indicators */}
-      <div className="absolute bottom-16 right-8 flex flex-col space-y-3 z-50">
-        {cleanRoomImages.map((_, index) => (
-          <button
-            key={index}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === currentImageIndex 
-                ? 'bg-accent-400 shadow-lg scale-125' 
-                : 'bg-white/40 hover:bg-white/60 hover:scale-110'
-            }`}
-            onClick={() => handleIndicatorClick(index)}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
-      </div>
     </section>
   );
 }
