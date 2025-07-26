@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import MainLayout from '@/components/layout/main-layout';
+import PageHero from '@/components/ui/page-hero';
 import { Download, FileText, Package } from 'lucide-react';
 
 interface Props {
@@ -103,26 +104,13 @@ const bulkDownload = {
 export default function CatalogsPage() {
   return (
     <MainLayout>
-      {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 text-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6">
-              <Download className="w-4 h-4 mr-2" />
-              <span className="text-sm font-semibold">Teknik Doküman Merkezi</span>
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Teknik<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-primary-200">
-                Dokümanlar
-              </span>
-            </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed">
-              Tüm ürün kataloglarımızı anında indirin. Sade, hızlı ve işlevsel doküman merkezi.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        title="Teknik Dokümanlar ve Kataloglar"
+        subtitle="Projeleriniz için ihtiyaç duyduğunuz tüm detaylı bilgilere buradan ulaşın."
+        breadcrumbs={[
+          { label: 'Kataloglar' }
+        ]}
+      />
 
       {/* Bulk Download Section */}
       <section className="py-16 bg-gray-50">

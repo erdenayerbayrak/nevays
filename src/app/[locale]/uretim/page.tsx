@@ -1,6 +1,8 @@
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import MainLayout from '@/components/layout/main-layout';
+import PageHero from '@/components/ui/page-hero';
+import Image from 'next/image';
 import { Factory, Shield, Settings, CheckCircle, Award, Target, Zap, Globe } from 'lucide-react';
 
 interface Props {
@@ -37,26 +39,13 @@ export default function ProductionPage() {
   return (
     <MainLayout>
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 text-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6">
-              <Factory className="w-4 h-4 mr-2" />
-              <span className="text-sm font-semibold">Mühendislik Odaklı Üretim</span>
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Üretim Gücü: Projenize Özel<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-primary-200">
-                Hijyenik Panel Sistemleri
-              </span>
-            </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed">
-              NEVAYS'ın 20+ yıllık mühendislik tecrübesi, kendi üretim tesisimizde 
-              yüksek kalite standartlarıyla birleşerek müşterilerimize güven ve mükemmellik sunuyor.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        title="Üretim Kabiliyetlerimiz"
+        subtitle="Mühendislik hassasiyetini, son teknoloji üretimle birleştiriyoruz."
+        breadcrumbs={[
+          { label: 'Üretim' }
+        ]}
+      />
 
       {/* Main Content Introduction */}
       <section className="py-20 bg-white">
@@ -125,13 +114,45 @@ export default function ProductionPage() {
                 </div>
               </div>
               
-              <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-8 h-96 flex items-center justify-center">
-                <div className="text-center">
-                  <Factory className="h-24 w-24 text-primary-600 mx-auto mb-4" />
-                  <p className="text-primary-700 font-medium">
-                    Temiz Oda Panel Sistemleri<br />
-                    Teknik Kesit Görseli
-                  </p>
+              <div className="space-y-6">
+                {/* Main panel system image */}
+                <div className="relative h-64 rounded-2xl overflow-hidden shadow-lg">
+                  <Image
+                    src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=800&h=500&fit=crop&crop=center"
+                    alt="Temiz oda panel sistemleri - NEVAYS üretim hattı"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary-900/80 to-primary-900/40" />
+                  <div className="absolute bottom-4 left-4 text-white">
+                    <p className="font-semibold text-lg">Temiz Oda Panel Üretimi</p>
+                    <p className="text-sm opacity-90">GMP uyumlu panel sistemleri</p>
+                  </div>
+                </div>
+                
+                {/* Technical details grid */}
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="relative h-28 rounded-xl overflow-hidden">
+                    <Image
+                      src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=400&h=200&fit=crop&crop=center"
+                      alt="Panel birleşim sistemleri ve sızdırmazlık detayları"
+                      fill
+                      className="object-cover"
+                      sizes="25vw"
+                    />
+                    <div className="absolute inset-0 bg-black/20" />
+                  </div>
+                  <div className="relative h-28 rounded-xl overflow-hidden">
+                    <Image
+                      src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&h=200&fit=crop&crop=center"
+                      alt="Antibakteriyel yüzey kaplamalari ve kalite kontrol"
+                      fill
+                      className="object-cover"
+                      sizes="25vw"
+                    />
+                    <div className="absolute inset-0 bg-black/20" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -149,13 +170,52 @@ export default function ProductionPage() {
             </div>
             
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8 h-96 flex items-center justify-center">
-                <div className="text-center">
-                  <Target className="h-24 w-24 text-gray-600 mx-auto mb-4" />
-                  <p className="text-gray-700 font-medium">
-                    Oval Süpürgelik Sistem Detayı<br />
-                    Montaj ve Uygulama Görseli
-                  </p>
+              <div className="space-y-6">
+                {/* Main skirting system image */}
+                <div className="relative h-64 rounded-2xl overflow-hidden shadow-lg">
+                  <Image
+                    src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=500&fit=crop&crop=center"
+                    alt="Oval süpürgelik sistemleri - Hijyenik detaylar ve montaj"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-gray-900/70 to-gray-900/30" />
+                  <div className="absolute bottom-4 left-4 text-white">
+                    <p className="font-semibold text-lg">Oval Süpürgelik Sistemleri</p>
+                    <p className="text-sm opacity-90">Partikül birikimini önleyen aerodinamik tasarım</p>
+                  </div>
+                </div>
+                
+                {/* Comparison and detail images */}
+                <div className="grid grid-cols-3 gap-4">
+                  <div className="relative h-20 rounded-lg overflow-hidden">
+                    <Image
+                      src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=300&h=150&fit=crop&crop=center"
+                      alt="Oval süpürgelik temizlik kolaylığı"
+                      fill
+                      className="object-cover"
+                      sizes="16vw"
+                    />
+                  </div>
+                  <div className="relative h-20 rounded-lg overflow-hidden">
+                    <Image
+                      src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=300&h=150&fit=crop&crop=center"
+                      alt="Panel entegrasyon detayları"
+                      fill
+                      className="object-cover"
+                      sizes="16vw"
+                    />
+                  </div>
+                  <div className="relative h-20 rounded-lg overflow-hidden">
+                    <Image
+                      src="https://images.unsplash.com/photo-1583912267550-3ac9a5dfe1a3?w=300&h=150&fit=crop&crop=center"
+                      alt="FDA onaylı malzeme sertifikaları"
+                      fill
+                      className="object-cover"
+                      sizes="16vw"
+                    />
+                  </div>
                 </div>
               </div>
               

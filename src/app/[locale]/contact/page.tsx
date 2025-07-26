@@ -1,36 +1,10 @@
-import { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
+'use client';
+
 import MainLayout from '@/components/layout/main-layout';
+import PageHero from '@/components/ui/page-hero';
 import { Phone, Mail, MessageCircle, MapPin, Clock, Linkedin, Twitter, Facebook } from 'lucide-react';
-
-interface Props {
-  params: { locale: string };
-}
-
-export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: 'contact' });
-  
-  const title = locale === 'tr' 
-    ? 'İletişim - NEVAYS ile Projenizi Konuşalım'
-    : 'Contact - Let\'s Discuss Your Project with NEVAYS';
-    
-  const description = locale === 'tr'
-    ? 'NEVAYS ile iletişime geçin. Telefon, e-posta veya WhatsApp ile anında ulaşın. Temiz oda projeleriniz için uzman danışmanlık.'
-    : 'Contact NEVAYS. Reach us instantly via phone, email or WhatsApp. Expert consultation for your cleanroom projects.';
-
-  return {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      url: `https://nevays.com/${locale}/contact`,
-      siteName: 'NEVAYS',
-      locale: locale === 'tr' ? 'tr_TR' : 'en_US',
-      type: 'website',
-    },
-  };
-}
+import { useLocale } from 'next-intl';
+import Head from 'next/head';
 
 const contactMethods = [
   {
@@ -96,29 +70,28 @@ const socialMedia = [
 ];
 
 export default function ContactPage() {
+  const locale = useLocale();
+  
   return (
-    <MainLayout>
-      {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 text-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6">
-              <Phone className="w-4 h-4 mr-2" />
-              <span className="text-sm font-semibold">İletişim Merkezi</span>
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Projenizi<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-primary-200">
-                Konuşalım
-              </span>
-            </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed">
-              Temiz oda mühendisliği alanında 20+ yıllık deneyimimizle size en uygun çözümü sunmaya hazırız. 
-              Tercih ettiğiniz yöntemle anında iletişime geçin.
-            </p>
-          </div>
-        </div>
-      </section>
+    <>
+      <Head>
+        <title>{locale === 'tr' ? 'İletişim - NEVAYS ile Projenizi Konuşalım' : 'Contact - Let\'s Discuss Your Project with NEVAYS'}</title>
+        <meta 
+          name="description" 
+          content={locale === 'tr' 
+            ? 'NEVAYS ile iletişime geçin. Telefon, e-posta veya WhatsApp ile anında ulaşın. Temiz oda projeleriniz için uzman danışmanlık.'
+            : 'Contact NEVAYS. Reach us instantly via phone, email or WhatsApp. Expert consultation for your cleanroom projects.'
+          }
+        />
+      </Head>
+      <MainLayout>
+      <PageHero
+        title="Projenizi Birlikte Hayata Geçirelim"
+        subtitle="Sorularınızı yanıtlamak ve çözüm ortağınız olmak için buradayız."
+        breadcrumbs={[
+          { label: 'İletişim' }
+        ]}
+      />
 
       {/* Main Contact Section */}
       <section className="py-20 bg-white">
@@ -323,6 +296,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-    </MainLayout>
+      </MainLayout>
+    </>
   );
 }

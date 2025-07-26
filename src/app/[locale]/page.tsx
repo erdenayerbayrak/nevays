@@ -4,6 +4,7 @@ import MainLayout from '@/components/layout/main-layout';
 import HeroSection from '@/components/sections/hero-section';
 import PartnersMarquee from '@/components/sections/partners-marquee';
 import SectorSolutions from '@/components/sections/sector-solutions';
+import AnimatedCounter from '@/components/ui/animated-counter';
 import { ArrowRight, Shield, Settings, Package, Users, CheckCircle, Factory, FlaskConical, Award, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 
@@ -80,28 +81,32 @@ const services = [
     description: 'ISO 14644 ve GMP standartlarında profesyonel temiz oda tasarımı ve kurulumu',
     icon: Shield,
     href: '/uygulama',
-    features: ['Tasarım ve Mühendislik', 'Anahtar Teslim Kurulum', 'Validasyon ve Test']
+    features: ['Tasarım ve Mühendislik', 'Anahtar Teslim Kurulum', 'Validasyon ve Test'],
+    image: '/images/temizodasistemcard.webp'
   },
   {
     title: 'HVAC Sistemleri',
     description: 'Temiz oda için özel tasarlanmış havalandırma ve klimatizasyon sistemleri',
     icon: Settings,
     href: '/uygulama',
-    features: ['HEPA/ULPA Filtrasyon', 'Enerji Verimli Çözümler', 'BMS Entegrasyonu']
+    features: ['HEPA/ULPA Filtrasyon', 'Enerji Verimli Çözümler', 'BMS Entegrasyonu'],
+    image: '/images/hvac.webp'
   },
   {
     title: 'Laminer Akış Kabinleri',
     description: 'Dikey ve yatay laminer akış kabinleri, biyogüvenlik kabinleri',
     icon: Package,
     href: '/urunler',
-    features: ['Dikey/Yatay LAF', 'BSC Class I-II', 'Özel Tasarım']
+    features: ['Dikey/Yatay LAF', 'BSC Class I-II', 'Özel Tasarım'],
+    image: '/images/laminerhavaakış.webp'
   },
   {
     title: 'Temiz Oda Sistemleri',
     description: 'Modüler panel sistemleri, özel kapılar ve pass box çözümleri',
     icon: Factory,
     href: '/urunler',
-    features: ['Modüler Paneller', 'Özel Kapılar', 'Pass Box Sistemleri']
+    features: ['Modüler Paneller', 'Özel Kapılar', 'Pass Box Sistemleri'],
+    image: '/images/temizodamalzeme.webp'
   }
 ];
 
@@ -110,22 +115,29 @@ const whyChooseUs = [
   {
     title: '20+ Yıl Deneyim',
     description: 'Temiz oda teknolojilerinde 2003ten bu yana uzman hizmet',
-    icon: Award
+    icon: Award,
+    count: 20,
+    countSuffix: '+'
   },
   {
     title: 'Anahtar Teslim Çözüm',
     description: 'Tasarımdan kuruluma kadar tek noktadan hizmet',
-    icon: CheckCircle
+    icon: CheckCircle,
+    count: null
   },
   {
     title: '150+ Başarılı Proje',
     description: 'Farklı sektörlerde kanıtlanmış başarı hikayesi',
-    icon: TrendingUp
+    icon: TrendingUp,
+    count: 150,
+    countSuffix: '+'
   },
   {
     title: 'GMP Uyumluluk',
     description: 'EU GMP ve ISO 14644 standartlarında tam uyumluluk',
-    icon: Shield
+    icon: Shield,
+    count: 100,
+    countSuffix: '%'
   }
 ];
 
@@ -221,6 +233,15 @@ export default function HomePage() {
                   <div className="w-20 h-20 bg-primary-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-primary-200 transition-colors">
                     <Icon className="h-10 w-10 text-primary-600" />
                   </div>
+                  {item.count ? (
+                    <div className="mb-2">
+                      <AnimatedCounter 
+                        value={item.count} 
+                        suffix={item.countSuffix || ''} 
+                        className="text-4xl font-bold text-primary-600"
+                      />
+                    </div>
+                  ) : null}
                   <h3 className="text-xl font-bold text-gray-900 mb-4">{item.title}</h3>
                   <p className="text-gray-600 leading-relaxed">{item.description}</p>
                 </div>

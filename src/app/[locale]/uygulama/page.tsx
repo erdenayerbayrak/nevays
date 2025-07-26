@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import MainLayout from '@/components/layout/main-layout';
+import PageHero from '@/components/ui/page-hero';
 import { Building2, FlaskConical, Wind, Settings, Cpu, ArrowRight, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
 
@@ -35,11 +36,11 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
 
 const applications = [
   {
-    title: 'Anahtar Teslim Temiz Oda Kurulumu',
-    description: 'ISO 14644 standartlarında partikül kontrolü ve çapraz bulaşma riskini ortadan kaldıran bütüncül mühendislik çözümleri. Farmasötik ve elektronik sektörlerde kritik üretim alanları için tasarımdan validasyona kadar tam entegrasyon.',
-    icon: Building2,
-    technicalKeywords: ['ISO 14644', 'partikül kontrolü', 'çapraz bulaşma riski', 'GMP uyumlu sistemler'],
-    href: '/applications/clean-room-installation'
+    title: 'Modüler Temiz Oda Sistemleri',
+    description: 'Esnek ve hızlı kurulum imkanı sunan modüler temiz oda çözümleri. Değişken üretim ihtiyaçlarına uyum sağlayan, demonte edilebilir panel sistemleri ile minimum kesinti süresinde maksimum verimlilik. AR-GE merkezleri ve pilot üretim tesisleri için ideal.',
+    icon: Cpu,
+    technicalKeywords: ['modüler sistem', 'esnek kurulum', 'demonte edilebilir', 'pilot üretim'],
+    href: '/applications/modular-cleanroom'
   },
   {
     title: 'Anahtar Teslim Laboratuvar Kurulumu', 
@@ -61,13 +62,6 @@ const applications = [
     icon: Settings,
     technicalKeywords: ['laminer hava akışı', 'biyogüvenlik kabinleri', 'steril çalışma alanları', 'kontaminasyon kontrolü'],
     href: '/applications/laf-cabin'
-  },
-  {
-    title: 'Modüler Temiz Oda Sistemleri',
-    description: 'Esnek ve hızlı kurulum imkanı sunan modüler temiz oda çözümleri. Değişken üretim ihtiyaçlarına uyum sağlayan, demonte edilebilir panel sistemleri ile minimum kesinti süresinde maksimum verimlilik. AR-GE merkezleri ve pilot üretim tesisleri için ideal.',
-    icon: Cpu,
-    technicalKeywords: ['modüler sistem', 'esnek kurulum', 'demonte edilebilir', 'pilot üretim'],
-    href: '/applications/modular-cleanroom'
   }
 ];
 
@@ -75,26 +69,13 @@ export default function ApplicationsPage() {
   return (
     <MainLayout>
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 text-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6">
-              <CheckCircle className="w-4 h-4 mr-2" />
-              <span className="text-sm font-semibold">Anahtar Teslim Proje Kabiliyeti</span>
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Mühendislik<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-primary-200">
-                Çözümlerimiz
-              </span>
-            </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed">
-              Tek tek hizmetler değil; tasarımdan validasyona kadar tüm süreci yöneten, 
-              bütüncül mühendislik disiplinlerinin entegrasyonu
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        title="Mühendislik Çözümlerimiz"
+        subtitle="Vizyonunuzu, tasarımdan validasyona kadar anahtar teslim projelere dönüştürüyoruz."
+        breadcrumbs={[
+          { label: 'Uygulamalarımız' }
+        ]}
+      />
 
       {/* Introduction Section */}
       <section className="py-16 bg-white">
@@ -122,15 +103,26 @@ export default function ApplicationsPage() {
                   key={app.title}
                   className="group bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:scale-[1.02]"
                 >
-                  {/* Visual Header with Gradient Background */}
-                  <div className="relative h-64 bg-gradient-to-br from-primary-50 to-primary-100 overflow-hidden">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center">
-                        <Icon className="h-20 w-20 text-primary-600 mx-auto mb-4" />
-                        <p className="text-primary-700 font-medium text-sm">
-                          {app.title} - Sistem Görseli
-                        </p>
-                      </div>
+                  {/* Visual Header with Professional Images */}
+                  <div className="relative h-64 overflow-hidden">
+                    <img
+                      src={
+                        index === 0 ? "/images/temizodasistemcard.webp" :
+                        index === 1 ? "/images/temizodamalzeme.webp" :
+                        index === 2 ? "/images/hvac.webp" :
+                        index === 3 ? "/images/laminerhavaakış.webp" :
+                        "/images/temizodasistemcard.webp"
+                      }
+                      alt={`${app.title} - Mühendislik çözümü görseli`}
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                    
+                    {/* Application type badge */}
+                    <div className="absolute top-4 left-4 bg-primary-600/90 backdrop-blur-sm text-white px-3 py-1 rounded-full">
+                      <span className="text-xs font-semibold">
+                        {index === 0 ? 'Modüler' : index === 1 ? 'Laboratuvar' : index === 2 ? 'HVAC' : index === 3 ? 'LAF Kabin' : 'Temiz Oda'}
+                      </span>
                     </div>
                     
                     {/* Hover overlay */}

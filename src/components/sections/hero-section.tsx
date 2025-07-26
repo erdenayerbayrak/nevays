@@ -14,8 +14,16 @@ export default function HeroSection() {
 
   const cleanRoomImages = [
     'https://images.unsplash.com/photo-1576671081837-49000212a370?w=1920&h=1080&fit=crop&crop=center', // Pharmaceutical cleanroom manufacturing
-    'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1920&h=1080&fit=crop&crop=center', // Sterile laboratory environment
+    'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1920&h=1080&fit=crop&crop=center', // Modern laboratory with equipment
+    'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1920&h=1080&fit=crop&crop=center', // Sterile laboratory environment  
+    'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1920&h=1080&fit=crop&crop=center', // High-tech manufacturing floor
     'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=1920&h=1080&fit=crop&crop=center'  // Clean manufacturing facility
+    
+    // TODO: FINAL UPGRADE - Replace with "Mühendislikte Hassasiyet" concept visuals:
+    // Option 1: 3D CAD Animation - Temiz oda katmanları (zemin → duvarlar → tavan → HEPA → borulama)
+    // Option 2: Laminar Hava Akışı Makro Video - Elektronik komponent/petri kabı üzerinde slow motion
+    // Option 3: Etkileyici Tamamlanmış Proje Fotoğrafı - ASELSAN, Atabay gibi prestijli projeler
+    // Format: WebM, 5-10 saniye döngü, sessiz, PageSpeed optimized
   ];
 
   const handleIndicatorClick = useCallback((index: number) => {
@@ -72,7 +80,7 @@ export default function HeroSection() {
             Temiz Oda Sistemleri
           </span>
           <span className="block bg-gradient-to-r from-accent-400 via-accent-300 to-secondary-400 bg-clip-text text-transparent">
-            
+            Mühendisliği
           </span>
         </h1>
         

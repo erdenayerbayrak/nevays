@@ -1,6 +1,7 @@
 'use client';
 
 import MainLayout from '@/components/layout/main-layout';
+import PageHero from '@/components/ui/page-hero';
 import { Package, Shield, FileText, Download, Lock, Users, X } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -15,7 +16,7 @@ const systemComponents = [
     detailText: 'Detaylı teknik bilgi ve üretim sürecimiz için "Üretim" sayfamızı inceleyebilirsiniz.',
     icon: Shield,
     catalogPdf: '/kataloglar/temiz-oda-panelleri.pdf',
-    image: '/images/products/temiz-oda-panelleri.jpg'
+    image: '/images/temizodapanel.jpg'
   },
   {
     title: 'Temiz Oda Kapıları', 
@@ -23,7 +24,7 @@ const systemComponents = [
     detailText: 'Elektromanyetik kilit sistemleri ve özel cam panel seçenekleri ile projenize uygun çözümler.',
     icon: Lock,
     catalogPdf: '/kataloglar/temiz-oda-kapilari.pdf', 
-    image: '/images/products/temiz-oda-kapilari.jpg'
+    image: '/images/temizodakapı.jpg'
   },
   {
     title: 'Pass Box Sistemleri',
@@ -31,7 +32,7 @@ const systemComponents = [
     detailText: 'Statik, dinamik ve özel boyut seçenekleri ile her proje ihtiyacına uygun çözümler.',
     icon: Package,
     catalogPdf: '/kataloglar/pass-box-sistemleri.pdf',
-    image: '/images/products/pass-box-sistemleri.jpg'
+    image: '/images/passbox.jpeg'
   },
   {
     title: 'Tamamlayıcı Sarf Malzemeleri - Temiz Oda Kıyafetleri',
@@ -39,7 +40,7 @@ const systemComponents = [
     detailText: 'Anti-statik özellikli, nefes alabilir kumaşlar ile uzun süreli kullanım konforu.',
     icon: Users,
     catalogPdf: '/kataloglar/temiz-oda-kiyafetleri.pdf',
-    image: '/images/products/temiz-oda-kiyafetleri.jpg'
+    image: '/images/Tamamlayıcı Sarf Malzemeleri - Temiz Oda Kıyafetleri.jpg'
   }
 ];
 
@@ -144,26 +145,13 @@ export default function ProductsPage() {
       </Head>
       <MainLayout>
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 text-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6">
-              <Package className="w-4 h-4 mr-2" />
-              <span className="text-sm font-semibold">Yüksek Standartlı Bileşenler</span>
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Sistem<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-primary-200">
-                Bileşenleri
-              </span>
-            </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed">
-              Başarılı bir temiz oda, en küçük bileşeninin bile en yüksek standartlarda olmasını gerektirir.
-              Kusursuz bir sistemin parçaları olarak mühendislik kalitemizi yansıtan çözümler.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        title="Sistem Bileşenleri ve Ekipmanlar"
+        subtitle="Kusursuz bir bütün, ancak en yüksek standartlardaki parçalarla mümkündür."
+        breadcrumbs={[
+          { label: 'Ürünler' }
+        ]}
+      />
 
       {/* Introduction Section */}
       <section className="py-16 bg-white">
@@ -193,14 +181,12 @@ export default function ProductsPage() {
                 >
                   {/* Product Image Header */}
                   <div className="relative h-64 bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center">
-                        <Icon className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                        <p className="text-gray-500 font-medium text-sm">
-                          {component.title} - Stüdyo Fotoğrafı
-                        </p>
-                      </div>
-                    </div>
+                    <img 
+                      src={component.image} 
+                      alt={component.title}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/20" />
                     
                     {/* Hover overlay */}
                     <div className="absolute inset-0 bg-primary-600/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">

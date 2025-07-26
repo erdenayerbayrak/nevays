@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import MainLayout from '@/components/layout/main-layout';
 import { Calendar, Award, Users, Building2, CheckCircle, TrendingUp } from 'lucide-react';
+import Image from 'next/image';
 
 interface Props {
   params: { locale: string };
@@ -138,12 +139,45 @@ export default function AboutPage() {
             </div>
 
             <div className="relative">
-              <div className="bg-gradient-to-br from-primary-100 to-primary-200 rounded-2xl p-8 h-96 flex items-center justify-center">
-                <div className="text-center">
-                  <Building2 className="h-24 w-24 text-primary-600 mx-auto mb-4" />
-                  <p className="text-primary-700 font-medium">
-                    NEVAYS Ofis ve Üretim Tesisi
-                  </p>
+              <div className="grid gap-6">
+                {/* Main company facility image */}
+                <div className="relative h-80 rounded-2xl overflow-hidden shadow-lg">
+                  <Image
+                    src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop&crop=center"
+                    alt="NEVAYS modern ofis binası ve üretim tesisi"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                  <div className="absolute bottom-4 left-4 text-white">
+                    <p className="font-semibold text-lg">NEVAYS Merkez Ofis</p>
+                    <p className="text-sm opacity-90">Modern üretim tesisi ve mühendislik merkezi</p>
+                  </div>
+                </div>
+                
+                {/* Two smaller images in a grid */}
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="relative h-40 rounded-xl overflow-hidden shadow-md">
+                    <Image
+                      src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=300&fit=crop&crop=center"
+                      alt="NEVAYS mühendislik ekibi proje geliştirme sürecinde"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 50vw, 25vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                  </div>
+                  <div className="relative h-40 rounded-xl overflow-hidden shadow-md">
+                    <Image
+                      src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=300&fit=crop&crop=center"
+                      alt="NEVAYS kalite kontrol laboratuvarı ve test ekipmanları"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 50vw, 25vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                  </div>
                 </div>
               </div>
             </div>
