@@ -5,11 +5,11 @@ import CertificatesGallery from '@/components/sections/certificates-gallery';
 import CertificatesTable from '@/components/sections/certificates-table';
 
 interface Props {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  const title = locale === 'tr' 
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;  const title = locale === 'tr' 
     ? 'Sertifikalar - Kalite Belgeleri | NEVAYS'
     : 'Certificates - Quality Documents | NEVAYS';
     

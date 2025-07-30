@@ -4,11 +4,11 @@ import { HeroProduction } from '@/components/sections/hero-production';
 import ProductionContent from '@/components/sections/production-content';
 
 interface Props {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  const title = locale === 'tr' 
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;  const title = locale === 'tr' 
     ? 'Üretim - Temiz Oda Paneli Üretimi'
     : 'Production - Cleanroom Panel Manufacturing';
     

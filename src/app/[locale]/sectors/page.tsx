@@ -4,11 +4,11 @@ import SectorSolutions from '@/components/sections/sector-solutions';
 import EnhancedSectorCards from '@/components/ui/enhanced-sector-cards';
 
 interface Props {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;  
   const title = locale === 'tr' 
     ? 'Sektörler - İlaç, Elektronik, Gıda ve Medikal Çözümler | NEVAYS'
     : 'Sectors - Pharmaceutical, Electronics, Food and Medical Solutions | NEVAYS';

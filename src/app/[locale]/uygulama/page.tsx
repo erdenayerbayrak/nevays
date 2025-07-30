@@ -5,11 +5,11 @@ import { Building2, FlaskConical, Wind, Settings, Cpu, ArrowRight, CheckCircle }
 import Link from 'next/link';
 
 interface Props {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;  
   const title = locale === 'tr' 
     ? 'Mühendislik Çözümlerimiz - Anahtar Teslim Temiz Oda Projeleri | NEVAYS'
     : 'Our Engineering Solutions - Turnkey Cleanroom Projects | NEVAYS';

@@ -4,11 +4,11 @@ import SolutionHero from '@/components/sections/solution-hero';
 import LaboratoryInstallationContent from '@/components/sections/laboratory-installation-content';
 
 interface Props {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  return {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;  return {
     title: 'Laboratuvar Kurulumu | NEVAYS',
     description: 'Araştırma ve kalite kontrol laboratuvarları için özel tasarım sistemleri. Biosafety cabinet, fume hood ve özel havalandırma çözümleri.',
     keywords: 'laboratuvar kurulumu, lab installation, biosafety, fume hood, laboratory design',

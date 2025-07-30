@@ -3,11 +3,11 @@ import MainLayout from '@/components/layout/main-layout';
 import CleanroomInstallationContent from '@/components/sections/cleanroom-installation-content';
 
 interface Props {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  return {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;  return {
     title: 'Temiz Oda Kurulumu | NEVAYS',
     description: 'GMP ve ISO 14644 standartlarında profesyonel temiz oda kurulumu. İlaç, sağlık ve elektronik sektörleri için kapsamlı mühendislik çözümleri.',
     keywords: 'temiz oda kurulumu, cleanroom installation, GMP, ISO 14644, pharmaceutical cleanroom',

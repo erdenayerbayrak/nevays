@@ -6,11 +6,11 @@ import Section from '@/components/ui/section';
 import CTABanner from '@/components/sections/cta-banner';
 
 interface Props {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  const title = locale === 'tr' 
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;  const title = locale === 'tr' 
     ? 'Temiz Oda Sistemleri - GMP Uyumlu Çözümler | NEVAYS'
     : 'Cleanroom Systems - GMP Compliant Solutions | NEVAYS';
     

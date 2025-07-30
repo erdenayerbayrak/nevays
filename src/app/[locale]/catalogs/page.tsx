@@ -4,11 +4,11 @@ import { HeroCatalogs } from '@/components/sections/hero-catalogs';
 import CatalogsContent from '@/components/sections/catalogs-content';
 
 interface Props {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  return {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;  return {
     title: 'Kataloglar | NEVAYS',
     description: 'Temiz oda sistemleri, ürünler ve uygulamalar için detaylı kataloglar. PDF formatında ücretsiz indirme imkanı.',
     keywords: 'katalog, temiz oda katalog, ürün katalogu, PDF download, technical documentation',

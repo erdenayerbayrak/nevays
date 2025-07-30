@@ -4,11 +4,11 @@ import SolutionHero from '@/components/sections/solution-hero';
 import ModularCleanroomContent from '@/components/sections/modular-cleanroom-content';
 
 interface Props {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  return {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;  return {
     title: 'Modüler Temiz Oda | NEVAYS',
     description: 'Hızlı kurulum imkanı sunan modüler temiz oda sistemleri. Flexible tasarım ve kolay genişletme imkanları ile ekonomik çözümler.',
     keywords: 'modüler temiz oda, modular cleanroom, flexible design, hızlı kurulum, prefabrik temiz oda',

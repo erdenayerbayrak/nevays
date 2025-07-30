@@ -4,11 +4,11 @@ import SolutionHero from '@/components/sections/solution-hero';
 import HvacApplicationsContent from '@/components/sections/hvac-applications-content';
 
 interface Props {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  return {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;  return {
     title: 'HVAC Uygulamaları | NEVAYS',
     description: 'Endüstriyel tesislerde hava teknolojileri entegrasyonu. AHU sistemleri, filtrasyon ve klima kontrol sistemlerinin profesyonel kurulumu.',
     keywords: 'HVAC uygulamaları, hava teknolojileri, AHU sistemleri, air handling unit, filtrasyon',

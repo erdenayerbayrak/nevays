@@ -4,11 +4,11 @@ import PageHero from '@/components/ui/page-hero';
 import { Download, FileText, Package } from 'lucide-react';
 
 interface Props {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  const title = locale === 'tr' 
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;  const title = locale === 'tr' 
     ? 'Teknik Dokümanlar - Katalog İndirme Merkezi | NEVAYS'
     : 'Technical Documents - Catalog Download Center | NEVAYS';
     

@@ -9,10 +9,11 @@ import Link from 'next/link';
 import { WhiteServiceCard } from '@/components/ui/white-service-card';
 
 interface Props {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
   const title = locale === 'tr' 
     ? 'NEVAYS - Temiz Oda Sistemleri ve Cleanroom Kurulumu | GMP Uyumlu Çözümler'
     : 'NEVAYS - Cleanroom Systems & Installation | GMP Compliant Solutions';

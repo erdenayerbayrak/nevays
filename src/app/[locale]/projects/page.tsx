@@ -5,11 +5,11 @@ import FilterableProjects from '@/components/sections/filterable-projects';
 import ModernFilterSystem from '@/components/ui/modern-filter-system';
 
 interface Props {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  const title = locale === 'tr' ? 'Projeler' : 'Projects';
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;  const title = locale === 'tr' ? 'Projeler' : 'Projects';
   
   return {
     title,

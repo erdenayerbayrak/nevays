@@ -4,11 +4,11 @@ import SolutionHero from '@/components/sections/solution-hero';
 import LafCabinContent from '@/components/sections/laf-cabin-content';
 
 interface Props {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  return {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;  return {
     title: 'LAF Kabin Sistemleri | NEVAYS',
     description: 'Laminar Air Flow cabinet sistemleri tasarımı ve imalatı. Sterile çalışma ortamları için portable ve sabit kabin çözümleri.',
     keywords: 'LAF kabin, laminar air flow, sterile kabin, biosafety cabinet, temiz hava akışı',

@@ -206,10 +206,11 @@ const knowledgeCategories = [
 
 
 interface Props {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
   const title = locale === 'tr' 
     ? 'NEVAYS Bilgi Merkezi - GMP, ISO 14644, Uzman İçerikleri'
     : 'NEVAYS Knowledge Center - GMP, ISO 14644, Expert Content';

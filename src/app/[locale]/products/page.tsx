@@ -4,11 +4,11 @@ import { HeroProducts } from '@/components/sections/hero-products';
 import ProductsOverview from '@/components/sections/products-overview';
 
 interface Props {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  return {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;  return {
     title: 'Ürünler | NEVAYS',
     description: 'Temiz oda panelleri, kapıları, pass box sistemleri ve temiz oda kıyafetleri. Profesyonel temiz oda ekipmanları ve aksesuarları.',
     keywords: 'temiz oda paneli, temiz oda kapısı, pass box, temiz oda tulum, ESD tulum, cleanroom products',

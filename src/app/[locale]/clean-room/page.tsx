@@ -4,11 +4,11 @@ import { HeroCleanroom } from '@/components/sections/hero-cleanroom';
 import CleanRoomFAQ from '@/components/sections/clean-room-faq';
 
 interface Props {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
   return {
     title: 'Temiz Oda Nedir? | NEVAYS',
     description: 'Temiz oda sistemleri, GMP standartları, ISO 14644 sınıflandırması ve steril alan uygulamaları hakkında detaylı bilgiler.',

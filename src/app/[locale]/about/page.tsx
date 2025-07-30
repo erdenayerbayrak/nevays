@@ -7,10 +7,11 @@ import CTABanner from '@/components/sections/cta-banner';
 import InteractiveTimeline from '@/components/ui/interactive-timeline';
 
 interface Props {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
   const title = locale === 'tr' ? 'Hakkımızda' : 'About';
   
   return {

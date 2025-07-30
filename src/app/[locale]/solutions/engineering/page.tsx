@@ -6,11 +6,11 @@ import CTABanner from '@/components/sections/cta-banner';
 import { CheckCircle, ArrowRight } from 'lucide-react';
 
 interface Props {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  const title = locale === 'tr' 
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;  const title = locale === 'tr' 
     ? 'Mühendislik Hizmetleri - Proje Yönetimi | NEVAYS'
     : 'Engineering Services - Project Management | NEVAYS';
     

@@ -5,11 +5,11 @@ import Image from 'next/image';
 import { Factory, Shield, Settings, CheckCircle, Award, Target, Zap, Globe } from 'lucide-react';
 
 interface Props {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  const title = locale === 'tr' 
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;  const title = locale === 'tr' 
     ? 'Üretim - Temiz Oda Paneli Üretimi | NEVAYS'
     : 'Production - Cleanroom Panel Manufacturing | NEVAYS';
     

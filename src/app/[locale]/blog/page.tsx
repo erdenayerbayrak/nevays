@@ -19,11 +19,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 interface Props {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;  
   const title = locale === 'tr' 
     ? 'NEVAYS Blog - Düşünce Liderliği ve Sektör İçgörüleri'
     : 'NEVAYS Blog - Thought Leadership and Industry Insights';

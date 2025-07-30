@@ -4,11 +4,11 @@ import { HeroApplications } from '@/components/sections/hero-applications';
 import ApplicationsOverview from '@/components/sections/applications-overview';
 
 interface Props {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  const title = locale === 'tr' ? 'Uygulamalar | NEVAYS' : 'Applications | NEVAYS';
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;  const title = locale === 'tr' ? 'Uygulamalar | NEVAYS' : 'Applications | NEVAYS';
   const description = locale === 'tr' 
     ? 'Temiz oda kurulumu, laboratuvar sistemleri ve HVAC uygulamaları. Uzman mühendislik çözümleri.'
     : 'Cleanroom installation, laboratory systems and HVAC applications. Expert engineering solutions.';

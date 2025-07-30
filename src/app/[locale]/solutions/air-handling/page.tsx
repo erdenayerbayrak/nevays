@@ -6,11 +6,11 @@ import CTABanner from '@/components/sections/cta-banner';
 import Section from '@/components/ui/section';
 
 interface Props {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  const title = locale === 'tr' 
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;  const title = locale === 'tr' 
     ? 'Hava Teknolojileri - AHU Sistemleri | NEVAYS'
     : 'Air Handling Technologies - AHU Systems | NEVAYS';
     
