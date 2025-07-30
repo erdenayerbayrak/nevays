@@ -56,7 +56,7 @@ export default function HeroSection() {
           Temiz Oda Sistemleri
         </h1>
         <p className="my-6 max-w-2xl text-center text-base leading-relaxed md:text-lg md:leading-relaxed text-gray-700">
-          Türkiye'nin önde gelen temiz oda uzmanı. GMP uyumlu, anahtar teslim temiz oda sistemleri ile 20+ yıldır farmasötik, elektronik ve sağlık sektörlerine hizmet veriyoruz.
+          Türkiye'nin önde gelen temiz oda uzmanı.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 items-center">
           <Link href={`/${locale}/uygulama`}>
