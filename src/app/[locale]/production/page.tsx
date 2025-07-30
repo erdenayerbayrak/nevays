@@ -3,6 +3,8 @@ import MainLayout from '@/components/layout/main-layout';
 import { HeroProduction } from '@/components/sections/hero-production';
 import ProductionContent from '@/components/sections/production-content';
 
+export const dynamic = 'force-dynamic';
+
 interface Props {
   params: Promise<{ locale: string }>;
 }

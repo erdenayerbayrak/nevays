@@ -24,10 +24,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function SolutionsPage() {
+export default async function SolutionsPage({ params }: Props) {
+  const { locale } = await params;
+  
   return (
     <MainLayout>
-      <SolutionsLandingHero />
+      <SolutionsLandingHero locale={locale} />
+      <SolutionsOverview locale={locale} />
       <TabSystem />
     </MainLayout>
   );

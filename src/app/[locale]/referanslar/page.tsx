@@ -1,5 +1,7 @@
 'use client';
 
+export const dynamic = 'force-dynamic';
+
 import MainLayout from '@/components/layout/main-layout';
 import PageHero from '@/components/ui/page-hero';
 import { MapPin, Calendar, Award, Users, Building2, FlaskConical, Filter, CheckCircle, ArrowRight } from 'lucide-react';

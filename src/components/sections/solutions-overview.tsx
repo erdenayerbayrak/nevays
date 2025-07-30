@@ -1,12 +1,15 @@
 'use client';
 
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { ArrowRight, Building2, FlaskConical, Wind, CheckCircle, Shield } from 'lucide-react';
 
-export default function SolutionsOverview() {
+interface Props {
+  locale: string;
+}
+
+export default function SolutionsOverview({ locale }: Props) {
   const t = useTranslations('common');
-  const locale = useLocale();
 
   const solutions = [
     {
