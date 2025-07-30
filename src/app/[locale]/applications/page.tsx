@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import MainLayout from '@/components/layout/main-layout';
+import { MainLayout } from '@/components/layout';
 import { HeroApplications } from '@/components/sections/hero-applications';
 import ApplicationsOverview from '@/components/sections/applications-overview';
 

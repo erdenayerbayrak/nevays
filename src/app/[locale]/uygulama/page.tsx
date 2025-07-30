@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
-import MainLayout from '@/components/layout/main-layout';
-import PageHero from '@/components/ui/page-hero';
+import { MainLayout } from '@/components/layout';
+import { PageHero } from '@/components/ui';
 import { Building2, FlaskConical, Wind, Settings, Cpu, ArrowRight, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
 

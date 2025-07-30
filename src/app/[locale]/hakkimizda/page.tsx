@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import MainLayout from '@/components/layout/main-layout';
+import { MainLayout } from '@/components/layout';
 import { Calendar, Award, Users, Building2, CheckCircle, TrendingUp } from 'lucide-react';
 import Image from 'next/image';
 

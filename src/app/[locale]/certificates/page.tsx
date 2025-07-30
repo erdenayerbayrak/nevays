@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import MainLayout from '@/components/layout/main-layout';
+import { MainLayout } from '@/components/layout';
 import CertificatesHero from '@/components/sections/certificates-hero';
 import CertificatesGallery from '@/components/sections/certificates-gallery';
 import CertificatesTable from '@/components/sections/certificates-table';

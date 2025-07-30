@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import MainLayout from '@/components/layout/main-layout';
+import { MainLayout } from '@/components/layout';
 import SolutionHero from '@/components/sections/solution-hero';
 import ProductVariantsSection from '@/components/sections/product-variants-section';
 import CTABanner from '@/components/sections/cta-banner';

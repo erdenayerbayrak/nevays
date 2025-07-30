@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
-import MainLayout from '@/components/layout/main-layout';
+import { MainLayout } from '@/components/layout';
 import SolutionHero from '@/components/sections/solution-hero';
 import Section from '@/components/ui/section';
 import CTABanner from '@/components/sections/cta-banner';

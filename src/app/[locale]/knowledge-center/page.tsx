@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import MainLayout from '@/components/layout/main-layout';
+import { MainLayout } from '@/components/layout';
 import CleanroomInfoCards from '@/components/sections/cleanroom-info-cards';
 import CleanroomFAQ from '@/components/sections/clean-room-faq';
 import TagCloud from '@/components/ui/tag-cloud';

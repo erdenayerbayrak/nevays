@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import MainLayout from '@/components/layout/main-layout';
+import { MainLayout } from '@/components/layout';
 import { HeroReferences } from '@/components/sections/hero-references';
 import FilterableProjects from '@/components/sections/filterable-projects';
 import ModernFilterSystem from '@/components/ui/modern-filter-system';

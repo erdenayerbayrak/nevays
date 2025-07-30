@@ -1,8 +1,8 @@
 'use client';
 
 
-import MainLayout from '@/components/layout/main-layout';
-import PageHero from '@/components/ui/page-hero';
+import { MainLayout } from '@/components/layout';
+import { PageHero } from '@/components/ui';
 import { MapPin, Calendar, Award, Users, Building2, FlaskConical, Filter, CheckCircle, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
 import Head from 'next/head';

@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import MainLayout from '@/components/layout/main-layout';
+import { MainLayout } from '@/components/layout';
 import { HeroProduction } from '@/components/sections/hero-production';
 import ProductionContent from '@/components/sections/production-content';
 

@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import MainLayout from '@/components/layout/main-layout';
+import { MainLayout } from '@/components/layout';
 import { HeroCleanroom } from '@/components/sections/hero-cleanroom';
 import CleanRoomFAQ from '@/components/sections/clean-room-faq';
 

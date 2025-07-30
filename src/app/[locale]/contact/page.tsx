@@ -1,7 +1,7 @@
 'use client';
 
-import MainLayout from '@/components/layout/main-layout';
-import PageHero from '@/components/ui/page-hero';
+import { MainLayout } from '@/components/layout';
+import { PageHero } from '@/components/ui';
 import { Phone, Mail, MessageCircle, MapPin, Clock, Linkedin, Twitter, Facebook } from 'lucide-react';
 import { useLocale } from 'next-intl';
 import Head from 'next/head';

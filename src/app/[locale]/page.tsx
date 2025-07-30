@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import MainLayout from '@/components/layout/main-layout';
+import { MainLayout } from '@/components/layout';
 import HeroSection from '@/components/sections/hero-section';
 import PartnersMarquee from '@/components/sections/partners-marquee';
 import SectorSolutions from '@/components/sections/sector-solutions';

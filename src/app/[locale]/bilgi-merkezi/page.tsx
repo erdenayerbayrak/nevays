@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
-import MainLayout from '@/components/layout/main-layout';
-import PageHero from '@/components/ui/page-hero';
+import { MainLayout } from '@/components/layout';
+import { PageHero } from '@/components/ui';
 import { Shield, BookOpen, Award, Users, ChevronRight, Clock, TrendingUp, CheckCircle, ArrowRight, Lightbulb, FileText, Globe } from 'lucide-react';
 import Link from 'next/link';
 

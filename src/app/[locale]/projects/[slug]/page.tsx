@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Calendar, MapPin, Building2, Award, CheckCircle } from 'lucide-react';
-import MainLayout from '@/components/layout/main-layout';
+import { MainLayout } from '@/components/layout';
 import Section from '@/components/ui/section';
 import { Button } from '@/components/ui/button';
 import CTABanner from '@/components/sections/cta-banner';

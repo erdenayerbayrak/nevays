@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import MainLayout from '@/components/layout/main-layout';
+import { MainLayout } from '@/components/layout';
 import SolutionsLandingHero from '@/components/sections/solutions-landing-hero';
 import SolutionsOverview from '@/components/sections/solutions-overview';
 import TabSystem from '@/components/ui/tab-system';

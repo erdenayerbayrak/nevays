@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import MainLayout from '@/components/layout/main-layout';
+import { MainLayout } from '@/components/layout';
 import SectorSolutions from '@/components/sections/sector-solutions';
 import EnhancedSectorCards from '@/components/ui/enhanced-sector-cards';
 
