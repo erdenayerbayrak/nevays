@@ -4,7 +4,6 @@ import PageHero from '@/components/ui/page-hero';
 import { Building2, FlaskConical, Wind, Settings, Cpu, ArrowRight, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
 
-export const dynamic = 'force-dynamic';
 
 interface Props {
   params: Promise<{ locale: string }>;

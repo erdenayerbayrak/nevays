@@ -6,8 +6,7 @@ export const defaultLocale = 'tr' as const;
 
 export type Locale = typeof locales[number];
 
-export default getRequestConfig(async ({ requestLocale }) => {
-  const locale = await requestLocale;
+export default getRequestConfig(async ({ locale }) => {
   if (!locales.includes(locale as any)) notFound();
 
   return {

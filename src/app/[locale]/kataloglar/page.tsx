@@ -3,7 +3,6 @@ import MainLayout from '@/components/layout/main-layout';
 import PageHero from '@/components/ui/page-hero';
 import { Download, FileText, Package } from 'lucide-react';
 
-export const dynamic = 'force-dynamic';
 
 interface Props {
   params: Promise<{ locale: string }>;

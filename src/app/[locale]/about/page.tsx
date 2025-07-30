@@ -6,7 +6,6 @@ import CompanyHistory from '@/components/sections/company-history';
 import CTABanner from '@/components/sections/cta-banner';
 import InteractiveTimeline from '@/components/ui/interactive-timeline';
 
-export const dynamic = 'force-dynamic';
 
 interface Props {
   params: Promise<{ locale: string }>;

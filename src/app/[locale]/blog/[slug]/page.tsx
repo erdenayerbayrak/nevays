@@ -8,7 +8,6 @@ import Section from '@/components/ui/section';
 import { Button } from '@/components/ui/button';
 import CTABanner from '@/components/sections/cta-banner';
 
-export const dynamic = 'force-dynamic';
 
 interface Props {
   params: { locale: string; slug: string };

@@ -8,7 +8,6 @@ import { ArrowRight, Shield, Settings, Package, Users, CheckCircle, Factory, Fla
 import Link from 'next/link';
 import { WhiteServiceCard } from '@/components/ui/white-service-card';
 
-export const dynamic = 'force-dynamic';
 
 interface Props {
   params: Promise<{ locale: string }>;

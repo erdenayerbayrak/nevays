@@ -5,7 +5,6 @@ import { Package, Shield, FileText, Download, Lock, Users } from 'lucide-react';
 import Link from 'next/link';
 import dynamicImport from 'next/dynamic';
 
-export const dynamic = 'force-dynamic';
 
 const ProductsGrid = dynamicImport(() => import('@/components/sections/products-grid'), {
   ssr: false,

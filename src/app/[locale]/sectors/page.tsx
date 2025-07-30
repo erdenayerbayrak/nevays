@@ -3,7 +3,6 @@ import MainLayout from '@/components/layout/main-layout';
 import SectorSolutions from '@/components/sections/sector-solutions';
 import EnhancedSectorCards from '@/components/ui/enhanced-sector-cards';
 
-export const dynamic = 'force-dynamic';
 
 interface Props {
   params: Promise<{ locale: string }>;
