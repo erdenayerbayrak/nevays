@@ -3,14 +3,14 @@ import MainLayout from '@/components/layout/main-layout';
 import PageHero from '@/components/ui/page-hero';
 import { Package, Shield, FileText, Download, Lock, Users } from 'lucide-react';
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
+import dynamicImport from 'next/dynamic';
 
-const ProductsGrid = dynamic(() => import('@/components/sections/products-grid'), {
+export const dynamic = 'force-dynamic';
+
+const ProductsGrid = dynamicImport(() => import('@/components/sections/products-grid'), {
   ssr: false,
   loading: () => <div className="py-20 bg-gray-50"><div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">Loading...</div></div>
 });
-
-export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Sistem Bileşenleri - Temiz Oda Paneli, Kapısı, Pass Box | NEVAYS',
