@@ -9,7 +9,6 @@ interface Props {
 }
 
 export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: 'about' });
   
   const title = locale === 'tr' 
     ? 'Hakkımızda - NEVAYS Temiz Oda Mühendislik'

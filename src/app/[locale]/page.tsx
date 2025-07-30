@@ -7,6 +7,7 @@ import SectorSolutions from '@/components/sections/sector-solutions';
 import AnimatedCounter from '@/components/ui/animated-counter';
 import { ArrowRight, Shield, Settings, Package, Users, CheckCircle, Factory, FlaskConical, Award, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
+import { WhiteServiceCard } from '@/components/ui/white-service-card';
 
 interface Props {
   params: { locale: string };
@@ -77,35 +78,35 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
 
 const services = [
   {
-    title: 'Temiz Oda Kurulumu',
-    description: 'ISO 14644 ve GMP standartlarında profesyonel temiz oda tasarımı ve kurulumu',
-    icon: Shield,
+    title: 'Temiz Oda Kurulumu ve Cleanroom Sistemleri',
+    description: 'ISO 14644 ve GMP standartlarında profesyonel temiz oda tasarımı, kurulumu ve validasyonu',
+    iconName: 'Shield',
     href: '/uygulama',
-    features: ['Tasarım ve Mühendislik', 'Anahtar Teslim Kurulum', 'Validasyon ve Test'],
+    features: ['Temiz Oda Tasarımı', 'Anahtar Teslim Kurulum', 'GMP Validasyonu'],
     image: '/images/temizodasistemcard.webp'
   },
   {
-    title: 'HVAC Sistemleri',
-    description: 'Temiz oda için özel tasarlanmış havalandırma ve klimatizasyon sistemleri',
-    icon: Settings,
+    title: 'Temiz Oda HVAC ve Havalandırma',
+    description: 'Temiz oda için özel tasarlanmış HEPA filtreli havalandırma ve klimatizasyon sistemleri',
+    iconName: 'Settings',
     href: '/uygulama',
-    features: ['HEPA/ULPA Filtrasyon', 'Enerji Verimli Çözümler', 'BMS Entegrasyonu'],
+    features: ['HEPA/ULPA Filtrasyon', 'Laminer Hava Akışı', 'Basınç Kontrolü'],
     image: '/images/hvac.webp'
   },
   {
-    title: 'Laminer Akış Kabinleri',
-    description: 'Dikey ve yatay laminer akış kabinleri, biyogüvenlik kabinleri',
-    icon: Package,
+    title: 'Temiz Oda Ekipmanları',
+    description: 'Laminer akış kabinleri, biyogüvenlik kabinleri ve temiz oda ekipmanları',
+    iconName: 'Package',
     href: '/urunler',
-    features: ['Dikey/Yatay LAF', 'BSC Class I-II', 'Özel Tasarım'],
+    features: ['Laminer Akış Kabinleri', 'BSC Class I-II', 'Pass Box Sistemleri'],
     image: '/images/laminerhavaakış.webp'
   },
   {
-    title: 'Temiz Oda Sistemleri',
-    description: 'Modüler panel sistemleri, özel kapılar ve pass box çözümleri',
-    icon: Factory,
+    title: 'Modüler Temiz Oda Panelleri',
+    description: 'Modüler temiz oda panel sistemleri, cleanroom kapıları ve özel çözümler',
+    iconName: 'Factory',
     href: '/urunler',
-    features: ['Modüler Paneller', 'Özel Kapılar', 'Pass Box Sistemleri'],
+    features: ['Modüler Paneller', 'Temiz Oda Kapıları', 'Özel Tasarım'],
     image: '/images/temizodamalzeme.webp'
   }
 ];
@@ -113,28 +114,28 @@ const services = [
 
 const whyChooseUs = [
   {
-    title: '20+ Yıl Deneyim',
-    description: 'Temiz oda teknolojilerinde 2003ten bu yana uzman hizmet',
+    title: '20+ Yıl Temiz Oda Deneyimi',
+    description: 'Temiz oda kurulumu ve cleanroom teknolojilerinde 2003ten bu yana uzman hizmet',
     icon: Award,
     count: 20,
     countSuffix: '+'
   },
   {
-    title: 'Anahtar Teslim Çözüm',
-    description: 'Tasarımdan kuruluma kadar tek noktadan hizmet',
+    title: 'Anahtar Teslim Temiz Oda',
+    description: 'Temiz oda tasarımından kuruluma kadar tek noktadan hizmet',
     icon: CheckCircle,
     count: null
   },
   {
-    title: '150+ Başarılı Proje',
-    description: 'Farklı sektörlerde kanıtlanmış başarı hikayesi',
+    title: '200+ Temiz Oda Projesi',
+    description: 'Farklı sektörlerde başarıyla tamamlanmış temiz oda kurulumları',
     icon: TrendingUp,
-    count: 150,
+    count: 200,
     countSuffix: '+'
   },
   {
-    title: 'GMP Uyumluluk',
-    description: 'EU GMP ve ISO 14644 standartlarında tam uyumluluk',
+    title: 'ISO 14644 & GMP Uyumluluk',
+    description: 'EU GMP ve ISO 14644 standartlarında tam uyumlu temiz oda sistemleri',
     icon: Shield,
     count: 100,
     countSuffix: '%'
@@ -155,57 +156,25 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Hizmetlerimiz
+              Temiz Oda Hizmetlerimiz
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Temiz oda teknolojilerinde kapsamlı çözümler sunuyoruz
+              Cleanroom kurulumu ve temiz oda sistemlerinde kapsamlı mühendislik çözümleri
             </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8">
-            {services.map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <div
-                  key={service.title}
-                  className="group bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:scale-[1.02]"
-                >
-                  <div className="p-8">
-                    <div className="flex items-center mb-6">
-                      <div className="w-16 h-16 bg-primary-100 rounded-xl flex items-center justify-center mr-4 group-hover:bg-primary-200 transition-colors">
-                        <Icon className="h-8 w-8 text-primary-600" />
-                      </div>
-                      <div>
-                        <h3 className="text-2xl font-bold text-gray-900 group-hover:text-primary-700 transition-colors">
-                          {service.title}
-                        </h3>
-                      </div>
-                    </div>
-                    
-                    <p className="text-gray-600 leading-relaxed mb-6">
-                      {service.description}
-                    </p>
-
-                    <div className="space-y-2 mb-8">
-                      {service.features.map((feature, idx) => (
-                        <div key={idx} className="flex items-center">
-                          <div className="w-2 h-2 bg-primary-600 rounded-full mr-3 flex-shrink-0" />
-                          <span className="text-gray-700 text-sm">{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    <Link
-                      href={service.href}
-                      className="inline-flex items-center text-primary-600 hover:text-primary-700 font-semibold transition-colors group-hover:translate-x-1"
-                    >
-                      Detayları Gör
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </Link>
-                  </div>
-                </div>
-              );
-            })}
+            {services.map((service, index) => (
+              <WhiteServiceCard
+                key={service.title}
+                title={service.title}
+                description={service.description}
+                iconName={service.iconName}
+                href={service.href}
+                features={service.features}
+                image={service.image}
+              />
+            ))}
           </div>
         </div>
       </section>
@@ -218,10 +187,10 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Neden NEVAYS?
+              Neden NEVAYS Temiz Oda?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Temiz oda mühendisliğinde fark yaratan yaklaşımımız
+              Temiz oda kurulumu ve cleanroom mühendisliğinde fark yaratan yaklaşımımız
             </p>
           </div>
 
@@ -255,10 +224,10 @@ export default function HomePage() {
       <section className="py-16 bg-primary-900 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">
-            Projeniz İçin Ücretsiz Keşif
+            Temiz Oda Projeniz İçin Ücretsiz Keşif
           </h2>
           <p className="text-xl text-primary-100 mb-8">
-            Uzman ekibimiz projenizi değerlendirip, size özel çözüm önerisi hazırlasın
+            Temiz oda uzmanı ekibimiz projenizi değerlendirip, size özel cleanroom çözümü hazırlasın
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 

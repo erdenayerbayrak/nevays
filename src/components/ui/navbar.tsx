@@ -11,9 +11,25 @@ import { useTranslations, useLocale } from 'next-intl';
 interface NavItem {
   name: string
   url: string
-  icon: LucideIcon
+  iconName: string
   translationKey: string
 }
+
+const getIconComponent = (iconName: string): LucideIcon => {
+  switch (iconName) {
+    case 'Home': return Home;
+    case 'Info': return Info;
+    case 'Factory': return Factory;
+    case 'Settings': return Settings;
+    case 'Package': return Package;
+    case 'Shield': return Shield;
+    case 'Users': return Users;
+    case 'BookOpen': return BookOpen;
+    case 'FolderOpen': return FolderOpen;
+    case 'Phone': return Phone;
+    default: return Home;
+  }
+};
 
 interface NavBarProps {
   items: NavItem[]
@@ -51,16 +67,16 @@ export function NavBar({ items, className }: NavBarProps) {
   return (
     <div
       className={cn(
-        "fixed left-1/2 -translate-x-1/2 z-50",
+        "fixed left-1/2 -translate-x-1/2 z-40 lg:hidden",
         isHomePage 
-          ? "bottom-0 sm:top-0 mb-6 sm:pt-6" 
-          : "top-0 pt-6",
+          ? "bottom-6" 
+          : "bottom-6",
         className,
       )}
     >
-      <div className="flex items-center gap-2 bg-white/95 border border-neutral-200 backdrop-blur-lg py-2 px-2 rounded-full shadow-lg transform scale-110">
+      <div className="flex items-center gap-1 bg-white/90 border border-neutral-200/50 backdrop-blur-xl py-2 px-2 rounded-2xl shadow-2xl ring-1 ring-black/5">
         {items.map((item) => {
-          const Icon = item.icon
+          const Icon = getIconComponent(item.iconName)
           const isActive = activeTab === item.name
 
           return (
@@ -68,30 +84,29 @@ export function NavBar({ items, className }: NavBarProps) {
               key={item.name}
               href={`/${locale}${item.url}`}
               className={cn(
-                "relative cursor-pointer text-sm font-semibold px-4 py-2 rounded-full transition-all duration-300 whitespace-nowrap group",
-                "text-neutral-600 hover:text-primary-800 hover:scale-105",
-                isActive && "bg-primary-50 text-primary-900 shadow-sm",
+                "relative cursor-pointer text-xs font-semibold px-3 py-2 rounded-xl transition-all duration-300 whitespace-nowrap group",
+                "text-neutral-600 hover:text-primary-800 hover:scale-105 hover:bg-gradient-to-r hover:from-primary-50 hover:to-accent-50",
+                isActive && "bg-gradient-to-r from-primary-100 to-accent-100 text-primary-900 shadow-lg ring-2 ring-primary-200/50",
               )}
             >
               <span className="hidden md:inline">{t(item.translationKey)}</span>
               <span className="md:hidden">
-                <Icon size={16} strokeWidth={2.5} />
+                <Icon size={14} strokeWidth={2.5} />
               </span>
               {isActive && (
                 <motion.div
-                  layoutId="lamp"
-                  className="absolute inset-0 w-full bg-gradient-to-r from-primary-100 to-accent-100 rounded-full -z-10"
+                  layoutId="activeTab"
+                  className="absolute inset-0 w-full bg-gradient-to-r from-primary-200/80 to-accent-200/80 rounded-xl -z-10 shadow-inner"
                   initial={false}
                   transition={{
                     type: "spring",
-                    stiffness: 300,
-                    damping: 30,
+                    stiffness: 400,
+                    damping: 25,
                   }}
                 >
-                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-1 bg-gradient-to-r from-primary-600 to-accent-500 rounded-t-full">
-                    <div className="absolute w-12 h-6 bg-accent-200 rounded-full blur-md -top-2 -left-2" />
-                    <div className="absolute w-8 h-6 bg-primary-200 rounded-full blur-md -top-1" />
-                    <div className="absolute w-4 h-4 bg-accent-300 rounded-full blur-sm top-0 left-2" />
+                  <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full">
+                    <div className="absolute w-8 h-3 bg-primary-300/40 rounded-full blur-sm -top-1 -left-1" />
+                    <div className="absolute w-4 h-2 bg-accent-400/60 rounded-full blur-xs top-0 left-1" />
                   </div>
                 </motion.div>
               )}
@@ -105,14 +120,14 @@ export function NavBar({ items, className }: NavBarProps) {
 
 // Navigation items based on requested structure
 export const navigationItems: NavItem[] = [
-  { name: 'home', url: '/', icon: Home, translationKey: 'home' },
-  { name: 'about', url: '/hakkimizda', icon: Info, translationKey: 'about' },
-  { name: 'production', url: '/uretim', icon: Factory, translationKey: 'production' },
-  { name: 'applications', url: '/uygulama', icon: Settings, translationKey: 'applications' },
-  { name: 'products', url: '/urunler', icon: Package, translationKey: 'products' },
-  { name: 'knowledge', url: '/bilgi-merkezi', icon: Shield, translationKey: 'cleanRoom' },
-  { name: 'references', url: '/referanslar', icon: Users, translationKey: 'references' },
-  { name: 'blog', url: '/blog', icon: BookOpen, translationKey: 'blog' },
-  { name: 'catalogs', url: '/kataloglar', icon: FolderOpen, translationKey: 'catalogs' },
-  { name: 'contact', url: '/contact', icon: Phone, translationKey: 'contact' },
+  { name: 'home', url: '/', iconName: 'Home', translationKey: 'home' },
+  { name: 'about', url: '/hakkimizda', iconName: 'Info', translationKey: 'about' },
+  { name: 'production', url: '/uretim', iconName: 'Factory', translationKey: 'production' },
+  { name: 'applications', url: '/uygulama', iconName: 'Settings', translationKey: 'applications' },
+  { name: 'products', url: '/urunler', iconName: 'Package', translationKey: 'products' },
+  { name: 'knowledge', url: '/bilgi-merkezi', iconName: 'Shield', translationKey: 'cleanRoom' },
+  { name: 'references', url: '/referanslar', iconName: 'Users', translationKey: 'references' },
+  { name: 'blog', url: '/blog', iconName: 'BookOpen', translationKey: 'blog' },
+  { name: 'catalogs', url: '/kataloglar', iconName: 'FolderOpen', translationKey: 'catalogs' },
+  { name: 'contact', url: '/contact', iconName: 'Phone', translationKey: 'contact' },
 ]
