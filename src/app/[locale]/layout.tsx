@@ -1,7 +1,6 @@
 import { notFound } from 'next/navigation';
-
-// Static locale configuration for static export
-const locales = ['tr', 'en'] as const;
+import { NextIntlClientProvider } from 'next-intl';
+import { locales } from '@/i18n';
 
 type Props = {
   children: React.ReactNode;
@@ -12,7 +11,15 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-export default function LocaleLayout({
+async function getMessages(locale: string) {
+  try {
+    return (await import(`../../../messages/${locale}.json`)).default;
+  } catch (error) {
+    notFound();
+  }
+}
+
+export default async function LocaleLayout({
   children,
   params: { locale }
 }: Props) {
@@ -20,9 +27,11 @@ export default function LocaleLayout({
     notFound();
   }
 
+  const messages = await getMessages(locale);
+
   return (
-    <div data-locale={locale}>
+    <NextIntlClientProvider messages={messages} locale={locale}>
       {children}
-    </div>
+    </NextIntlClientProvider>
   );
 }

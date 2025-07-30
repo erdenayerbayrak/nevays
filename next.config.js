@@ -1,5 +1,4 @@
-// Disabled next-intl plugin for static export
-// const withNextIntl = require('next-intl/plugin')('./src/i18n.ts');
+const withNextIntl = require('next-intl/plugin')('./src/i18n.ts');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -20,5 +19,4 @@ const nextConfig = {
   },
 };
 
-// module.exports = withNextIntl(nextConfig);
-module.exports = nextConfig;
+module.exports = withNextIntl(nextConfig);

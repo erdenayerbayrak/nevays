@@ -1,13 +1,8 @@
-// Middleware disabled for static export
-// import createMiddleware from 'next-intl/middleware';
-// import { locales, defaultLocale } from './i18n';
+// Static export compatible middleware
+// Disabling server-side i18n routing for static export
+export { };
 
-// export default createMiddleware({
-//   locales,
-//   defaultLocale,
-//   localePrefix: 'as-needed'
-// });
-
-// export const config = {
-//   matcher: ['/((?!api|_next|.*\\..*).*)']
-// };
+// For static export, we handle locale routing client-side
+export const config = {
+  matcher: []
+};
