@@ -60,6 +60,19 @@ const projectsData = {
   }
 };
 
+// Generate static params for all locale and slug combinations
+export async function generateStaticParams() {
+  const locales = ['tr', 'en'];
+  const projectSlugs = Object.keys(projectsData);
+  
+  return locales.flatMap((locale) =>
+    projectSlugs.map((slug) => ({
+      locale,
+      slug,
+    }))
+  );
+}
+
 export async function generateMetadata({ params: { slug } }: Props): Promise<Metadata> {
   const project = projectsData[slug as keyof typeof projectsData];
   

@@ -839,6 +839,19 @@ const blogData: { [key: string]: any } = {
   }
 };
 
+// Generate static params for all locale and slug combinations
+export async function generateStaticParams() {
+  const locales = ['tr', 'en'];
+  const blogSlugs = Object.keys(blogData);
+  
+  return locales.flatMap((locale) =>
+    blogSlugs.map((slug) => ({
+      locale,
+      slug,
+    }))
+  );
+}
+
 export async function generateMetadata({ params: { slug } }: Props): Promise<Metadata> {
   const post = blogData[slug as keyof typeof blogData];
   
