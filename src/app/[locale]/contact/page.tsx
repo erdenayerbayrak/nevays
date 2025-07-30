@@ -94,17 +94,17 @@ export default function ContactPage() {
       />
 
       {/* Main Contact Section */}
-      <section className="py-20 bg-white">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16">
             
             {/* Left Column - Contact Actions */}
             <div>
               <div className="mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                <h2 className="text-2xl font-bold text-gray-900 mb-3">
                   🚀 Eyleme Geçin
                 </h2>
-                <p className="text-xl text-gray-600">
+                <p className="text-lg text-gray-600">
                   Projeniz için en uygun iletişim yöntemini seçin ve anında bizimle bağlantı kurun.
                 </p>
               </div>
@@ -116,36 +116,36 @@ export default function ContactPage() {
                   return (
                     <div
                       key={method.id}
-                      className={`bg-gradient-to-r ${method.bgColor} rounded-2xl p-6 border border-gray-100 hover:shadow-lg transition-all duration-300`}
+                      className={`bg-gradient-to-r ${method.bgColor} rounded-xl p-5 border border-gray-100 hover:shadow-lg transition-all duration-300`}
                     >
                       <div className="flex items-start justify-between">
                         <div className="flex items-start">
-                          <div className={`w-12 h-12 bg-white rounded-xl flex items-center justify-center mr-4 shadow-sm`}>
-                            <Icon className={`h-6 w-6 ${method.iconColor}`} />
+                          <div className={`w-10 h-10 bg-white rounded-lg flex items-center justify-center mr-3 shadow-sm`}>
+                            <Icon className={`h-5 w-5 ${method.iconColor}`} />
                           </div>
                           <div className="flex-1">
-                            <h3 className="text-lg font-bold text-gray-900 mb-1">
+                            <h3 className="text-base font-bold text-gray-900 mb-1">
                               {method.title}
                             </h3>
-                            <p className="text-sm text-gray-600 mb-2">
+                            <p className="text-xs text-gray-600 mb-1">
                               {method.subtitle}
                             </p>
-                            <p className="text-xl font-semibold text-gray-900 mb-1">
+                            <p className="text-lg font-semibold text-gray-900 mb-1">
                               {method.content}
                             </p>
-                            <p className="text-sm text-gray-500">
+                            <p className="text-xs text-gray-500">
                               {method.detail}
                             </p>
                           </div>
                         </div>
                       </div>
                       
-                      <div className="mt-4">
+                      <div className="mt-3">
                         <a
                           href={method.actionLink}
                           target={method.id === 'whatsapp' ? '_blank' : undefined}
                           rel={method.id === 'whatsapp' ? 'noopener noreferrer' : undefined}
-                          className={`w-full inline-flex items-center justify-center px-6 py-3 ${method.buttonColor} text-white font-semibold rounded-lg transition-colors`}
+                          className={`w-full inline-flex items-center justify-center px-4 py-2 ${method.buttonColor} text-white font-medium rounded-lg transition-colors text-sm`}
                         >
                           <Icon className="w-4 h-4 mr-2" />
                           {method.actionText}
@@ -157,8 +157,8 @@ export default function ContactPage() {
               </div>
 
               {/* Social Media Links */}
-              <div className="mt-12 pt-8 border-t border-gray-200">
-                <h3 className="text-lg font-semibold text-gray-900 mb-6">
+              <div className="mt-8 pt-6 border-t border-gray-200">
+                <h3 className="text-base font-semibold text-gray-900 mb-4">
                   📱 Sosyal Medyadan Takip Edin
                 </h3>
                 <div className="flex space-x-6">
@@ -170,10 +170,10 @@ export default function ContactPage() {
                         href={social.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`w-12 h-12 bg-gray-100 hover:bg-gray-200 rounded-xl flex items-center justify-center transition-colors ${social.color}`}
+                        className={`w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-lg flex items-center justify-center transition-colors ${social.color}`}
                         title={social.name}
                       >
-                        <Icon className="w-5 h-5" />
+                        <Icon className="w-4 h-4" />
                       </a>
                     );
                   })}
@@ -183,45 +183,45 @@ export default function ContactPage() {
 
             {/* Right Column - Location */}
             <div>
-              <div className="mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              <div className="mb-6">
+                <h2 className="text-2xl font-bold text-gray-900 mb-3">
                   📍 Bizi Bulun
                 </h2>
-                <p className="text-xl text-gray-600">
+                <p className="text-lg text-gray-600">
                   Ofisimizi ziyaret etmek isterseniz, konumumuz ve çalışma saatlerimiz.
                 </p>
               </div>
 
               {/* Interactive Map Placeholder */}
-              <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl h-80 mb-6 flex items-center justify-center border border-gray-100">
+              <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl h-64 mb-5 flex items-center justify-center border border-gray-100">
                 <div className="text-center">
-                  <MapPin className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                  <p className="text-gray-500 font-medium">
+                  <MapPin className="h-12 w-12 text-gray-400 mx-auto mb-3" />
+                  <p className="text-gray-500 font-medium text-sm">
                     İnteraktif Google Haritası
                   </p>
-                  <p className="text-gray-400 text-sm mt-2">
+                  <p className="text-gray-400 text-xs mt-1">
                     NEVAYS Ofis Konumu
                   </p>
                 </div>
               </div>
 
               {/* Address and Working Hours */}
-              <div className="space-y-6">
-                <div className="bg-gray-50 rounded-xl p-6 border border-gray-100">
+              <div className="space-y-4">
+                <div className="bg-gray-50 rounded-lg p-4 border border-gray-100">
                   <div className="flex items-start">
-                    <MapPin className="h-6 w-6 text-primary-600 mr-3 mt-1 flex-shrink-0" />
+                    <MapPin className="h-5 w-5 text-primary-600 mr-2 mt-1 flex-shrink-0" />
                     <div>
-                      <h3 className="font-semibold text-gray-900 mb-2">
+                      <h3 className="font-semibold text-gray-900 mb-1 text-sm">
                         📍 Açık Adres
                       </h3>
-                      <p className="text-gray-700 leading-relaxed">
+                      <p className="text-gray-700 leading-relaxed text-sm">
                         Merkez Mah. Teknoloji Bulvarı No:123<br />
                         K:2 D:45 Çekmeköy/İstanbul<br />
                         Türkiye 34785
                       </p>
                       <button 
                         onClick={() => navigator.clipboard.writeText('Merkez Mah. Teknoloji Bulvarı No:123 K:2 D:45 Çekmeköy/İstanbul Türkiye 34785')}
-                        className="text-primary-600 hover:text-primary-700 text-sm font-medium mt-2 transition-colors"
+                        className="text-primary-600 hover:text-primary-700 text-xs font-medium mt-1 transition-colors"
                       >
                         📋 Adresi Kopyala
                       </button>
@@ -229,20 +229,17 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                <div className="bg-gray-50 rounded-xl p-6 border border-gray-100">
+                <div className="bg-gray-50 rounded-lg p-4 border border-gray-100">
                   <div className="flex items-start">
-                    <Clock className="h-6 w-6 text-primary-600 mr-3 mt-1 flex-shrink-0" />
+                    <Clock className="h-5 w-5 text-primary-600 mr-2 mt-1 flex-shrink-0" />
                     <div>
-                      <h3 className="font-semibold text-gray-900 mb-2">
+                      <h3 className="font-semibold text-gray-900 mb-1 text-sm">
                         🕘 Çalışma Saatleri
                       </h3>
-                      <div className="space-y-1 text-gray-700">
+                      <div className="space-y-1 text-gray-700 text-sm">
                         <p><span className="font-medium">Pazartesi - Cuma:</span> 09:00 - 18:00</p>
                         <p><span className="font-medium">Cumartesi:</span> 09:00 - 13:00</p>
                         <p><span className="font-medium">Pazar:</span> Kapalı</p>
-                        <p className="text-sm text-primary-600 mt-2">
-                          ⚡ Acil durumlar için WhatsApp ile 7/24 ulaşabilirsiniz
-                        </p>
                       </div>
                     </div>
                   </div>
@@ -253,49 +250,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Quick Response Promise */}
-      <section className="py-16 bg-gradient-to-r from-primary-50 to-primary-100">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="bg-white rounded-2xl p-8 shadow-lg border border-primary-200">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              ⚡ Hızlı Yanıt Garantisi
-            </h2>
-            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-              İletişim kurduğunuz andan itibaren en geç 2 saat içinde size geri dönüş yapıyoruz.
-            </p>
-            
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="bg-primary-50 rounded-xl p-6">
-                <div className="text-center">
-                  <div className="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <Phone className="h-6 w-6 text-white" />
-                  </div>
-                  <h3 className="font-semibold text-primary-900 mb-2">Telefon</h3>
-                  <p className="text-sm text-primary-700">Anında cevap</p>
-                </div>
-              </div>
-              <div className="bg-primary-50 rounded-xl p-6">
-                <div className="text-center">
-                  <div className="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <MessageCircle className="h-6 w-6 text-white" />
-                  </div>
-                  <h3 className="font-semibold text-primary-900 mb-2">WhatsApp</h3>
-                  <p className="text-sm text-primary-700">En geç 30 dakika</p>
-                </div>
-              </div>
-              <div className="bg-primary-50 rounded-xl p-6">
-                <div className="text-center">
-                  <div className="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <Mail className="h-6 w-6 text-white" />
-                  </div>
-                  <h3 className="font-semibold text-primary-900 mb-2">E-posta</h3>
-                  <p className="text-sm text-primary-700">En geç 2 saat</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
       </MainLayout>
     </>
   );

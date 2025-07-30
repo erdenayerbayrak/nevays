@@ -5,16 +5,93 @@ import PageHero from '@/components/ui/page-hero';
 import { Shield, BookOpen, Award, Users, ChevronRight, Clock, TrendingUp, CheckCircle, ArrowRight, Lightbulb, FileText, Globe } from 'lucide-react';
 import Link from 'next/link';
 
-// Öne çıkan ana içerik
-const featuredContent = {
-  title: 'Temiz Oda Nedir ve Sistemleri Nasıl Çalışır?',
-  description: 'ISO 14644 standartlarında partikül kontrolü, hava akış sistemleri ve çapraz bulaşma önlemi tekniklerinin kapsamlı analizi. Farmasötik, elektronik ve medikal sektörlerde kritik üretim alanlarının temel prensipleri.',
-  readTime: '15 dakika',
-  category: 'Temel Kavramlar',
-  slug: 'temiz-oda-nedir-sistemleri',
-  keywords: ['temiz oda nedir', 'temiz oda sistemleri', 'ISO 14644', 'partikül kontrolü', 'HEPA filtrasyon'],
-  imageUrl: '/images/temizodasistemcard.webp'
-};
+// SEO odaklı sık sorulan sorular
+const seoQuestions = [
+  {
+    question: 'Temiz oda nedir?',
+    answer: 'Temiz oda, havadaki partikül miktarının kontrol altında tutulduğu, ISO 14644 standartlarına uygun özel mühendislik alanlarıdır. Farmasötik, elektronik ve medikal sektörlerde kritik üretim süreçlerinde kullanılır.',
+    category: 'Temel Kavramlar',
+    keywords: ['temiz oda nedir', 'cleanroom tanımı', 'partikül kontrolü'],
+    slug: 'temiz-oda-nedir'
+  },
+  {
+    question: 'Temiz oda sistemleri nelerdir?',
+    answer: 'Temiz oda sistemleri HVAC filtrasyon, LAF kabinleri, panel sistemleri, özel kapılar, pass box ünitelerini kapsar. Bu sistemler entegre çalışarak kontaminasyon kontrolü sağlar.',
+    category: 'Sistemler',
+    keywords: ['temiz oda sistemleri', 'HVAC', 'LAF kabinleri'],
+    slug: 'temiz-oda-sistemleri'
+  },
+  {
+    question: 'Temiz oda sınıfları nelerdir?',
+    answer: 'ISO 14644 standardına göre Class 1-9 arası sınıflar vardır. Class 100 (ISO 5) farmasötik, Class 1000 (ISO 6) elektronik sektörde yaygın kullanılır.',
+    category: 'Standartlar',
+    keywords: ['temiz oda sınıfları', 'ISO 14644', 'Class 100'],
+    slug: 'temiz-oda-siniflari'
+  },
+  {
+    question: 'GMP nedir?',
+    answer: 'GMP (Good Manufacturing Practice) İyi Üretim Uygulamaları, farmasötik ürünlerin kalite standartlarını belirleyen uluslararası düzenlemelerdir.',
+    category: 'Standartlar',
+    keywords: ['GMP nedir', 'İyi Üretim Uygulamaları', 'farmasötik standartlar'],
+    slug: 'gmp-nedir'
+  },
+  {
+    question: 'GMP sertifikası nedir?',
+    answer: 'GMP sertifikası, üretim tesislerinin İyi Üretim Uygulamaları standartlarına uygunluğunu belgelendiren resmi sertifikadır.',
+    category: 'Sertifikasyon',
+    keywords: ['GMP sertifikası', 'üretim uygunluğu', 'kalite belgelendirme'],
+    slug: 'gmp-sertifikasi'
+  },
+  {
+    question: 'GMP belgesi nedir?',
+    answer: 'GMP belgesi, farmasötik ve gıda üretim tesislerinin kalite yönetim sistemlerinin standartlara uygunluğunu gösteren resmi belgedir.',
+    category: 'Belgelendirme',
+    keywords: ['GMP belgesi', 'kalite yönetimi', 'üretim belgesi'],
+    slug: 'gmp-belgesi'
+  },
+  {
+    question: 'ISO 14644 nedir?',
+    answer: 'ISO 14644, temiz oda ve kontrollü ortamların sınıflandırılması, performans testleri ve izlenmesi için uluslararası standarttır.',
+    category: 'Standartlar',
+    keywords: ['ISO 14644', 'temiz oda standardı', 'uluslararası norm'],
+    slug: 'iso-14644'
+  },
+  {
+    question: 'ISO 14644-1 nedir?',
+    answer: 'ISO 14644-1, havadaki partikül konsantrasyonuna göre temiz oda sınıflandırmasını belirleyen ana standarttır.',
+    category: 'Standartlar',
+    keywords: ['ISO 14644-1', 'partikül sınıflandırma', 'temiz oda normları'],
+    slug: 'iso-14644-1'
+  },
+  {
+    question: 'Steril alan nedir?',
+    answer: 'Steril alan, mikroorganizmaların tamamen elimine edildiği, aseptik üretim için özel tasarlanmış kontrollü ortamlardır.',
+    category: 'Temel Kavramlar',
+    keywords: ['steril alan nedir', 'aseptik ortam', 'mikroorganizma kontrolü'],
+    slug: 'steril-alan-nedir'
+  },
+  {
+    question: 'Modüler temiz oda nedir?',
+    answer: 'Modüler temiz oda, önceden üretilmiş panel sistemlerle hızlı kurulum imkanı sunan, esnek ve ölçeklenebilir temiz oda çözümleridir.',
+    category: 'Teknoloji',
+    keywords: ['modüler temiz oda', 'panel sistemleri', 'hızlı kurulum'],
+    slug: 'moduler-temiz-oda'
+  },
+  {
+    question: 'Temiz oda yönetmeliği nedir?',
+    answer: 'Temiz oda yönetmeliği, Türkiye\'de temiz oda tesislerinin tasarım, kurulum ve işletme gereksinimlerini düzenleyen yasal mevzuattır.',
+    category: 'Mevzuat',
+    keywords: ['temiz oda yönetmeliği', 'yasal gereksinimler', 'mevzuat'],
+    slug: 'temiz-oda-yonetmeligi'
+  },
+  {
+    question: 'Temiz oda denetimi nasıl yapılır?',
+    answer: 'Temiz oda denetimi, partikül sayımı, hava akış ölçümü, basınç farkı testleri ve mikrobiyolojik kontroller ile gerçekleştirilir.',
+    category: 'Test & Validasyon',
+    keywords: ['temiz oda denetim', 'performans testi', 'validasyon'],
+    slug: 'temiz-oda-denetimi'
+  }
+];
 
 // Yan öne çıkan içerikler
 const sidebarFeatured = [
@@ -165,232 +242,144 @@ export default function BilgiMerkeziPage() {
     <MainLayout>
       {/* Hero Section */}
       <PageHero
-        title="Bilgi Merkezi"
-        subtitle="Sektörünün standartlarını belirleyen bilgi, tecrübe ve analizler."
+        title="Temiz Oda Bilgi Merkezi"
+        subtitle="Sektörün en çok sorulan sorularına teknik yanıtlar ve mühendislik rehberleri."
         breadcrumbs={[
           { label: 'Bilgi Merkezi' }
         ]}
       />
 
-      {/* Introduction Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
-            Bilgiyi Paylaşarak Büyüyoruz
-          </h2>
-          <p className="text-xl text-gray-600 leading-relaxed">
-            NEVAYS olarak, 20+ yıllık tecrübemizde edindiğimiz bilgi birikimini sektör paydaşlarımızla paylaşmayı bir sorumluluk olarak görüyoruz. Bu merkez, temiz oda teknolojileri hakkında en doğru ve güncel bilgiye ulaşmanız için tasarlandı.
-          </p>
+      {/* SEO Introduction */}
+      <section className="py-12 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-gray-900 mb-6">
+              Temiz Oda Sistemleri Hakkında Her Şey
+            </h1>
+            <p className="text-xl text-gray-600 leading-relaxed">
+              <strong>Temiz oda nedir?</strong> <strong>GMP nedir?</strong> <strong>ISO 14644</strong> standartları nelerdir? 
+              Temiz oda sektörünün en çok merak edilen sorularına mühendislik perspektifiyle yanıtlar.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Manşet Bölümü - "Asymmetric Hero Content" */}
-      <section id="featured-content" className="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              ÖNE ÇIKAN İÇERİKLER
+      {/* Sıkça Sorulan Sorular - SEO Odaklı FAQ */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Sıkça Sorulan Sorular
             </h2>
-            <p className="text-xl text-gray-600">
-              Sektörün en çok merak ettiği konularda derinlemesine analizler
+            <p className="text-lg text-gray-600">
+              Temiz oda sektörünün en çok merak edilen konularında uzman yanıtlar
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
-            {/* Sol Büyük Kart - Ana Featured Content */}
-            <div className="lg:col-span-2">
-              <article className="group bg-white rounded-3xl shadow-xl border border-gray-200 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:scale-[1.02]">
-                {/* Görsel Header */}
-                <div className="relative h-80 overflow-hidden">
-                  <img 
-                    src={featuredContent.imageUrl}
-                    alt={featuredContent.title}
-                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                  
-                  {/* Category Badge */}
-                  <div className="absolute top-6 left-6 bg-primary-600/90 backdrop-blur-sm text-white px-4 py-2 rounded-full">
-                    <span className="text-sm font-semibold">{featuredContent.category}</span>
-                  </div>
-                  
-                  {/* Reading Time */}
-                  <div className="absolute top-6 right-6 bg-white/90 backdrop-blur-sm text-gray-900 px-3 py-1 rounded-full flex items-center">
-                    <Clock className="w-4 h-4 mr-1" />
-                    <span className="text-sm font-medium">{featuredContent.readTime}</span>
-                  </div>
-
-                  {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-primary-600/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                    <div className="text-center text-white">
-                      <BookOpen className="h-16 w-16 mx-auto mb-4" />
-                      <p className="text-xl font-semibold">Makaleyi Oku</p>
-                    </div>
-                  </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {seoQuestions.map((item, index) => (
+              <article
+                key={index}
+                className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+              >
+                {/* Category Badge */}
+                <div className="mb-4">
+                  <span className="px-3 py-1 bg-primary-50 text-primary-700 text-xs font-semibold rounded-full border border-primary-200">
+                    {item.category}
+                  </span>
                 </div>
 
-                {/* Content */}
-                <div className="p-8">
-                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 group-hover:text-primary-700 transition-colors leading-tight">
-                    {featuredContent.title}
-                  </h3>
-                  
-                  <p className="text-gray-600 leading-relaxed mb-6 text-lg">
-                    {featuredContent.description}
-                  </p>
+                {/* Question */}
+                <h3 className="text-lg font-bold text-gray-900 mb-3 hover:text-primary-700 transition-colors">
+                  {item.question}
+                </h3>
 
-                  {/* Keywords */}
-                  <div className="mb-8">
-                    <div className="flex flex-wrap gap-2">
-                      {featuredContent.keywords.map((keyword, idx) => (
-                        <span
-                          key={idx}
-                          className="px-3 py-1 bg-primary-50 text-primary-700 text-sm font-medium rounded-full border border-primary-200"
-                        >
-                          {keyword}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+                {/* Answer */}
+                <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                  {item.answer}
+                </p>
 
-                  {/* CTA */}
-                  <Link
-                    href={`/bilgi-merkezi/${featuredContent.slug}`}
-                    className="inline-flex items-center px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-xl transition-all duration-300 group-hover:scale-105 text-lg"
-                  >
-                    <span className="mr-3">Detaylı Makaleyi Oku</span>
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </div>
-              </article>
-            </div>
-
-            {/* Sağ Yan Kartlar */}
-            <div className="space-y-8">
-              {sidebarFeatured.map((item, index) => {
-                const Icon = item.icon;
-                return (
-                  <article
-                    key={index}
-                    className={`group bg-white rounded-2xl shadow-lg border-2 ${item.color} overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-[1.02]`}
-                  >
-                    <div className="p-6">
-                      <div className="flex items-start mb-4">
-                        <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mr-4 shadow-sm">
-                          <Icon className="h-6 w-6 text-gray-700" />
-                        </div>
-                        <div className="flex-1">
-                          <div className="flex items-center mb-2">
-                            <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-full mr-2">
-                              {item.category}
-                            </span>
-                            <span className="flex items-center text-gray-500 text-sm">
-                              <Clock className="w-3 h-3 mr-1" />
-                              {item.readTime}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <h3 className="text-lg font-bold text-gray-900 mb-3 group-hover:text-primary-700 transition-colors">
-                        {item.title}
-                      </h3>
-                      
-                      <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                        {item.description}
-                      </p>
-
-                      <Link
-                        href={`/bilgi-merkezi/${item.slug}`}
-                        className="inline-flex items-center text-primary-600 hover:text-primary-700 font-semibold text-sm group-hover:translate-x-1 transition-all"
+                {/* Keywords */}
+                <div className="mb-4">
+                  <div className="flex flex-wrap gap-1">
+                    {item.keywords.slice(0, 2).map((keyword, idx) => (
+                      <span
+                        key={idx}
+                        className="px-2 py-1 bg-gray-50 text-gray-600 text-xs font-medium rounded-md border"
                       >
-                        <span className="mr-2">Okumaya Başla</span>
-                        <ChevronRight className="w-4 h-4" />
-                      </Link>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
+                        {keyword}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* CTA */}
+                <Link
+                  href={`/bilgi-merkezi/${item.slug}`}
+                  className="inline-flex items-center text-primary-600 hover:text-primary-700 font-semibold text-sm transition-all"
+                >
+                  <span className="mr-2">Detaylı Bilgi</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Kategorize İçerik - "Expertise Zones" */}
-      {knowledgeCategories.map((category, categoryIndex) => {
-        const CategoryIcon = category.icon;
-        return (
-          <section key={category.title} className={`py-20 ${category.bgColor}`}>
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              {/* Category Header */}
-              <div className="text-center mb-16">
-                <div className="flex items-center justify-center mb-6">
-                  <div className={`w-16 h-16 bg-white rounded-2xl flex items-center justify-center mr-4 shadow-lg border-2 ${category.borderColor}`}>
-                    <CategoryIcon className={`h-8 w-8 ${category.iconColor}`} />
+      {/* Mühendislik Perspektifi Bölümü */}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Mühendislik Perspektifiyle Temiz Oda
+            </h2>
+            <p className="text-lg text-gray-600">
+              NEVAYS'ın 20+ yıllık tecrübesi ile sektörel yaklaşımlar
+            </p>
+          </div>
+
+          <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl p-8 border border-gray-200">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  Neden NEVAYS Bilgi Merkezi?
+                </h3>
+                <div className="space-y-4">
+                  <div className="flex items-start">
+                    <CheckCircle className="h-6 w-6 text-green-600 mr-3 mt-0.5" />
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Mühendislik Odaklı İçerik</h4>
+                      <p className="text-gray-600 text-sm">Satış jargonu değil, teknik gerçekler</p>
+                    </div>
                   </div>
-                  <div className="text-left">
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-                      {category.title}
-                    </h2>
-                    <p className="text-xl text-gray-600 mt-2">
-                      {category.description}
-                    </p>
+                  <div className="flex items-start">
+                    <CheckCircle className="h-6 w-6 text-green-600 mr-3 mt-0.5" />
+                    <div>
+                      <h4 className="font-semibold text-gray-900">20+ Yıl Tecrübe</h4>
+                      <p className="text-gray-600 text-sm">Gerçek proje deneyimlerinden örnekler</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <CheckCircle className="h-6 w-6 text-green-600 mr-3 mt-0.5" />
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Güncel Standartlar</h4>
+                      <p className="text-gray-600 text-sm">ISO 14644, GMP ve yasal mevzuat takibi</p>
+                    </div>
                   </div>
                 </div>
               </div>
-
-              {/* Topics Grid */}
-              <div className="grid lg:grid-cols-3 gap-8">
-                {category.topics.map((topic, topicIndex) => (
-                  <article
-                    key={topic.title}
-                    className="group bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:scale-[1.02]"
-                  >
-                    <div className="p-6">
-                      <div className="flex items-center justify-between mb-4">
-                        <span className={`px-3 py-1 bg-white border-2 ${category.borderColor} ${category.iconColor} text-sm font-semibold rounded-full`}>
-                          {topic.readTime}
-                        </span>
-                        <TrendingUp className={`w-5 h-5 ${category.iconColor}`} />
-                      </div>
-                      
-                      <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-primary-700 transition-colors leading-tight">
-                        {topic.title}
-                      </h3>
-                      
-                      <p className="text-gray-600 leading-relaxed mb-6 text-sm">
-                        {topic.description}
-                      </p>
-
-                      {/* Keywords */}
-                      <div className="mb-6">
-                        <div className="flex flex-wrap gap-2">
-                          {topic.keywords.slice(0, 3).map((keyword, idx) => (
-                            <span
-                              key={idx}
-                              className="px-2 py-1 bg-gray-50 text-gray-600 text-xs font-medium rounded-md border"
-                            >
-                              {keyword}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
-                      <Link
-                        href={`/bilgi-merkezi/${topic.slug}`}
-                        className={`w-full inline-flex items-center justify-center px-6 py-3 border-2 ${category.borderColor} ${category.iconColor} hover:bg-white hover:shadow-md font-semibold rounded-xl transition-all duration-300 group-hover:scale-105`}
-                      >
-                        <span className="mr-2">Makaleyi Oku</span>
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </Link>
-                    </div>
-                  </article>
-                ))}
+              <div className="text-center">
+                <img 
+                  src="/images/temizodasistemcard.webp" 
+                  alt="NEVAYS Temiz Oda Mühendislik" 
+                  className="rounded-2xl shadow-lg"
+                />
               </div>
             </div>
-          </section>
-        );
-      })}
+          </div>
+        </div>
+      </section>
 
 
       {/* CTA Section */}

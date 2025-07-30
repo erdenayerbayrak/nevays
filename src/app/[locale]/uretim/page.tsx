@@ -17,8 +17,8 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
     : 'Production - Cleanroom Panel Manufacturing | NEVAYS';
     
   const description = locale === 'tr'
-    ? 'Temiz oda paneli, hijyen panel ve temiz oda duvar paneli üretiminde mühendislik odaklı çözümler. Oval süpürgelik ve hijyen süpürgelik sistemleri.'
-    : 'Engineering-focused solutions in cleanroom panel, hygiene panel and cleanroom wall panel production. Oval skirting and hygiene skirting systems.';
+    ? 'NEVAYS temiz oda paneli üretimi: Hijyen panel, temiz oda duvar paneli, temiz oda tavan paneli üretimi. Oval süpürgelik ve hijyen süpürgelik sistemleri ile GMP uyumlu çözümler.'
+    : 'NEVAYS cleanroom panel production: Hygiene panel, cleanroom wall panel, cleanroom ceiling panel manufacturing. GMP compliant solutions with oval skirting and hygiene skirting systems.';
 
   return {
     title,
@@ -40,268 +40,310 @@ export default function ProductionPage() {
     <MainLayout>
       {/* Hero Section */}
       <PageHero
-        title="Üretim Kabiliyetlerimiz"
-        subtitle="Mühendislik hassasiyetini, son teknoloji üretimle birleştiriyoruz."
+        title="Temiz Oda Paneli Üretimi"
+        subtitle="Ortaklık kurduğumuz firma ile GMP uyumlu temiz oda paneli sistemleri üretiyoruz."
         breadcrumbs={[
           { label: 'Üretim' }
         ]}
       />
 
-      {/* Main Content Introduction */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+      {/* SEO Odaklı Giriş */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-gray-900 mb-6">
+              NEVAYS Temiz Oda Paneli Üretimi
+            </h1>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Sadece bir panel satıcısı değiliz. NEVAYS olarak, projenizin temelini oluşturan kritik bileşenleri 
-              kendi kontrolümüzde, yüksek mühendislik standartlarıyla üretiyoruz. 
-              Üretim kabiliyetimiz, kaliteye ve detaya verdiğimiz önemin en büyük kanıtıdır.
+              Ortaklık kurduğumuz güvenilir firma ile <strong>temiz oda paneli</strong>, <strong>hijyen panel</strong> ve 
+              <strong>temiz oda duvar paneli</strong> üretimi gerçekleştiriyoruz. <strong>Temiz oda tavan paneli</strong>, 
+              <strong>oval süpürgelik</strong> ve <strong>hijyen süpürgelik</strong> sistemlerinde mühendislik odaklı çözümler sunuyoruz.
             </p>
           </div>
-
-          {/* International Standards Section */}
-          <div className="mb-20">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                Uluslararası Standartlarda Temiz Oda Duvar ve Tavan Panelleri
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                GMP uyumlu, mühendislik odaklı <strong className="text-primary-700">temiz oda paneli</strong> sistemlerimiz
-              </p>
+          
+          {/* Üretim Kapsamı */}
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <div className="text-center p-6 bg-gray-50 rounded-2xl">
+              <Factory className="h-12 w-12 text-primary-600 mx-auto mb-4" />
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Panel Üretimi</h3>
+              <p className="text-gray-600 text-sm">Temiz oda duvar ve tavan panelleri</p>
             </div>
-            
-            <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-              <div>
-                <div className="space-y-6">
-                  <div className="flex items-start">
-                    <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                      <CheckCircle className="w-4 h-4 text-primary-600" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">Pürüzsüz Antibakteriyel Yüzeyler</h3>
-                      <p className="text-gray-600">FDA onaylı malzemeler ile üretilen <strong>hijyen panel</strong> yüzeyleri, bakterilerin yaşamasını engelleyen özel kaplama teknolojisi</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                      <Shield className="w-4 h-4 text-primary-600" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">Sızdırmaz Kilit Sistemi</h3>
-                      <p className="text-gray-600">Patentli birleşim teknolojisi ile <strong>temiz oda duvar paneli</strong> eklemlerinde %100 hava sızdırmazlığı</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                      <Settings className="w-4 h-4 text-primary-600" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">Çok Çeşitli Malzeme Seçeneği</h3>
-                      <p className="text-gray-600"><strong>Temiz oda tavan paneli</strong> ve duvar sistemlerinde HPL, PVC, galvaniz çelik kaplama alternatifleri</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                      <Award className="w-4 h-4 text-primary-600" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">GMP ve ISO 14644 Uyumluluğu</h3>
-                      <p className="text-gray-600">Farmasötik ve elektronik sektörü gereksinimlerine tam uyumlu üretim standartları</p>
-                    </div>
-                  </div>
+            <div className="text-center p-6 bg-gray-50 rounded-2xl">
+              <Shield className="h-12 w-12 text-primary-600 mx-auto mb-4" />
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Hijyen Sistemleri</h3>
+              <p className="text-gray-600 text-sm">Antibakteriyel yüzey kaplamaları</p>
+            </div>
+            <div className="text-center p-6 bg-gray-50 rounded-2xl">
+              <Settings className="h-12 w-12 text-primary-600 mx-auto mb-4" />
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Süpürgelik Sistemleri</h3>
+              <p className="text-gray-600 text-sm">Oval ve hijyen süpürgelik çözümleri</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Panel Ürün Grupları */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              Temiz Oda Paneli Ürün Grupları
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              GMP uyumlu, antibakteriyel ve sızdırmaz <strong>hijyen panel</strong> sistemlerimiz
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8 mb-16">
+            {/* Duvar Panelleri */}
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+              <div className="relative h-48">
+                <Image
+                  src="/images/temizodamalzeme.webp"
+                  alt="Temiz oda duvar paneli - NEVAYS üretimi"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-primary-600/80" />
+                <div className="absolute bottom-4 left-4 text-white">
+                  <h3 className="text-xl font-bold">Temiz Oda Duvar Paneli</h3>
+                  <p className="text-sm opacity-90">Antibakteriyel HPL kaplama</p>
                 </div>
               </div>
-              
-              <div className="space-y-6">
-                {/* Main panel system image */}
-                <div className="relative h-64 rounded-2xl overflow-hidden shadow-lg">
-                  <Image
-                    src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=800&h=500&fit=crop&crop=center"
-                    alt="Temiz oda panel sistemleri - NEVAYS üretim hattı"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary-900/80 to-primary-900/40" />
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <p className="font-semibold text-lg">Temiz Oda Panel Üretimi</p>
-                    <p className="text-sm opacity-90">GMP uyumlu panel sistemleri</p>
-                  </div>
+              <div className="p-6">
+                <ul className="space-y-3 text-gray-600">
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-green-600 mr-3" />
+                    <span>Kimyasal ve darbe dayanımı</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-green-600 mr-3" />
+                    <span>Antibakteriyel yüzey kaplaması</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-green-600 mr-3" />
+                    <span>Sızdırmaz kilit sistemi</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-green-600 mr-3" />
+                    <span>Kolay panel değişimi</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Tavan Panelleri */}
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+              <div className="relative h-48">
+                <Image
+                  src="/images/temizodasistemcard.webp"
+                  alt="Temiz oda tavan paneli - NEVAYS üretimi"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-primary-600/80" />
+                <div className="absolute bottom-4 left-4 text-white">
+                  <h3 className="text-xl font-bold">Temiz Oda Tavan Paneli</h3>
+                  <p className="text-sm opacity-90">HEPA filtre entegrasyonu</p>
                 </div>
-                
-                {/* Technical details grid */}
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="relative h-28 rounded-xl overflow-hidden">
-                    <Image
-                      src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=400&h=200&fit=crop&crop=center"
-                      alt="Panel birleşim sistemleri ve sızdırmazlık detayları"
-                      fill
-                      className="object-cover"
-                      sizes="25vw"
-                    />
-                    <div className="absolute inset-0 bg-black/20" />
-                  </div>
-                  <div className="relative h-28 rounded-xl overflow-hidden">
-                    <Image
-                      src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&h=200&fit=crop&crop=center"
-                      alt="Antibakteriyel yüzey kaplamalari ve kalite kontrol"
-                      fill
-                      className="object-cover"
-                      sizes="25vw"
-                    />
-                    <div className="absolute inset-0 bg-black/20" />
-                  </div>
-                </div>
+              </div>
+              <div className="p-6">
+                <ul className="space-y-3 text-gray-600">
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-green-600 mr-3" />
+                    <span>HEPA filtre ve ışık entegrasyonu</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-green-600 mr-3" />
+                    <span>Yüksek nem dayanımı</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-green-600 mr-3" />
+                    <span>Ses ve ısı yalıtımı</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-green-600 mr-3" />
+                    <span>X, Y, Z eksen uyumluluğu</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Hygiene Skirting Section */}
-          <div className="mb-20">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                Mükemmelliği Tamamlayan Detaylar: Hijyenik Süpürgelikler
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Temiz odalarda partikül birikimini önleyen, kolay temizlenebilir süpürgelik sistemleri
-              </p>
+      {/* Teknik Özellikler */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              Hijyen Panel Teknik Özellikleri
+            </h2>
+          </div>
+            
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="bg-gray-50 rounded-xl p-6 text-center">
+              <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <Shield className="h-6 w-6 text-blue-600" />
+              </div>
+              <h3 className="font-semibold text-gray-900 mb-2">Panel Kalınlığı</h3>
+              <p className="text-gray-600 text-sm">3mm veya 4mm compact laminate</p>
             </div>
             
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                {/* Main skirting system image */}
-                <div className="relative h-64 rounded-2xl overflow-hidden shadow-lg">
-                  <Image
-                    src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=500&fit=crop&crop=center"
-                    alt="Oval süpürgelik sistemleri - Hijyenik detaylar ve montaj"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-gray-900/70 to-gray-900/30" />
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <p className="font-semibold text-lg">Oval Süpürgelik Sistemleri</p>
-                    <p className="text-sm opacity-90">Partikül birikimini önleyen aerodinamik tasarım</p>
-                  </div>
-                </div>
-                
-                {/* Comparison and detail images */}
-                <div className="grid grid-cols-3 gap-4">
-                  <div className="relative h-20 rounded-lg overflow-hidden">
-                    <Image
-                      src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=300&h=150&fit=crop&crop=center"
-                      alt="Oval süpürgelik temizlik kolaylığı"
-                      fill
-                      className="object-cover"
-                      sizes="16vw"
-                    />
-                  </div>
-                  <div className="relative h-20 rounded-lg overflow-hidden">
-                    <Image
-                      src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=300&h=150&fit=crop&crop=center"
-                      alt="Panel entegrasyon detayları"
-                      fill
-                      className="object-cover"
-                      sizes="16vw"
-                    />
-                  </div>
-                  <div className="relative h-20 rounded-lg overflow-hidden">
-                    <Image
-                      src="https://images.unsplash.com/photo-1583912267550-3ac9a5dfe1a3?w=300&h=150&fit=crop&crop=center"
-                      alt="FDA onaylı malzeme sertifikaları"
-                      fill
-                      className="object-cover"
-                      sizes="16vw"
-                    />
-                  </div>
+            <div className="bg-gray-50 rounded-xl p-6 text-center">
+              <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <CheckCircle className="h-6 w-6 text-green-600" />
+              </div>
+              <h3 className="font-semibold text-gray-900 mb-2">Yüzey Özelliği</h3>
+              <p className="text-gray-600 text-sm">Antibakteriyel HPL kaplama</p>
+            </div>
+            
+            <div className="bg-gray-50 rounded-xl p-6 text-center">
+              <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <Settings className="h-6 w-6 text-purple-600" />
+              </div>
+              <h3 className="font-semibold text-gray-900 mb-2">Montaj Sistemi</h3>
+              <p className="text-gray-600 text-sm">Esnek birleşim ve değişim</p>
+            </div>
+            
+            <div className="bg-gray-50 rounded-xl p-6 text-center">
+              <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <Award className="h-6 w-6 text-orange-600" />
+              </div>
+              <h3 className="font-semibold text-gray-900 mb-2">Sertifikasyon</h3>
+              <p className="text-gray-600 text-sm">GMP ve ISO 14644 uyumlu</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Süpürgelik Sistemleri */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              Oval Süpürgelik ve Hijyen Süpürgelik Sistemleri
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Partikül birikimini önleyen aerodinamik <strong>oval süpürgelik</strong> ve <strong>hijyen süpürgelik</strong> çözümleri
+            </p>
+          </div>
+            
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+              <div className="relative h-48">
+                <Image
+                  src="/images/hvac.webp"
+                  alt="Oval süpürgelik sistemi - NEVAYS üretimi"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-green-600/80" />
+                <div className="absolute bottom-4 left-4 text-white">
+                  <h3 className="text-xl font-bold">Oval Süpürgelik</h3>
+                  <p className="text-sm opacity-90">Aerodinamik tasarım</p>
                 </div>
               </div>
-              
-              <div>
-                <div className="space-y-6">
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-3">Oval Süpürgelik Avantajları</h3>
-                    <p className="text-gray-600 mb-4">
-                      Geleneksel köşeli süpürgeliklerin aksine, <strong>oval süpürgelik</strong> sistemimiz 
-                      partikül birikimini %95 oranında azaltır ve temizlik süreçlerini kolaylaştırır.
-                    </p>
-                    <ul className="space-y-2 text-gray-600">
-                      <li className="flex items-center">
-                        <div className="w-2 h-2 bg-primary-600 rounded-full mr-3" />
-                        Partikül birikimini önleyen aerodinamik tasarım
-                      </li>
-                      <li className="flex items-center">
-                        <div className="w-2 h-2 bg-primary-600 rounded-full mr-3" />
-                        Kolay temizlik için pürüzsüz yüzey
-                      </li>
-                      <li className="flex items-center">
-                        <div className="w-2 h-2 bg-primary-600 rounded-full mr-3" />
-                        Kimyasal dezenfektanlara dayanıklılık
-                      </li>
-                      <li className="flex items-center">
-                        <div className="w-2 h-2 bg-primary-600 rounded-full mr-3" />
-                        Panel sistemleriyle mükemmel entegrasyon
-                      </li>
-                    </ul>
-                  </div>
-                  
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-3">Hijyen Süpürgelik Uygulamaları</h3>
-                    <p className="text-gray-600">
-                      <strong>Hijyen süpürgelik</strong> sistemlerimiz, farmasötik üretim alanları, 
-                      steril odalar ve laboratuvarlarda kritik temizlik standartlarını karşılar.
-                    </p>
-                  </div>
+              <div className="p-6">
+                <h4 className="font-semibold text-gray-900 mb-3">Oval Süpürgelik Avantajları</h4>
+                <ul className="space-y-2 text-gray-600 text-sm">
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                    <span>%95 partikül birikimi azaltma</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                    <span>Kolay temizlik ve bakım</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                    <span>Kimyasal dayanıklılık</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                    <span>Panel sistemi entegrasyonu</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+              <div className="relative h-48">
+                <Image
+                  src="/images/laminerhavaakış.webp"
+                  alt="Hijyen süpürgelik sistemi - NEVAYS üretimi"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-blue-600/80" />
+                <div className="absolute bottom-4 left-4 text-white">
+                  <h3 className="text-xl font-bold">Hijyen Süpürgelik</h3>
+                  <p className="text-sm opacity-90">Steril ortam uyumlu</p>
                 </div>
+              </div>
+              <div className="p-6">
+                <h4 className="font-semibold text-gray-900 mb-3">Hijyen Süpürgelik Özellikleri</h4>
+                <ul className="space-y-2 text-gray-600 text-sm">
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                    <span>Farmasötik alan uyumluluğu</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                    <span>Steril oda standartları</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                    <span>Dezenfektan direnci</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                    <span>Bakteriyel büyüme engeli</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Why Choose NEVAYS Production Section */}
-          <div className="mb-20">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                Neden NEVAYS Üretimini Tercih Etmelisiniz?
-              </h2>
+      {/* Üretim Ortaklığı */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              Neden NEVAYS Temiz Oda Paneli Üretimi?
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Ortaklık kurduğumuz firma ile modern üretim teknolojisi ve mühendislik uzmanlığını birleştiriyoruz
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="text-center p-6">
+              <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Zap className="h-8 w-8 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Mühendislik Odaklı</h3>
+              <p className="text-gray-600 text-sm">Projeye özel tasarım ve üretim çözümleri</p>
             </div>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div className="text-center">
-                <div className="w-20 h-20 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <Zap className="h-10 w-10 text-blue-600" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Mühendislik Odaklı Üretim</h3>
-                <p className="text-gray-600">Her panel, projenizin teknik gereksinimlerine özel olarak tasarlanır ve üretilir</p>
+            <div className="text-center p-6">
+              <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Globe className="h-8 w-8 text-green-600" />
               </div>
-              
-              <div className="text-center">
-                <div className="w-20 h-20 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <Globe className="h-10 w-10 text-green-600" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Tam Entegrasyon</h3>
-                <p className="text-gray-600">Panel üretiminden kuruluma kadar tüm süreçleri tek elden yönetiyoruz</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Tam Entegrasyon</h3>
+              <p className="text-gray-600 text-sm">Üretimden kuruluma tek elden yönetim</p>
+            </div>
+            
+            <div className="text-center p-6">
+              <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Shield className="h-8 w-8 text-purple-600" />
               </div>
-              
-              <div className="text-center">
-                <div className="w-20 h-20 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <Shield className="h-10 w-10 text-purple-600" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Üstün Kalite Kontrol</h3>
-                <p className="text-gray-600">Her üretim aşamasında çoklu kalite kontrol noktaları ve test protokolleri</p>
-              </div>
-              
-              <div className="text-center">
-                <div className="w-20 h-20 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <Settings className="h-10 w-10 text-orange-600" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Esneklik ve Hız</h3>
-                <p className="text-gray-600">Özel boyut ve malzeme taleplerini hızla karşılayan esnek üretim kapasitesi</p>
-              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Kalite Garantisi</h3>
+              <p className="text-gray-600 text-sm">Çoklu kalite kontrol ve test protokolleri</p>
             </div>
           </div>
-
         </div>
       </section>
 
