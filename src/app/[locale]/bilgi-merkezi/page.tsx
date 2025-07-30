@@ -4,6 +4,8 @@ import PageHero from '@/components/ui/page-hero';
 import { Shield, BookOpen, Award, Users, ChevronRight, Clock, TrendingUp, CheckCircle, ArrowRight, Lightbulb, FileText, Globe } from 'lucide-react';
 import Link from 'next/link';
 
+export const dynamic = 'force-dynamic';
+
 // SEO odaklı sık sorulan sorular
 const seoQuestions = [
   {

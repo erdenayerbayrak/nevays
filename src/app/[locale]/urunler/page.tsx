@@ -10,6 +10,8 @@ const ProductsGrid = dynamic(() => import('@/components/sections/products-grid')
   loading: () => <div className="py-20 bg-gray-50"><div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">Loading...</div></div>
 });
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Sistem Bileşenleri - Temiz Oda Paneli, Kapısı, Pass Box | NEVAYS',
   description: 'Temiz oda paneli, temiz oda kapısı, pass box ve temiz oda tulum sistemlerinde yüksek standartlı bileşenler. Kusursuz sistem entegrasyonu.',
