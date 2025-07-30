@@ -1,0 +1,9 @@
+# Default locale redirect
+/  /tr/  302
+
+# Trailing slash redirects
+/tr  /tr/  301
+/en  /en/  301
+
+# Handle all other routes for SPA behavior
+/*  /404.html  404
