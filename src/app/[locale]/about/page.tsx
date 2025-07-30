@@ -1,5 +1,3 @@
-import { useTranslations } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
 import MainLayout from '@/components/layout/main-layout';
 import { HeroAbout } from '@/components/sections/hero-about';
@@ -13,11 +11,13 @@ interface Props {
 }
 
 export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: 'navigation' });
-
+  const title = locale === 'tr' ? 'Hakkımızda' : 'About';
+  
   return {
-    title: t('about'),
-    description: 'NEVAYS hakkında bilgi: Tarihçe, vizyon, misyon ve yönetim ekibi',
+    title,
+    description: locale === 'tr' 
+      ? 'NEVAYS hakkında bilgi: Tarihçe, vizyon, misyon ve yönetim ekibi'
+      : 'About NEVAYS: History, vision, mission and management team',
   };
 }
 

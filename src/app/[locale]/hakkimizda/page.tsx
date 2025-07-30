@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
 import MainLayout from '@/components/layout/main-layout';
 import { Calendar, Award, Users, Building2, CheckCircle, TrendingUp } from 'lucide-react';
 import Image from 'next/image';

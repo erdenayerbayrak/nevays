@@ -1,4 +1,3 @@
-import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
 import MainLayout from '@/components/layout/main-layout';
 import { HeroProduction } from '@/components/sections/hero-production';
@@ -9,15 +8,21 @@ interface Props {
 }
 
 export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: 'production' });
+  const title = locale === 'tr' 
+    ? 'Üretim - Temiz Oda Paneli Üretimi'
+    : 'Production - Cleanroom Panel Manufacturing';
+    
+  const description = locale === 'tr'
+    ? 'NEVAYS temiz oda paneli üretimi: Hijyen panel, temiz oda duvar paneli, temiz oda tavan paneli üretimi. Oval süpürgelik ve hijyen süpürgelik sistemleri ile GMP uyumlu çözümler.'
+    : 'NEVAYS cleanroom panel production: Hygiene panel, cleanroom wall panel, cleanroom ceiling panel manufacturing. GMP compliant solutions with oval skirting and hygiene skirting systems.';
 
   return {
-    title: `${t('title')} | NEVAYS`,
-    description: t('description'),
+    title: `${title} | NEVAYS`,
+    description,
     keywords: 'temiz oda paneli, hijyen panel, temiz oda duvar paneli, cleanroom panels, hygienic panels',
     openGraph: {
-      title: `${t('title')} | NEVAYS`,
-      description: t('description'),
+      title: `${title} | NEVAYS`,
+      description,
       locale: locale,
       type: 'website',
     },

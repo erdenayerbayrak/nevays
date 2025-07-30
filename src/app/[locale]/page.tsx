@@ -1,4 +1,3 @@
-import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
 import MainLayout from '@/components/layout/main-layout';
 import HeroSection from '@/components/sections/hero-section';
@@ -14,8 +13,6 @@ interface Props {
 }
 
 export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: 'hero' });
-  
   const title = locale === 'tr' 
     ? 'NEVAYS - Temiz Oda Sistemleri ve Cleanroom Kurulumu | GMP Uyumlu Çözümler'
     : 'NEVAYS - Cleanroom Systems & Installation | GMP Compliant Solutions';

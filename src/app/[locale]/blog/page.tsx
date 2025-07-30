@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
 import MainLayout from '@/components/layout/main-layout';
 import PageHero from '@/components/ui/page-hero';
 import { 
@@ -24,7 +23,6 @@ interface Props {
 }
 
 export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: 'blog' });
   
   const title = locale === 'tr' 
     ? 'NEVAYS Blog - Düşünce Liderliği ve Sektör İçgörüleri'

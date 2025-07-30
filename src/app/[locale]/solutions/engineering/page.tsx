@@ -1,5 +1,3 @@
-import { useTranslations } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
 import MainLayout from '@/components/layout/main-layout';
 import SolutionHero from '@/components/sections/solution-hero';
@@ -12,11 +10,17 @@ interface Props {
 }
 
 export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: 'navigation' });
+  const title = locale === 'tr' 
+    ? 'Mühendislik Hizmetleri - Proje Yönetimi | NEVAYS'
+    : 'Engineering Services - Project Management | NEVAYS';
+    
+  const description = locale === 'tr'
+    ? 'Kapsamlı proje yönetimi ve sistem entegrasyonu hizmetleri. Tasarımdan devreye almaya kadar tüm süreçlerde uzman mühendislik desteği.'
+    : 'Comprehensive project management and system integration services. Expert engineering support from design to commissioning in all processes.';
 
   return {
-    title: t('engineering'),
-    description: 'Kapsamlı proje yönetimi ve sistem entegrasyonu',
+    title,
+    description,
   };
 }
 

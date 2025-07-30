@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
 import MainLayout from '@/components/layout/main-layout';
 import PageHero from '@/components/ui/page-hero';
 import { Shield, BookOpen, Award, Users, ChevronRight, Clock, TrendingUp, CheckCircle, ArrowRight, Lightbulb, FileText, Globe } from 'lucide-react';
@@ -211,8 +210,6 @@ interface Props {
 }
 
 export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: 'knowledge' });
-  
   const title = locale === 'tr' 
     ? 'NEVAYS Bilgi Merkezi - GMP, ISO 14644, Uzman İçerikleri'
     : 'NEVAYS Knowledge Center - GMP, ISO 14644, Expert Content';

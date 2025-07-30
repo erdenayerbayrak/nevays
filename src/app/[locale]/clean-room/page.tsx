@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
 import MainLayout from '@/components/layout/main-layout';
 import { HeroCleanroom } from '@/components/sections/hero-cleanroom';
 import CleanRoomFAQ from '@/components/sections/clean-room-faq';
@@ -9,7 +8,6 @@ interface Props {
 }
 
 export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: 'cleanRoom' });
 
   return {
     title: 'Temiz Oda Nedir? | NEVAYS',

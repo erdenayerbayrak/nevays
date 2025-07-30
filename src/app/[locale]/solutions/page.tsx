@@ -1,5 +1,3 @@
-import { useTranslations } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
 import MainLayout from '@/components/layout/main-layout';
 import SolutionsLandingHero from '@/components/sections/solutions-landing-hero';
@@ -11,7 +9,6 @@ interface Props {
 }
 
 export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: 'solutions' });
   
   const title = locale === 'tr' 
     ? 'Çözümlerimiz - Temiz Oda ve Laboratuvar Sistemleri | NEVAYS'

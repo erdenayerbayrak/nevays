@@ -1,5 +1,3 @@
-import { useTranslations } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
 import MainLayout from '@/components/layout/main-layout';
 import SolutionHero from '@/components/sections/solution-hero';
@@ -12,11 +10,17 @@ interface Props {
 }
 
 export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: 'navigation' });
+  const title = locale === 'tr' 
+    ? 'Hava Teknolojileri - AHU Sistemleri | NEVAYS'
+    : 'Air Handling Technologies - AHU Systems | NEVAYS';
+    
+  const description = locale === 'tr'
+    ? 'Yüksek performanslı AHU sistemleri ve havalandırma çözümleri. Endüstriyel tesisler, hastaneler ve ilaç fabrikaları için özel tasarım.'
+    : 'High performance AHU systems and ventilation solutions. Special design for industrial facilities, hospitals and pharmaceutical factories.';
 
   return {
-    title: t('airHandling'),
-    description: 'Yüksek performanslı AHU sistemleri ve havalandırma çözümleri',
+    title,
+    description,
   };
 }
 

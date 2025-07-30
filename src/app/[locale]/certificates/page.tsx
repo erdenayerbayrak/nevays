@@ -1,5 +1,3 @@
-import { useTranslations } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
 import MainLayout from '@/components/layout/main-layout';
 import CertificatesHero from '@/components/sections/certificates-hero';
@@ -11,11 +9,17 @@ interface Props {
 }
 
 export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: 'navigation' });
+  const title = locale === 'tr' 
+    ? 'Sertifikalar - Kalite Belgeleri | NEVAYS'
+    : 'Certificates - Quality Documents | NEVAYS';
+    
+  const description = locale === 'tr'
+    ? 'NEVAYS kalite sertifikaları, ISO standartları ve uygunluk belgeleri'
+    : 'NEVAYS quality certificates, ISO standards and compliance documents';
 
   return {
-    title: t('certificates'),
-    description: 'NEVAYS kalite sertifikaları, ISO standartları ve uygunluk belgeleri',
+    title,
+    description,
   };
 }
 

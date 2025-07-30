@@ -1,4 +1,3 @@
-import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
 import MainLayout from '@/components/layout/main-layout';
 import SolutionHero from '@/components/sections/solution-hero';

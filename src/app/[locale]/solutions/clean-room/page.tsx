@@ -1,5 +1,3 @@
-import { useTranslations } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import MainLayout from '@/components/layout/main-layout';
@@ -12,11 +10,17 @@ interface Props {
 }
 
 export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: 'navigation' });
+  const title = locale === 'tr' 
+    ? 'Temiz Oda Sistemleri - GMP Uyumlu Çözümler | NEVAYS'
+    : 'Cleanroom Systems - GMP Compliant Solutions | NEVAYS';
+    
+  const description = locale === 'tr'
+    ? 'GMP uyumlu temiz oda sistemleri ve kontaminasyon kontrolü. İlaç, hastane ve elektronik sektöründe en yüksek temizlik standartları.'
+    : 'GMP compliant cleanroom systems and contamination control. Highest cleanliness standards in pharmaceutical, hospital and electronics sectors.';
 
   return {
-    title: t('cleanRoom'),
-    description: 'GMP uyumlu temiz oda sistemleri ve kontaminasyon kontrolü',
+    title,
+    description,
   };
 }
 

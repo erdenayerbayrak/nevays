@@ -1,4 +1,3 @@
-import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
 import MainLayout from '@/components/layout/main-layout';
 import { HeroApplications } from '@/components/sections/hero-applications';
@@ -9,15 +8,18 @@ interface Props {
 }
 
 export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: 'applications' });
+  const title = locale === 'tr' ? 'Uygulamalar | NEVAYS' : 'Applications | NEVAYS';
+  const description = locale === 'tr' 
+    ? 'Temiz oda kurulumu, laboratuvar sistemleri ve HVAC uygulamaları. Uzman mühendislik çözümleri.'
+    : 'Cleanroom installation, laboratory systems and HVAC applications. Expert engineering solutions.';
 
   return {
-    title: `${t('title')} | NEVAYS`,
-    description: t('description'),
+    title,
+    description,
     keywords: 'temiz oda kurulumu, laboratuvar kurulumu, HVAC uygulamaları, LAF kabin, modüler temiz oda',
     openGraph: {
-      title: `${t('title')} | NEVAYS`,
-      description: t('description'),
+      title,
+      description,
       locale: locale,
       type: 'website',
     },

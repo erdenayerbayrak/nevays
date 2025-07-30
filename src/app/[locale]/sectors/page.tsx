@@ -1,5 +1,3 @@
-import { useTranslations } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
 import MainLayout from '@/components/layout/main-layout';
 import SectorSolutions from '@/components/sections/sector-solutions';
@@ -10,7 +8,6 @@ interface Props {
 }
 
 export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: 'sectors' });
   
   const title = locale === 'tr' 
     ? 'Sektörler - İlaç, Elektronik, Gıda ve Medikal Çözümler | NEVAYS'
